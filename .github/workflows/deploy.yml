@@ -24,6 +24,8 @@ jobs:
       - run: pnpm test
       - run: pnpm build
       - run: pnpm --filter @onboarding/api prisma:migrate:deploy
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       - run: pnpm dlx railway up --service api
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
