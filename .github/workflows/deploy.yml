@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,10 +17,12 @@ jobs:
           version: 9.15.4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm lint && pnpm test -- --coverage && pnpm build
+      - run: pnpm lint
+      - run: pnpm test
+      - run: pnpm build
       - run: pnpm --filter @onboarding/api prisma:migrate:deploy
       - run: pnpm dlx railway up --service api
         env:
