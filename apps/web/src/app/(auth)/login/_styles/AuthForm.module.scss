@@ -11,6 +11,7 @@
 .title {
   font-size: 1.35rem;
   font-weight: 800;
+  letter-spacing: -0.025em;
   margin: 0;
 }
 
@@ -39,7 +40,7 @@
 
 .input {
   border: 1px solid #cfd6e2;
-  border-radius: 8px;
+  border-radius: 10px;
   color: #172033;
   font: inherit;
   min-height: 44px;

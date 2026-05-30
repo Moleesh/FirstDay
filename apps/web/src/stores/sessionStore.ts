@@ -22,13 +22,13 @@ export const useSessionStore = create<SessionState>()(
     (set) => ({
       hasHydrated: false,
       clearSession: (): void => {
-        set({ role: undefined, token: undefined, userLabel: undefined });
+        set({ hasHydrated: true, role: undefined, token: undefined, userLabel: undefined });
       },
       setHasHydrated: (hasHydrated: boolean): void => {
         set({ hasHydrated });
       },
       setSession: (role: "recruiter" | "joinee", token: string, userLabel?: string): void => {
-        set({ role, token, userLabel });
+        set({ hasHydrated: true, role, token, userLabel });
       },
     }),
     {

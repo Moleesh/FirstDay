@@ -22,8 +22,8 @@ import { useSessionStore } from "@/stores/sessionStore";
 export function RecruiterForm(): JSX.Element {
   const router = useRouter();
   const setSession = useSessionStore((state) => state.setSession);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("recruiter");
+  const [password, setPassword] = useState("firstday");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 

@@ -9,6 +9,8 @@ import type { JoineeLogin } from "@onboarding/types";
 
 const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000").replace(/\/+$/, "");
 const DEMO_TOKEN = "demo-session-token";
+const DEV_JOINEE_ACCESS_CODE = "firstday";
+const DEV_JOINEE_DISPLAY_ID = "JN-2026-00042";
 const DEV_RECRUITER_PASSWORD = "firstday";
 const DEV_RECRUITER_USERNAME = "recruiter";
 
@@ -37,6 +39,12 @@ export async function loginJoinee(
   input: JoineeLogin,
 ): Promise<{ token: string; redirectTo: string }> {
   const payload = joineeLoginSchema.parse(input);
+  if (
+    payload.displayId === DEV_JOINEE_DISPLAY_ID &&
+    payload.accessCode === DEV_JOINEE_ACCESS_CODE
+  ) {
+    return { redirectTo: "/onboarding", token: DEMO_TOKEN };
+  }
   const response = await fetch(`${API_URL}/auth/joinee/login`, {
     body: JSON.stringify(payload),
     headers: { "content-type": "application/json", "x-csrf-token": "web-login" },

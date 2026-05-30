@@ -1,0 +1,102 @@
+/**
+ * @module BrandStyles
+ * @description Shared animated FirstDay logo styles.
+ */
+.firstday-logo,
+.firstday-logo__mark,
+.firstday-logo__mark span {
+  align-items: center;
+  display: inline-flex;
+}
+
+.firstday-logo {
+  color: inherit;
+  gap: 0.7rem;
+}
+
+.firstday-logo__mark {
+  background: linear-gradient(135deg, var(--accent, #0f766e), #38bdf8, #172033);
+  background-size: 180% 180%;
+  border-radius: 1rem;
+  box-shadow: 0 10px 24px rgba(15, 118, 110, 0.2);
+  height: 3rem;
+  justify-content: center;
+  position: relative;
+  width: 3rem;
+  animation: firstday-gradient 7s ease infinite;
+}
+
+.firstday-logo__mark::after {
+  border: 1px solid color-mix(in srgb, var(--accent, #0f766e) 42%, transparent);
+  border-radius: 1.2rem;
+  content: "";
+  inset: -0.24rem;
+  position: absolute;
+  animation: firstday-orbit 3.6s ease-in-out infinite;
+}
+
+.firstday-logo__mark span {
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 850;
+  justify-content: center;
+}
+
+.firstday-logo__copy {
+  display: grid;
+}
+
+.firstday-logo__copy strong {
+  font-size: 1.18rem;
+  letter-spacing: -0.045em;
+}
+
+.firstday-logo__copy small {
+  color: var(--muted, #657084);
+  font-size: 0.78rem;
+}
+
+.firstday-logo--compact .firstday-logo__mark {
+  border-radius: 0.85rem;
+  height: 2.45rem;
+  width: 2.45rem;
+}
+
+.firstday-logo--compact .firstday-logo__mark::after {
+  border-radius: 1rem;
+}
+
+.firstday-logo--compact .firstday-logo__mark span {
+  font-size: 1rem;
+}
+
+@keyframes firstday-gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes firstday-orbit {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.96);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firstday-logo__mark,
+  .firstday-logo__mark::after {
+    animation: none;
+  }
+}

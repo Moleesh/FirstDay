@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
 import { RoleBadge } from "@/components/shared/RoleBadge";
+import { FirstDayLogo } from "@/components/shared/FirstDayLogo";
 import { ThemeMenu } from "@/components/shared/ThemeMenu";
 import { useSessionStore } from "@/stores/sessionStore";
 
@@ -27,19 +28,19 @@ export function AppShell({ children }: { children: ReactNode }): JSX.Element {
   return (
     <div className="app-shell">
       <header className="app-header">
-        <div className="stack-sm">
+        <div className="app-header__identity">
           <Link className="app-brand" href="/dashboard">
-            <span>F</span>
-            FirstDay
+            <FirstDayLogo size="compact" />
           </Link>
           <nav aria-label="Breadcrumb" className="app-breadcrumb">
             <Link href="/dashboard">Dashboard</Link>
-            <span aria-hidden="true"> / Recruiter workspace</span>
+            <span aria-hidden="true">/</span>
+            <span>Recruiter workspace</span>
           </nav>
         </div>
         <div className="app-header__actions">
           <ThemeMenu />
-          <div>
+          <div className="app-profile">
             <div className="app-user">{userLabel}</div>
             <RoleBadge role="RECRUITER" />
           </div>

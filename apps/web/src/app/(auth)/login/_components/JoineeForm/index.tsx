@@ -22,8 +22,8 @@ import { useSessionStore } from "@/stores/sessionStore";
 export function JoineeForm(): JSX.Element {
   const router = useRouter();
   const setSession = useSessionStore((state) => state.setSession);
-  const [displayId, setDisplayId] = useState("");
-  const [accessCode, setAccessCode] = useState("");
+  const [displayId, setDisplayId] = useState("JN-2026-00042");
+  const [accessCode, setAccessCode] = useState("firstday");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
