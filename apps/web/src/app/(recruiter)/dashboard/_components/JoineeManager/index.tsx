@@ -37,7 +37,7 @@ export function JoineeManager(): JSX.Element {
   }
 
   return (
-    <section className="app-card grid gap-3">
+    <section className="app-card stack-md">
       <div className="app-card__heading">
         <span>Live assignments</span>
         <h2>Joinee workspace</h2>

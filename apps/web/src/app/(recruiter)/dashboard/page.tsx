@@ -36,7 +36,7 @@ export default function DashboardPage(): JSX.Element {
           </div>
         </div>
       </section>
-      <div className="grid gap-4 xl:grid-cols-[1.2fr_1fr]">
+      <div className="dashboard-columns">
         <DocumentBuilder />
         <JoineeManager />
       </div>

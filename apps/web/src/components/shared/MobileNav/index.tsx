@@ -8,7 +8,7 @@ import { Menu } from "lucide-react";
 
 export function MobileNav(): JSX.Element {
   return (
-    <button aria-label="Open navigation" className="rounded-md border p-2" type="button">
+    <button aria-label="Open navigation" className="nav-button" type="button">
       <Menu size={16} />
     </button>
   );

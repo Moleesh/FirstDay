@@ -10,7 +10,7 @@ import { ManualFieldForm } from "./ManualFieldForm";
 
 export function StepFormBuilder(): JSX.Element {
   return (
-    <div className="grid gap-2">
+    <div className="stack-sm">
       <AIExtractStatus />
       <FieldCard />
       <ManualFieldForm />

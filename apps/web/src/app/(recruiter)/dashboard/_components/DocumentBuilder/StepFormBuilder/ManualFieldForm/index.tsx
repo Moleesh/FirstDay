@@ -5,5 +5,5 @@
  * @since 1.0.0
  */
 export function ManualFieldForm(): JSX.Element {
-  return <input className="rounded-md border p-2 text-sm" placeholder="Add field label" />;
+  return <input className="app-input" placeholder="Add field label" />;
 }

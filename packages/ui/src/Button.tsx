@@ -5,31 +5,20 @@
  * @since 1.0.0
  */
 import { Slot } from "@radix-ui/react-slot";
-import { cva, type VariantProps } from "class-variance-authority";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "./utils";
 
-const buttonVariants = cva(
-  "inline-flex h-9 items-center justify-center gap-2 rounded-md px-3 text-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50",
-  {
-    variants: {
-      variant: {
-        primary: "bg-slate-950 text-white hover:bg-slate-800",
-        secondary: "border border-slate-200 bg-white text-slate-950 hover:bg-slate-50",
-        ghost: "text-slate-700 hover:bg-slate-100",
-      },
-    },
-    defaultVariants: {
-      variant: "primary",
-    },
-  },
-);
+const buttonVariants = {
+  ghost: "button--ghost",
+  primary: "button--primary",
+  secondary: "button--secondary",
+} as const;
 
-export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-    children: ReactNode;
-  };
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  asChild?: boolean;
+  children: ReactNode;
+  variant?: keyof typeof buttonVariants;
+};
 
 /**
  * Renders a reusable platform button.
@@ -38,5 +27,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
  */
 export function Button({ asChild, className, variant, ...props }: ButtonProps): JSX.Element {
   const Comp = asChild ? Slot : "button";
-  return <Comp className={cn(buttonVariants({ variant }), className)} {...props} />;
+  return (
+    <Comp className={cn("button", buttonVariants[variant ?? "primary"], className)} {...props} />
+  );
 }

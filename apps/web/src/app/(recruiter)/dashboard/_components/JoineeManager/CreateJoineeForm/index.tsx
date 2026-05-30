@@ -29,7 +29,7 @@ export function CreateJoineeForm({
   }
 
   return (
-    <form className="grid gap-2" onSubmit={submit}>
+    <form className="stack-sm" onSubmit={submit}>
       <input
         className="app-input"
         onChange={(event) => setFullName(event.target.value)}

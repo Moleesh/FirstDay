@@ -1,11 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @import "./variables";
 @import "./theme-tokens";
 @import "./app-shell";
 @import "./dashboard";
+@import "./components";
 
 * {
   box-sizing: border-box;

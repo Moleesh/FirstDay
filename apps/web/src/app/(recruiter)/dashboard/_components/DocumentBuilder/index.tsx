@@ -17,7 +17,7 @@ import { en } from "@/i18n/en";
  */
 export function DocumentBuilder(): JSX.Element {
   return (
-    <section className="app-card grid gap-3">
+    <section className="app-card stack-md">
       <div className="app-card__heading">
         <span>Template studio</span>
         <h2>{en.documentBuilder}</h2>

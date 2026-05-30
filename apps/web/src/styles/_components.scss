@@ -1,0 +1,137 @@
+/**
+ * @module ComponentStyles
+ * @description Shared semantic component classes used across application surfaces.
+ */
+.stack-sm {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.stack-md {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.dashboard-columns {
+  display: grid;
+  gap: 1rem;
+}
+
+.role-badge,
+.status-badge {
+  background: var(--surface-raised);
+  border-radius: 999px;
+  color: var(--muted);
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.25rem 0.55rem;
+}
+
+.nav-button {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  color: var(--ink);
+  padding: 0.5rem;
+}
+
+.builder-panel,
+.builder-panel--accent,
+.document-viewer {
+  border-radius: 0.7rem;
+  font-size: 0.875rem;
+  padding: 0.75rem;
+}
+
+.builder-panel {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  color: var(--ink);
+}
+
+.builder-panel--accent {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.document-viewer {
+  background: var(--surface-raised);
+  color: var(--muted);
+  min-height: 8rem;
+}
+
+.joinee-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.joinee-card__row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.joinee-card__name {
+  font-weight: 700;
+}
+
+.button {
+  align-items: center;
+  border: 0;
+  border-radius: 0.55rem;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 0.875rem;
+  font-weight: 700;
+  gap: 0.5rem;
+  height: 2.25rem;
+  justify-content: center;
+  padding: 0 0.75rem;
+  transition: 160ms ease;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button--primary {
+  background: var(--ink);
+  color: var(--card-solid);
+}
+
+.button--secondary {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  color: var(--ink);
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--muted);
+}
+
+.onboarding-surface {
+  background: var(--surface);
+  min-height: 100vh;
+}
+
+.wizard-progress {
+  background: var(--border);
+  border-radius: 999px;
+  height: 0.5rem;
+  overflow: hidden;
+}
+
+.wizard-progress__value {
+  background: var(--accent);
+  border-radius: inherit;
+  height: 100%;
+}
+
+@media (min-width: 1280px) {
+  .dashboard-columns {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}

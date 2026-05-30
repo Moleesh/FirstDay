@@ -12,9 +12,9 @@ export function WizardProgress({
   totalSteps: number;
 }): JSX.Element {
   return (
-    <div className="h-2 rounded bg-slate-200">
+    <div className="wizard-progress">
       <div
-        className="h-2 rounded bg-teal-700"
+        className="wizard-progress__value"
         style={{ width: `${(currentStep / totalSteps) * 100}%` }}
       />
     </div>

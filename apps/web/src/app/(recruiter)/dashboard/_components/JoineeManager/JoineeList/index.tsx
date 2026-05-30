@@ -9,12 +9,12 @@ import type { JoineeSummary } from "@/app/(recruiter)/dashboard/_components/Join
 
 export function JoineeList({ joinees }: { joinees: Array<JoineeSummary> }): JSX.Element {
   return (
-    <div className="grid gap-2">
+    <div className="joinee-list">
       {joinees.map((joinee) => (
         <div className="joinee-card" key={joinee.displayId}>
-          <div className="flex items-center justify-between">
+          <div className="joinee-card__row">
             <div>
-              <div className="font-medium">{joinee.fullName}</div>
+              <div className="joinee-card__name">{joinee.fullName}</div>
               <div className="app-muted">{joinee.displayId}</div>
             </div>
             <JoineeStatusBadge status={joinee.status} />

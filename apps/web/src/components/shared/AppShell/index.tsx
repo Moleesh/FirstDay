@@ -27,7 +27,7 @@ export function AppShell({ children }: { children: ReactNode }): JSX.Element {
   return (
     <div className="app-shell">
       <header className="app-header">
-        <div className="grid gap-1">
+        <div className="stack-sm">
           <Link className="app-brand" href="/dashboard">
             <span>F</span>
             FirstDay
@@ -39,7 +39,7 @@ export function AppShell({ children }: { children: ReactNode }): JSX.Element {
         </div>
         <div className="app-header__actions">
           <ThemeMenu />
-          <div className="text-right">
+          <div>
             <div className="app-user">{userLabel}</div>
             <RoleBadge role="RECRUITER" />
           </div>

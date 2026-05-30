@@ -5,5 +5,5 @@
  * @since 1.0.0
  */
 export function PageReorder(): JSX.Element {
-  return <div className="rounded-md border border-slate-200 p-3 text-sm">Page order: 1, 2, 3</div>;
+  return <div className="builder-panel">Page order: 1, 2, 3</div>;
 }

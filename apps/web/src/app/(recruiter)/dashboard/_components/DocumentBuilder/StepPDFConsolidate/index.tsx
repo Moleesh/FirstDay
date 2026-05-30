@@ -9,7 +9,7 @@ import { PhotoPlacement } from "./PhotoPlacement";
 
 export function StepPDFConsolidate(): JSX.Element {
   return (
-    <div className="grid gap-2">
+    <div className="stack-sm">
       <PageReorder />
       <PhotoPlacement />
     </div>
