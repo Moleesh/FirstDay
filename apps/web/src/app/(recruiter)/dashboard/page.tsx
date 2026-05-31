@@ -4,8 +4,7 @@
  * @author auto
  * @since 1.0.0
  */
-import { DocumentBuilder } from "@/app/(recruiter)/dashboard/_components/DocumentBuilder";
-import { JoineeManager } from "@/app/(recruiter)/dashboard/_components/JoineeManager";
+import { DashboardTabs } from "@/app/(recruiter)/dashboard/_components/DashboardTabs";
 import { en } from "@/i18n/en";
 
 /**
@@ -36,10 +35,7 @@ export default function DashboardPage(): JSX.Element {
           </div>
         </div>
       </section>
-      <div className="dashboard-columns">
-        <DocumentBuilder />
-        <JoineeManager />
-      </div>
+      <DashboardTabs />
     </main>
   );
 }

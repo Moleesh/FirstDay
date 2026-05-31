@@ -1,0 +1,68 @@
+/**
+ * @module PDFReviewStyles
+ * @description PDF page reorder, field mapping, and annotation styles.
+ */
+.pdf-review,
+.pdf-review__pages,
+.pdf-review__mapping {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.pdf-review__pages {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pdf-page {
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.45rem;
+}
+
+.pdf-page__preview {
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+  display: grid;
+  gap: 0.2rem;
+  justify-items: start;
+  text-align: left;
+  width: 100%;
+}
+
+.pdf-page__preview span,
+.pdf-review__mapping p {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.pdf-page__actions {
+  display: flex;
+  gap: 0.3rem;
+  justify-content: flex-end;
+}
+
+.pdf-page__actions button {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  color: var(--ink);
+}
+
+.pdf-review__mapping {
+  background: var(--card-solid);
+  border-radius: 0.75rem;
+  padding: 0.7rem;
+}
+
+.pdf-review__mapping h4,
+.pdf-review__mapping p {
+  margin: 0;
+}
+
+@media (max-width: 620px) {
+  .pdf-review__pages {
+    grid-template-columns: 1fr;
+  }
+}

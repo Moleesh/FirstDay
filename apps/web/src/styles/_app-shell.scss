@@ -29,6 +29,7 @@
 
 .app-header__actions,
 .app-header__identity,
+.app-header__session,
 .theme-menu,
 .theme-menu__modes {
   align-items: center;
@@ -76,10 +77,33 @@
 }
 
 .app-profile {
-  display: grid;
-  gap: 0.15rem;
+  align-items: center;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  display: flex;
+  gap: 0.55rem;
   line-height: 1.1;
   min-width: max-content;
+  padding: 0.32rem 0.55rem 0.32rem 0.35rem;
+}
+
+.app-profile__avatar {
+  align-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  border-radius: 0.65rem;
+  color: white;
+  display: flex;
+  font-size: 0.78rem;
+  font-weight: 700;
+  height: 2rem;
+  justify-content: center;
+  width: 2rem;
+}
+
+.app-profile__copy {
+  display: grid;
+  gap: 0.18rem;
 }
 
 .theme-menu {
@@ -131,7 +155,8 @@
   }
 
   .app-header__actions {
-    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
   }
 }
 
@@ -140,5 +165,15 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 0.45rem;
+  }
+
+  .app-header__actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .app-header__session,
+  .theme-menu {
+    justify-content: space-between;
   }
 }

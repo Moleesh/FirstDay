@@ -1,0 +1,48 @@
+/**
+ * @module DeliveryPanelStyles
+ * @description Joinee pack download and welcome-link sharing controls.
+ */
+.delivery-panel {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  display: grid;
+  gap: 0.65rem;
+  padding: 0.75rem;
+}
+
+.delivery-panel span {
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.delivery-panel h3,
+.delivery-panel p {
+  margin: 0;
+}
+
+.delivery-panel p {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.delivery-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.delivery-panel__actions button {
+  align-items: center;
+  background: var(--card-solid);
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  color: var(--ink);
+  display: inline-flex;
+  font-weight: 700;
+  gap: 0.4rem;
+  padding: 0.55rem 0.7rem;
+}

@@ -1,8 +1,18 @@
+/**
+ * @module GlobalStyles
+ * @description Application-wide theme, reset, cursor, and scrollbar styles.
+ */
 @import "./variables";
 @import "./theme-tokens";
 @import "./brand";
 @import "./app-shell";
 @import "./dashboard";
+@import "./dashboard-tabs";
+@import "./document-checklist";
+@import "./field-builder";
+@import "./pdf-review";
+@import "./delivery-panel";
+@import "./recruiter-admin";
 @import "./components";
 
 * {
@@ -13,6 +23,8 @@ body {
   background: var(--surface);
   color: var(--ink);
   font-family:
+    "Segoe UI Variable Text",
+    "Aptos",
     Inter,
     ui-sans-serif,
     system-ui,
@@ -25,6 +37,47 @@ body {
   margin: 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  font-variant-ligatures: common-ligatures;
+}
+
+html {
+  scrollbar-color: var(--accent) var(--surface);
+  scrollbar-width: thin;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--surface);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border: 2px solid var(--surface);
+  border-radius: 999px;
+}
+
+.scroll-progress {
+  background: color-mix(in srgb, var(--border) 72%, transparent);
+  border-radius: 999px;
+  bottom: 1rem;
+  pointer-events: none;
+  position: fixed;
+  right: 0.35rem;
+  top: 5rem;
+  width: 0.26rem;
+  z-index: 20;
+}
+
+.scroll-progress span {
+  background: var(--accent);
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+  transform-origin: top;
+  transition: transform 120ms ease-out;
 }
 
 button,

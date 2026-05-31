@@ -26,14 +26,15 @@ Joinees get a simple guided flow from upload to download. 😊
 
 | Area            | What You Can Do                                                                          |
 | --------------- | ---------------------------------------------------------------------------------------- |
-| 🧑‍💼 Recruiter    | Build reusable document packs, invite joinees, and review onboarding progress.           |
+| 🧑‍💼 Recruiter    | Build reusable packs, map PDF fields, invite joinees, and review onboarding progress.    |
 | 😊 Joinee       | Upload documents, review fields, sign consent, and download the completed pack.          |
 | 🎨 Appearance   | Choose light, dark, or system mode and switch between accent themes.                     |
 | 🔐 API platform | Use Supabase auth and storage, audit logs, signed URLs, CSRF protection, and throttling. |
 
-The web app includes a recruiter template wizard, role-aware login screens,
-redirect-safe `/FirstDay` routes, trial sign-ins, and a responsive onboarding
-experience. 🌈
+The web app includes a recruiter template wizard, editable document checklists,
+reference-template extraction, PDF page ordering, field annotations, joinee pack
+downloads, welcome-link sharing, role-aware login screens, redirect-safe
+`/FirstDay` routes, trial sign-ins, and a responsive onboarding experience. 🌈
 
 ## 🚀 Run Locally
 
@@ -55,23 +56,19 @@ pnpm dev
 
 On Windows PowerShell, use `Copy-Item .env.example .env` instead of `cp`.
 
-| Service                  | URL                                                                      |
-| ------------------------ | ------------------------------------------------------------------------ |
-| 🌍 Live FirstDay web app | [https://moleesh.github.io/FirstDay](https://moleesh.github.io/FirstDay) |
-| 🌈 Local FirstDay app    | [http://localhost:3000/FirstDay](http://localhost:3000/FirstDay)         |
-| ⚡ API                   | [http://localhost:4000](http://localhost:4000)                           |
-| 📚 Swagger docs          | [http://localhost:4000/docs](http://localhost:4000/docs)                 |
+Open the published app at
+[https://moleesh.github.io/FirstDay](https://moleesh.github.io/FirstDay). 🌍
 
 ### Trial Sign-In 😊
 
-The current web experience includes prefilled trial accounts for local product
+The current web experience includes prefilled trial accounts for product
 reviews. Click **Sign in** or **Continue onboarding** after opening the matching
 login page.
 
-| Role         | Login URL                                                                                                  | Username or ID  | Password or code |
-| ------------ | ---------------------------------------------------------------------------------------------------------- | --------------- | ---------------- |
-| 🧑‍💼 Recruiter | [http://localhost:3000/FirstDay/login?role=recruiter](http://localhost:3000/FirstDay/login?role=recruiter) | `recruiter`     | `firstday`       |
-| 😊 Joinee    | [http://localhost:3000/FirstDay/login?role=joinee](http://localhost:3000/FirstDay/login?role=joinee)       | `JN-2026-00042` | `firstday`       |
+| Role         | Login URL                                                                    | Username or ID  | Password or code |
+| ------------ | ---------------------------------------------------------------------------- | --------------- | ---------------- |
+| 🧑‍💼 Recruiter | [Recruiter sign-in](https://moleesh.github.io/FirstDay/login?role=recruiter) | `recruiter`     | `firstday`       |
+| 😊 Joinee    | [Joinee sign-in](https://moleesh.github.io/FirstDay/login?role=joinee)       | `JN-2026-00042` | `firstday`       |
 
 > These are development-only trial credentials. Do not use them as production
 > authentication.
@@ -90,7 +87,7 @@ Never commit `.env` files. 🔐
 | `SUPABASE_JWT_SECRET`           | API     | Recruiter JWT verification secret, at least 32 characters |
 | `SUPABASE_SERVICE_ROLE_KEY`     | API     | Server-only Supabase service role key                     |
 | `SUPABASE_URL`                  | API     | Supabase project URL                                      |
-| `WEB_ORIGIN`                    | API     | Allowed browser origin, usually `http://localhost:3000`   |
+| `WEB_ORIGIN`                    | API     | Allowed browser origin                                    |
 | `NEXT_PUBLIC_API_URL`           | Web     | Browser-facing API URL                                    |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Web     | Browser-safe Supabase anonymous key                       |
 | `NEXT_PUBLIC_SUPABASE_URL`      | Web     | Browser-facing Supabase project URL                       |

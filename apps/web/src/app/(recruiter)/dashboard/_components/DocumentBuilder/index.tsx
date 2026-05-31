@@ -17,7 +17,10 @@ import { en } from "@/i18n/en";
 const steps = [
   { copy: "Choose the documents every joinee must submit.", label: "Documents" },
   { copy: "Review extracted fields and add anything missing.", label: "Fields" },
-  { copy: "Confirm page order and photo placement.", label: "PDF review" },
+  {
+    copy: "Reorder pages, confirm field mappings, and annotate unmatched areas.",
+    label: "PDF review",
+  },
 ] as const;
 
 /**

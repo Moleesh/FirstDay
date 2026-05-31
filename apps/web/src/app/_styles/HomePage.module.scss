@@ -1,3 +1,7 @@
+/**
+ * @module HomePageStyles
+ * @description Landing-page layout and responsive styles.
+ */
 .shell {
   background:
     radial-gradient(circle at 10% 5%, rgba(15, 118, 110, 0.16), transparent 28rem),
@@ -5,7 +9,7 @@
     linear-gradient(180deg, var(--card-solid) 0%, var(--surface) 100%);
   color: var(--ink);
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   padding: 32px;
 }
 

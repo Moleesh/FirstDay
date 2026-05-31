@@ -11,6 +11,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
 import { RoleBadge } from "@/components/shared/RoleBadge";
+import { ScrollProgress } from "@/components/shared/ScrollProgress";
 import { FirstDayLogo } from "@/components/shared/FirstDayLogo";
 import { ThemeMenu } from "@/components/shared/ThemeMenu";
 import { useSessionStore } from "@/stores/sessionStore";
@@ -40,22 +41,30 @@ export function AppShell({ children }: { children: ReactNode }): JSX.Element {
         </div>
         <div className="app-header__actions">
           <ThemeMenu />
-          <div className="app-profile">
-            <div className="app-user">{userLabel}</div>
-            <RoleBadge role="RECRUITER" />
+          <div className="app-header__session">
+            <div className="app-profile">
+              <span aria-hidden="true" className="app-profile__avatar">
+                {userLabel.slice(0, 1).toUpperCase()}
+              </span>
+              <span className="app-profile__copy">
+                <span className="app-user">{userLabel}</span>
+                <RoleBadge role="ADMIN" />
+              </span>
+            </div>
+            <button
+              aria-label="Log out"
+              className="app-button app-button--ghost"
+              onClick={logout}
+              type="button"
+            >
+              <LogOut size={16} />
+              Log out
+            </button>
           </div>
-          <button
-            aria-label="Log out"
-            className="app-button app-button--ghost"
-            onClick={logout}
-            type="button"
-          >
-            <LogOut size={16} />
-            Log out
-          </button>
         </div>
       </header>
       {children}
+      <ScrollProgress />
     </div>
   );
 }
