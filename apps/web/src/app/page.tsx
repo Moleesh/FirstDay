@@ -10,6 +10,7 @@ import { RecentOnboardingHistory } from "@/app/_components/RecentOnboardingHisto
 import { FirstDayLogo } from "@/components/shared/FirstDayLogo";
 import { ThemeMenu } from "@/components/shared/ThemeMenu";
 import previewStyles from "@/app/_styles/HomePreview.module.scss";
+import motionStyles from "@/app/_styles/HomeHeroMotion.module.scss";
 import styles from "@/app/_styles/HomePage.module.scss";
 import { en } from "@/i18n/en";
 
@@ -26,15 +27,11 @@ export default function Page(): JSX.Element {
         </div>
         <div className={styles.topbarActions}>
           <ThemeMenu />
-          <span className={styles.status}>
-            <CheckCircle2 size={16} />
-            {en.homeWorkspaceStatus}
-          </span>
         </div>
       </header>
 
       <section className={styles.layout}>
-        <div className={styles.intro}>
+        <div className={`${styles.intro} ${motionStyles.hero}`}>
           <span className={styles.eyebrow}>{en.homeEyebrow}</span>
           <h1 className={styles.title}>{en.homeTitle}</h1>
           <p className={styles.copy}>{en.homeCopy}</p>

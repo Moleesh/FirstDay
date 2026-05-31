@@ -1,0 +1,88 @@
+/**
+ * @module HomeHeroMotion
+ * @description Expressive, accessible landing hero animation.
+ */
+.hero {
+  isolation: isolate;
+  position: relative;
+}
+
+.hero::before {
+  animation: hero-glow 7s ease-in-out infinite;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 28%, transparent),
+    transparent 68%
+  );
+  content: "";
+  filter: blur(16px);
+  height: 18rem;
+  left: -7rem;
+  opacity: 0.65;
+  pointer-events: none;
+  position: absolute;
+  top: 2rem;
+  width: 18rem;
+  z-index: -1;
+}
+
+.hero > * {
+  animation: hero-arrive 720ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.hero > :nth-child(2) {
+  animation-delay: 90ms;
+}
+
+.hero > :nth-child(3) {
+  animation-delay: 170ms;
+}
+
+.hero > :nth-child(4) {
+  animation-delay: 250ms;
+}
+
+.hero > :nth-child(5) {
+  animation-delay: 330ms;
+}
+
+.hero h1 {
+  animation:
+    hero-arrive 720ms 90ms cubic-bezier(0.2, 0.8, 0.2, 1) both,
+    hero-breathe 6s 1.1s ease-in-out infinite;
+  text-shadow: 0 14px 42px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+@keyframes hero-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-breathe {
+  50% {
+    letter-spacing: -0.055em;
+    text-shadow: 0 18px 52px color-mix(in srgb, var(--accent) 26%, transparent);
+  }
+}
+
+@keyframes hero-glow {
+  50% {
+    opacity: 0.95;
+    transform: translate(4rem, 1rem) scale(1.22);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero > *,
+  .hero h1 {
+    animation: none;
+  }
+}

@@ -25,7 +25,6 @@ export const en = {
   homePipelineTitle: "Workspace summary",
   homePreviewLabel: "Dashboard preview",
   homeRecruiterAction: "Manage templates and joinees",
-  homeWorkspaceStatus: "Trial workspace ready",
   homeTitle: "Make every first day feel effortless.",
   homeWorkspace: "Recruiter and joinee workspace",
   recruiterDashboard: "Joinee onboarding operations",

@@ -1,10 +1,9 @@
 /**
  * @module BrandStyles
- * @description Shared animated FirstDay logo styles.
+ * @description Shared animated FirstDay signed-document logo styles.
  */
 .firstday-logo,
-.firstday-logo__mark,
-.firstday-logo__sun {
+.firstday-logo__mark {
   align-items: center;
   display: inline-flex;
 }
@@ -15,6 +14,7 @@
 }
 
 .firstday-logo__mark {
+  animation: firstday-gradient 7s ease infinite;
   background: linear-gradient(135deg, var(--accent, #0f766e), #38bdf8, #172033);
   background-size: 180% 180%;
   border-radius: 1rem;
@@ -23,64 +23,100 @@
   justify-content: center;
   position: relative;
   width: 3rem;
-  animation: firstday-gradient 7s ease infinite;
 }
 
 .firstday-logo__mark::after {
+  animation: firstday-orbit 3.6s ease-in-out infinite;
   border: 1px solid color-mix(in srgb, var(--accent, #0f766e) 42%, transparent);
   border-radius: 1.2rem;
   content: "";
   inset: -0.24rem;
   position: absolute;
-  animation: firstday-orbit 3.6s ease-in-out infinite;
 }
 
-.firstday-logo__sun {
+.firstday-logo__document {
+  animation: firstday-document 3.4s ease-in-out infinite;
   background: #ffffff;
-  border-radius: 999px 999px 0 0;
-  bottom: 0.75rem;
-  height: 0.68rem;
-  justify-content: center;
-  position: absolute;
-  width: 1.35rem;
+  border-radius: 0.22rem;
+  height: 1.65rem;
+  position: relative;
+  transform: rotate(-5deg);
+  width: 1.3rem;
 }
 
-.firstday-logo__path {
-  border-bottom: 0.18rem solid #ffffff;
-  border-right: 0.18rem solid #ffffff;
-  bottom: 0.72rem;
+.firstday-logo__line,
+.firstday-logo__signature {
+  background: color-mix(in srgb, var(--accent, #0f766e) 74%, #172033);
+  border-radius: 999px;
+  left: 0.24rem;
+  position: absolute;
+}
+
+.firstday-logo__line {
+  height: 0.12rem;
+}
+
+.firstday-logo__line--one {
+  top: 0.36rem;
+  width: 0.72rem;
+}
+
+.firstday-logo__line--two {
+  top: 0.63rem;
+  width: 0.5rem;
+}
+
+.firstday-logo__signature {
+  animation: firstday-sign 3.4s ease-in-out infinite;
+  bottom: 0.34rem;
+  height: 0.15rem;
+  transform: rotate(-12deg);
+  transform-origin: left center;
+  width: 0.78rem;
+}
+
+.firstday-logo__seal {
+  animation: firstday-seal 3.4s ease-in-out infinite;
+  background: #ccfbf1;
+  border: 0.12rem solid #ffffff;
+  border-radius: 999px;
+  bottom: 0.42rem;
   height: 0.72rem;
   position: absolute;
-  right: 0.84rem;
+  right: 0.42rem;
+  width: 0.72rem;
+}
+
+.firstday-logo__seal::after {
+  border-bottom: 0.12rem solid #0f766e;
+  border-right: 0.12rem solid #0f766e;
+  content: "";
+  height: 0.24rem;
+  left: 0.19rem;
+  position: absolute;
+  top: 0.11rem;
   transform: rotate(45deg);
-  width: 0.38rem;
+  width: 0.12rem;
 }
 
 .firstday-logo__spark {
+  animation: firstday-spark 3.4s ease-in-out infinite;
   background: #ffffff;
   border-radius: 999px;
   height: 0.18rem;
   position: absolute;
-  transform-origin: center;
   width: 0.18rem;
-  animation: firstday-spark 2.4s ease-in-out infinite;
 }
 
 .firstday-logo__spark--one {
-  left: 0.8rem;
-  top: 0.72rem;
+  right: 0.58rem;
+  top: 0.58rem;
 }
 
 .firstday-logo__spark--two {
-  left: 1.42rem;
-  top: 0.5rem;
-  animation-delay: 0.4s;
-}
-
-.firstday-logo__spark--three {
-  right: 0.72rem;
-  top: 0.9rem;
-  animation-delay: 0.8s;
+  animation-delay: 0.2s;
+  left: 0.48rem;
+  top: 0.82rem;
 }
 
 .firstday-logo__copy {
@@ -103,61 +139,72 @@
   width: 2.45rem;
 }
 
-.firstday-logo--compact .firstday-logo__mark::after {
-  border-radius: 1rem;
-}
-
-.firstday-logo--compact .firstday-logo__sun {
-  bottom: 0.62rem;
-  transform: scale(0.82);
-}
-
-.firstday-logo--compact .firstday-logo__path {
-  bottom: 0.58rem;
-  right: 0.62rem;
-  transform: rotate(45deg) scale(0.82);
+.firstday-logo--compact .firstday-logo__document {
+  transform: rotate(-5deg) scale(0.82);
 }
 
 @keyframes firstday-gradient {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-
   50% {
     background-position: 100% 50%;
   }
 }
 
 @keyframes firstday-orbit {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: scale(0.96);
-  }
-
   50% {
     opacity: 0.9;
-    transform: scale(1.04);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes firstday-document {
+  50% {
+    transform: rotate(2deg) translateY(-0.1rem);
+  }
+}
+
+@keyframes firstday-sign {
+  0%,
+  24% {
+    transform: rotate(-12deg) scaleX(0);
+  }
+  52%,
+  100% {
+    transform: rotate(-12deg) scaleX(1);
+  }
+}
+
+@keyframes firstday-seal {
+  0%,
+  52% {
+    opacity: 0;
+    transform: scale(0.2) rotate(-30deg);
+  }
+  68%,
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
   }
 }
 
 @keyframes firstday-spark {
   0%,
+  58%,
   100% {
-    opacity: 0.35;
-    transform: scale(0.75);
+    opacity: 0;
+    transform: scale(0.4);
   }
-
-  50% {
+  72% {
     opacity: 1;
-    transform: scale(1.35);
+    transform: scale(1.45);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .firstday-logo__mark,
   .firstday-logo__mark::after,
+  .firstday-logo__document,
+  .firstday-logo__signature,
+  .firstday-logo__seal,
   .firstday-logo__spark {
     animation: none;
   }

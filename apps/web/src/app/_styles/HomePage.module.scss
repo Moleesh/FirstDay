@@ -16,7 +16,6 @@
 }
 
 .topbar,
-.status,
 .action,
 .iconBox,
 .previewHeader,
@@ -38,51 +37,12 @@
 
 .brand,
 .intro,
-.actionText,
-.previewGrid {
+.actionText {
   display: grid;
 }
 
-.brand {
-  align-items: center;
-  display: flex;
-  gap: 10px;
-}
-
-.brandName,
-.actionTitle,
-.previewTitle,
-.taskName {
+.actionTitle {
   font-weight: 800;
-}
-
-.brandName {
-  display: block;
-  font-size: 1.08rem;
-  letter-spacing: -0.03em;
-}
-
-.brandMeta,
-.taskMeta,
-.metricLabel {
-  color: #657084;
-}
-
-.brandMeta {
-  display: block;
-  font-size: 0.8rem;
-}
-
-.status {
-  background: #e8f6f3;
-  border: 1px solid #bfe7df;
-  border-radius: 999px;
-  color: #0f5f59;
-  font-size: 0.8rem;
-  font-weight: 700;
-  gap: 8px;
-  padding: 8px 12px;
-  box-shadow: 0 10px 24px rgba(15, 118, 110, 0.08);
 }
 
 .layout {
@@ -210,15 +170,54 @@
 
 @media (max-width: 760px) {
   .shell {
-    padding: 20px;
+    padding: 18px;
   }
 
   .topbar {
-    margin-bottom: 28px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 38px;
+  }
+
+  .topbarActions {
+    width: 100%;
+  }
+
+  .topbarActions :global(.theme-menu) {
+    justify-content: space-between;
+    max-width: 100%;
+    width: 100%;
   }
 
   .layout,
   .actions {
     grid-template-columns: 1fr;
+  }
+
+  .layout {
+    gap: 42px;
+  }
+
+  .intro {
+    gap: 18px;
+  }
+
+  .title {
+    font-size: clamp(2.7rem, 13vw, 3.8rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .shell {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 2.7rem;
+  }
+
+  .copy {
+    font-size: 1rem;
   }
 }
