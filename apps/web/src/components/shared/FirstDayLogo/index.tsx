@@ -16,7 +16,11 @@ export function FirstDayLogo({
   return (
     <span className={`firstday-logo firstday-logo--${size}`}>
       <span className="firstday-logo__mark" aria-hidden="true">
-        <span>F</span>
+        <span className="firstday-logo__sun" />
+        <span className="firstday-logo__path" />
+        <span className="firstday-logo__spark firstday-logo__spark--one" />
+        <span className="firstday-logo__spark firstday-logo__spark--two" />
+        <span className="firstday-logo__spark firstday-logo__spark--three" />
       </span>
       <span className="firstday-logo__copy">
         <strong>FirstDay</strong>

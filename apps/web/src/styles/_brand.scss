@@ -4,7 +4,7 @@
  */
 .firstday-logo,
 .firstday-logo__mark,
-.firstday-logo__mark span {
+.firstday-logo__sun {
   align-items: center;
   display: inline-flex;
 }
@@ -35,11 +35,52 @@
   animation: firstday-orbit 3.6s ease-in-out infinite;
 }
 
-.firstday-logo__mark span {
-  color: #ffffff;
-  font-size: 1.15rem;
-  font-weight: 850;
+.firstday-logo__sun {
+  background: #ffffff;
+  border-radius: 999px 999px 0 0;
+  bottom: 0.75rem;
+  height: 0.68rem;
   justify-content: center;
+  position: absolute;
+  width: 1.35rem;
+}
+
+.firstday-logo__path {
+  border-bottom: 0.18rem solid #ffffff;
+  border-right: 0.18rem solid #ffffff;
+  bottom: 0.72rem;
+  height: 0.72rem;
+  position: absolute;
+  right: 0.84rem;
+  transform: rotate(45deg);
+  width: 0.38rem;
+}
+
+.firstday-logo__spark {
+  background: #ffffff;
+  border-radius: 999px;
+  height: 0.18rem;
+  position: absolute;
+  transform-origin: center;
+  width: 0.18rem;
+  animation: firstday-spark 2.4s ease-in-out infinite;
+}
+
+.firstday-logo__spark--one {
+  left: 0.8rem;
+  top: 0.72rem;
+}
+
+.firstday-logo__spark--two {
+  left: 1.42rem;
+  top: 0.5rem;
+  animation-delay: 0.4s;
+}
+
+.firstday-logo__spark--three {
+  right: 0.72rem;
+  top: 0.9rem;
+  animation-delay: 0.8s;
 }
 
 .firstday-logo__copy {
@@ -66,8 +107,15 @@
   border-radius: 1rem;
 }
 
-.firstday-logo--compact .firstday-logo__mark span {
-  font-size: 1rem;
+.firstday-logo--compact .firstday-logo__sun {
+  bottom: 0.62rem;
+  transform: scale(0.82);
+}
+
+.firstday-logo--compact .firstday-logo__path {
+  bottom: 0.58rem;
+  right: 0.62rem;
+  transform: rotate(45deg) scale(0.82);
 }
 
 @keyframes firstday-gradient {
@@ -94,9 +142,23 @@
   }
 }
 
+@keyframes firstday-spark {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.75);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .firstday-logo__mark,
-  .firstday-logo__mark::after {
+  .firstday-logo__mark::after,
+  .firstday-logo__spark {
     animation: none;
   }
 }

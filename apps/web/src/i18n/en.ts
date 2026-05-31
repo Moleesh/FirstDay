@@ -6,9 +6,14 @@
  */
 export const en = {
   appName: "FirstDay",
+  homeBenefits: [
+    "Reusable onboarding packs",
+    "Clear signature progress",
+    "One place for every new hire",
+  ],
   homeCopy:
-    "Assign document packets, track joinee progress, collect consent, and keep every submission ready for review without switching tools.",
-  homeEyebrow: "Secure onboarding operations",
+    "Create onboarding packs, follow every signature, and give each new hire a clear path to day one.",
+  homeEyebrow: "A calmer start for every new hire",
   homeJoineeAction: "Upload, review, sign, and download",
   homeHistoryTitle: "Recently onboarded",
   homeHistorySigned: "Signed and complete",
@@ -20,8 +25,8 @@ export const en = {
   homePipelineTitle: "Workspace summary",
   homePreviewLabel: "Dashboard preview",
   homeRecruiterAction: "Manage templates and joinees",
-  homeSecurityStatus: "Signed URLs and audit logs",
-  homeTitle: "Move every joinee from assigned to signed.",
+  homeWorkspaceStatus: "Trial workspace ready",
+  homeTitle: "Make every first day feel effortless.",
   homeWorkspace: "Recruiter and joinee workspace",
   recruiterDashboard: "Joinee onboarding operations",
   redirecting: "Redirecting...",

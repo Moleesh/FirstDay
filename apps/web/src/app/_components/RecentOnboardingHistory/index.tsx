@@ -6,9 +6,10 @@
  */
 "use client";
 
-import { ChevronDown } from "lucide-react";
+import { ChevronRight, X } from "lucide-react";
 import { useState } from "react";
 import previewStyles from "@/app/_styles/HomePreview.module.scss";
+import modalStyles from "@/app/_styles/HomePreviewModal.module.scss";
 import { en } from "@/i18n/en";
 
 type OnboardedPerson = {
@@ -42,26 +43,27 @@ const people: Array<OnboardedPerson> = [
     role: "Finance analyst",
   },
 ];
+const PAGE_SIZE = 2;
 
 /**
- * Renders recently onboarded joinees with expandable quick details.
+ * Renders paginated onboarding history with modal quick details.
  * @returns History list.
  */
 export function RecentOnboardingHistory(): JSX.Element {
   const [selectedName, setSelectedName] = useState<string>();
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  const selectedPerson = people.find(({ name }) => name === selectedName);
 
   return (
     <section className={previewStyles.history} aria-label={en.homeHistoryTitle}>
       <h2 className={previewStyles.historyTitle}>{en.homeHistoryTitle}</h2>
       <div className={previewStyles.historyList}>
-        {people.map((person) => {
-          const isSelected = person.name === selectedName;
+        {people.slice(0, visibleCount).map((person) => {
           return (
             <div className={previewStyles.historyItem} key={person.name}>
               <button
-                aria-expanded={isSelected}
                 className={previewStyles.historyRow}
-                onClick={() => setSelectedName(isSelected ? undefined : person.name)}
+                onClick={() => setSelectedName(person.name)}
                 type="button"
               >
                 <span>
@@ -72,25 +74,54 @@ export function RecentOnboardingHistory(): JSX.Element {
                   <span className={previewStyles.historyDate}>
                     {person.completedOn.replace(", 2026", "")}
                   </span>
-                  <ChevronDown aria-hidden="true" size={15} />
+                  <ChevronRight aria-hidden="true" size={15} />
                 </span>
               </button>
-              {isSelected ? (
-                <div className={previewStyles.quickDetails}>
-                  <span>{en.homeHistoryStatus}</span>
-                  <strong>{en.homeHistorySigned}</strong>
-                  <span>Department</span>
-                  <strong>{person.department}</strong>
-                  <span>Recruiter</span>
-                  <strong>{person.recruiter}</strong>
-                  <span>Completed</span>
-                  <strong>{person.completedOn}</strong>
-                </div>
-              ) : null}
             </div>
           );
         })}
       </div>
+      {visibleCount < people.length ? (
+        <button
+          className={previewStyles.loadMore}
+          onClick={() => setVisibleCount((count) => count + PAGE_SIZE)}
+          type="button"
+        >
+          Load more
+        </button>
+      ) : null}
+      {selectedPerson ? (
+        <div className={modalStyles.backdrop} role="presentation">
+          <section
+            aria-label={`${selectedPerson.name} quick details`}
+            aria-modal="true"
+            className={modalStyles.modal}
+            role="dialog"
+          >
+            <button
+              aria-label="Close quick details"
+              className={modalStyles.close}
+              onClick={() => setSelectedName(undefined)}
+              type="button"
+            >
+              <X size={16} />
+            </button>
+            <span className={modalStyles.eyebrow}>Onboarding complete</span>
+            <h3>{selectedPerson.name}</h3>
+            <p>{selectedPerson.role}</p>
+            <div className={modalStyles.details}>
+              <span>{en.homeHistoryStatus}</span>
+              <strong>{en.homeHistorySigned}</strong>
+              <span>Department</span>
+              <strong>{selectedPerson.department}</strong>
+              <span>Recruiter</span>
+              <strong>{selectedPerson.recruiter}</strong>
+              <span>Completed</span>
+              <strong>{selectedPerson.completedOn}</strong>
+            </div>
+          </section>
+        </div>
+      ) : null}
     </section>
   );
 }

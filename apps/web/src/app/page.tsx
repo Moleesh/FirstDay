@@ -5,9 +5,10 @@
  * @since 1.0.0
  */
 import Link from "next/link";
-import { ClipboardCheck, FileSignature, ShieldCheck } from "lucide-react";
+import { CheckCircle2, ClipboardCheck, FileSignature } from "lucide-react";
 import { RecentOnboardingHistory } from "@/app/_components/RecentOnboardingHistory";
 import { FirstDayLogo } from "@/components/shared/FirstDayLogo";
+import { ThemeMenu } from "@/components/shared/ThemeMenu";
 import previewStyles from "@/app/_styles/HomePreview.module.scss";
 import styles from "@/app/_styles/HomePage.module.scss";
 import { en } from "@/i18n/en";
@@ -23,10 +24,13 @@ export default function Page(): JSX.Element {
         <div className={styles.brand}>
           <FirstDayLogo meta={en.homeWorkspace} />
         </div>
-        <span className={styles.status}>
-          <ShieldCheck size={16} />
-          {en.homeSecurityStatus}
-        </span>
+        <div className={styles.topbarActions}>
+          <ThemeMenu />
+          <span className={styles.status}>
+            <CheckCircle2 size={16} />
+            {en.homeWorkspaceStatus}
+          </span>
+        </div>
       </header>
 
       <section className={styles.layout}>
@@ -34,6 +38,14 @@ export default function Page(): JSX.Element {
           <span className={styles.eyebrow}>{en.homeEyebrow}</span>
           <h1 className={styles.title}>{en.homeTitle}</h1>
           <p className={styles.copy}>{en.homeCopy}</p>
+          <ul className={styles.benefits}>
+            {en.homeBenefits.map((benefit) => (
+              <li key={benefit}>
+                <CheckCircle2 size={15} />
+                {benefit}
+              </li>
+            ))}
+          </ul>
           <div className={styles.actions}>
             <Link className={`${styles.action} ${styles.primary}`} href="/login?role=recruiter">
               <span className={styles.iconBox}>
