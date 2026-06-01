@@ -42,6 +42,21 @@
     margin-top: 2px;
 }
 
+.profile {
+    align-items: center;
+    display: flex;
+    gap: 14px;
+    padding-right: 30px;
+}
+
+.avatar {
+    border: 3px solid #d8f3f0;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(15, 118, 110, 0.16);
+    flex: 0 0 auto;
+    object-fit: cover;
+}
+
 .eyebrow {
     color: #0f766e;
     font-size: 0.68rem;

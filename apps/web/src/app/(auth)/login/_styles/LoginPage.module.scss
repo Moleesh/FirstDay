@@ -6,16 +6,43 @@
 
 .shell {
     background:
-        linear-gradient(135deg, rgba(15, 118, 110, 0.12), transparent 34%),
-        linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
+        radial-gradient(circle at 12% 18%, rgba(14, 165, 233, 0.22), transparent 24rem),
+        radial-gradient(circle at 88% 82%, rgba(15, 118, 110, 0.18), transparent 26rem),
+        linear-gradient(135deg, #dff6f4 0%, #f8fbff 48%, #e9f1ff 100%);
     color: #172033;
     display: grid;
     min-height: 100vh;
+    overflow: hidden;
     padding: 28px;
     place-items: center;
+    position: relative;
+}
+
+.shell::before,
+.shell::after {
+    border: 1px solid rgba(15, 118, 110, 0.12);
+    border-radius: 999px;
+    content: '';
+    pointer-events: none;
+    position: absolute;
+}
+
+.shell::before {
+    height: 28rem;
+    left: -10rem;
+    top: -12rem;
+    width: 28rem;
+}
+
+.shell::after {
+    bottom: -14rem;
+    height: 32rem;
+    right: -11rem;
+    width: 32rem;
 }
 
 .layout {
+    animation: modal-pop 320ms ease-out;
     background: #ffffff;
     border: 1px solid #d9dee7;
     border-radius: 18px;
@@ -24,7 +51,33 @@
     grid-template-columns: minmax(260px, 0.82fr) minmax(320px, 1fr);
     max-width: 980px;
     overflow: hidden;
+    position: relative;
     width: 100%;
+    z-index: 1;
+}
+
+.close {
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #d9dee7;
+    border-radius: 999px;
+    color: #172033;
+    display: flex;
+    height: 38px;
+    justify-content: center;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    transition:
+        background 180ms ease,
+        transform 180ms ease;
+    width: 38px;
+    z-index: 2;
+}
+
+.close:hover {
+    background: #e6f7f5;
+    transform: rotate(5deg) scale(1.05);
 }
 
 .aside {
@@ -91,7 +144,7 @@
 .panel {
     display: grid;
     gap: 22px;
-    padding: 34px;
+    padding: 66px 34px 34px;
 }
 
 .dev {
@@ -108,7 +161,33 @@
     }
 
     .aside,
-    .panel {
+    .aside {
         padding: 24px;
+    }
+
+    .panel {
+        padding: 62px 24px 24px;
+    }
+}
+
+@keyframes modal-pop {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .layout {
+        animation: none;
+    }
+
+    .close {
+        transition: none;
     }
 }

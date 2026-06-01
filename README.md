@@ -93,13 +93,13 @@ flowchart LR
   Web --> Trial["✨ Trial onboarding flows"]
 ```
 
-| Layer      | Stack                                                              |
-| ---------- | ------------------------------------------------------------------ |
-| Monorepo   | Turborepo, pnpm workspaces                                         |
-| Web        | Next.js 15, React 18, SCSS modules, Zustand, Jotai, TanStack Query |
-| Documents  | `pdf-lib`, React PDF, signature canvas                             |
-| Quality    | Vitest, Playwright, ESLint, Prettier, pnpm audit, TruffleHog       |
-| Deployment | GitHub Pages static export through GitHub Actions                  |
+| Layer      | Stack                                                                  |
+| ---------- | ---------------------------------------------------------------------- |
+| Monorepo   | Turborepo, pnpm workspaces                                             |
+| Web        | Next.js 15, React 18, SCSS modules, Zustand, Jotai, TanStack Query     |
+| Documents  | `pdf-lib`, React PDF, signature canvas                                 |
+| Quality    | Vitest 4, Vite 8, Playwright, ESLint, Prettier, pnpm audit, TruffleHog |
+| Deployment | GitHub Pages static export through GitHub Actions                      |
 
 ```text
 apps/

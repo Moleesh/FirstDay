@@ -18,6 +18,7 @@ type OnboardedPerson = {
     completedOn: string;
     department: string;
     name: string;
+    photoUrl: string;
     recruiter: string;
     role: string;
 };
@@ -27,6 +28,8 @@ const people: Array<OnboardedPerson> = [
         completedOn: 'May 28, 2026',
         department: 'Design',
         name: 'Aarav Mehta',
+        photoUrl:
+            'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=160&q=80',
         recruiter: 'Maya Rao',
         role: 'Product designer',
     },
@@ -34,6 +37,8 @@ const people: Array<OnboardedPerson> = [
         completedOn: 'May 27, 2026',
         department: 'Engineering',
         name: 'Priya Nair',
+        photoUrl:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=160&q=80',
         recruiter: 'Maya Rao',
         role: 'Software engineer',
     },
@@ -41,6 +46,8 @@ const people: Array<OnboardedPerson> = [
         completedOn: 'May 26, 2026',
         department: 'Finance',
         name: 'Rohan Shah',
+        photoUrl:
+            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=160&q=80',
         recruiter: 'Arjun Singh',
         role: 'Finance analyst',
     },
@@ -108,9 +115,20 @@ export function RecentOnboardingHistory(): JSX.Element {
                         >
                             <X size={16} />
                         </button>
-                        <span className={modalStyles.eyebrow}>Onboarding complete</span>
-                        <h3>{selectedPerson.name}</h3>
-                        <p>{selectedPerson.role}</p>
+                        <div className={modalStyles.profile}>
+                            <img
+                                alt={`${selectedPerson.name} profile`}
+                                className={modalStyles.avatar}
+                                height="72"
+                                src={selectedPerson.photoUrl}
+                                width="72"
+                            />
+                            <div>
+                                <span className={modalStyles.eyebrow}>Onboarding complete</span>
+                                <h3>{selectedPerson.name}</h3>
+                                <p>{selectedPerson.role}</p>
+                            </div>
+                        </div>
                         <div className={modalStyles.details}>
                             <span>{en.homeHistoryStatus}</span>
                             <strong>{en.homeHistorySigned}</strong>

@@ -1,0 +1,97 @@
+/**
+ * @format
+ * @module HomeRoleActionsStyles
+ * @description Landing-page role entry card styles.
+ */
+
+.actions {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 580px;
+}
+
+.action,
+.iconBox {
+    align-items: center;
+    display: flex;
+}
+
+.action {
+    background: var(--card-solid);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    color: var(--ink);
+    gap: 12px;
+    min-height: 112px;
+    padding: 20px;
+    position: relative;
+    text-decoration: none;
+    transition:
+        border-color 160ms ease,
+        box-shadow 160ms ease,
+        transform 160ms ease;
+}
+
+.action:hover {
+    border-color: #0f766e;
+    box-shadow: 0 20px 44px rgba(23, 32, 51, 0.16);
+    transform: translateY(-4px);
+}
+
+.primary {
+    background: linear-gradient(135deg, #172033, #243452);
+    border-color: #172033;
+    color: #ffffff;
+}
+
+.iconBox {
+    background: rgba(15, 118, 110, 0.1);
+    border-radius: 10px;
+    flex: 0 0 auto;
+    height: 48px;
+    justify-content: center;
+    width: 48px;
+}
+
+.primary .iconBox {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.actionText {
+    display: grid;
+    gap: 4px;
+    padding-right: 10px;
+}
+
+.actionTitle {
+    font-weight: 800;
+}
+
+.actionMeta {
+    color: #687386;
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+.primary .actionMeta {
+    color: #cbd5e1;
+}
+
+.actionArrow {
+    opacity: 0.6;
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    transition: transform 160ms ease;
+}
+
+.action:hover .actionArrow {
+    transform: translate(2px, -2px);
+}
+
+@media (max-width: 760px) {
+    .actions {
+        grid-template-columns: 1fr;
+    }
+}

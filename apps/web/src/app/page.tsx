@@ -7,12 +7,13 @@
  */
 
 import Link from 'next/link';
-import { CheckCircle2, ClipboardCheck, FileSignature } from 'lucide-react';
+import { ArrowUpRight, CheckCircle2, ClipboardCheck, FileSignature } from 'lucide-react';
 import { RecentOnboardingHistory } from '@/app/_components/RecentOnboardingHistory';
 import { FirstDayLogo } from '@/components/shared/FirstDayLogo';
 import { ThemeMenu } from '@/components/shared/ThemeMenu';
 import previewStyles from '@/app/_styles/HomePreview.module.scss';
 import motionStyles from '@/app/_styles/HomeHeroMotion.module.scss';
+import actionStyles from '@/app/_styles/HomeRoleActions.module.scss';
 import styles from '@/app/_styles/HomePage.module.scss';
 import { en } from '@/i18n/en';
 
@@ -45,27 +46,35 @@ export default function Page(): JSX.Element {
                             </li>
                         ))}
                     </ul>
-                    <div className={styles.actions}>
+                    <div className={actionStyles.actions}>
                         <Link
-                            className={`${styles.action} ${styles.primary}`}
+                            className={`${actionStyles.action} ${actionStyles.primary}`}
                             href="/login?role=recruiter"
                         >
-                            <span className={styles.iconBox}>
+                            <span className={actionStyles.iconBox}>
                                 <ClipboardCheck size={20} />
                             </span>
-                            <span className={styles.actionText}>
-                                <span className={styles.actionTitle}>{en.loginRecruiter}</span>
-                                <span className={styles.actionMeta}>{en.homeRecruiterAction}</span>
+                            <span className={actionStyles.actionText}>
+                                <span className={actionStyles.actionTitle}>
+                                    {en.loginRecruiter}
+                                </span>
+                                <span className={actionStyles.actionMeta}>
+                                    {en.homeRecruiterAction}
+                                </span>
                             </span>
+                            <ArrowUpRight className={actionStyles.actionArrow} size={17} />
                         </Link>
-                        <Link className={styles.action} href="/login?role=joinee">
-                            <span className={styles.iconBox}>
+                        <Link className={actionStyles.action} href="/login?role=joinee">
+                            <span className={actionStyles.iconBox}>
                                 <FileSignature size={20} />
                             </span>
-                            <span className={styles.actionText}>
-                                <span className={styles.actionTitle}>{en.loginJoinee}</span>
-                                <span className={styles.actionMeta}>{en.homeJoineeAction}</span>
+                            <span className={actionStyles.actionText}>
+                                <span className={actionStyles.actionTitle}>{en.loginJoinee}</span>
+                                <span className={actionStyles.actionMeta}>
+                                    {en.homeJoineeAction}
+                                </span>
                             </span>
+                            <ArrowUpRight className={actionStyles.actionArrow} size={17} />
                         </Link>
                     </div>
                 </div>
