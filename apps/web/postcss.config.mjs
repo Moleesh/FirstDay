@@ -1,5 +1,7 @@
+/** @format */
+
 export default {
-  plugins: {
-    autoprefixer: {},
-  },
+	plugins: {
+		autoprefixer: {},
+	},
 };

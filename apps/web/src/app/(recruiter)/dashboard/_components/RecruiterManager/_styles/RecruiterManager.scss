@@ -1,58 +1,60 @@
 /**
+ * @format
  * @module RecruiterManagerStyles
  * @description Admin recruiter invitation and roster styles.
  */
+
 .recruiter-form {
-  display: grid;
-  gap: 0.6rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+	display: grid;
+	gap: 0.6rem;
+	grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
 }
 
 .recruiter-list {
-  display: grid;
-  gap: 0.55rem;
+	display: grid;
+	gap: 0.55rem;
 }
 
 .recruiter-card,
 .recruiter-card__badges {
-  align-items: center;
-  display: flex;
+	align-items: center;
+	display: flex;
 }
 
 .recruiter-card {
-  background: var(--card-solid);
-  border: 1px solid var(--border);
-  border-radius: 0.85rem;
-  justify-content: space-between;
-  padding: 0.8rem;
+	background: var(--card-solid);
+	border: 1px solid var(--border);
+	border-radius: 0.85rem;
+	justify-content: space-between;
+	padding: 0.8rem;
 }
 
 .recruiter-card div:first-child {
-  display: grid;
-  gap: 0.15rem;
+	display: grid;
+	gap: 0.15rem;
 }
 
 .recruiter-card span {
-  color: var(--muted);
-  font-size: 0.75rem;
+	color: var(--muted);
+	font-size: 0.75rem;
 }
 
 .recruiter-card__badges {
-  gap: 0.35rem;
+	gap: 0.35rem;
 }
 
 .recruiter-card__badges svg {
-  color: var(--accent);
+	color: var(--accent);
 }
 
 @media (max-width: 620px) {
-  .recruiter-form {
-    grid-template-columns: 1fr;
-  }
+	.recruiter-form {
+		grid-template-columns: 1fr;
+	}
 
-  .recruiter-card {
-    align-items: flex-start;
-    gap: 0.7rem;
-    flex-direction: column;
-  }
+	.recruiter-card {
+		align-items: flex-start;
+		gap: 0.7rem;
+		flex-direction: column;
+	}
 }

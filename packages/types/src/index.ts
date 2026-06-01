@@ -1,25 +1,27 @@
 /**
+ * @format
  * @module TypesIndex
  * @description Inferred TypeScript domain types from shared Zod schemas.
  * @author auto
  * @since 1.0.0
  */
-import type { z } from "zod";
+
+import type { z } from 'zod';
 import type {
-  auditLogSchema,
-  authTokenSchema,
-  createJoineeSchema,
-  documentTemplateSchema,
-  joineeLoginSchema,
-  joineeSchema,
-  organisationSchema,
-  recruiterSchema,
-  recruiterSessionSchema,
-  signatureSchema,
-  submissionDraftSchema,
-  submissionSchema,
-  uploadMetadataSchema,
-} from "@onboarding/schemas";
+	auditLogSchema,
+	authTokenSchema,
+	createJoineeSchema,
+	documentTemplateSchema,
+	joineeLoginSchema,
+	joineeSchema,
+	organisationSchema,
+	recruiterSchema,
+	recruiterSessionSchema,
+	signatureSchema,
+	submissionDraftSchema,
+	submissionSchema,
+	uploadMetadataSchema,
+} from '@onboarding/schemas';
 
 export type AuditLogInput = z.infer<typeof auditLogSchema>;
 export type AuthToken = z.infer<typeof authTokenSchema>;

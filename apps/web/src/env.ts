@@ -1,21 +1,23 @@
 /**
+ * @format
  * @module WebEnv
  * @description Validates browser and server environment variables for Next.js.
  * @author auto
  * @since 1.0.0
  */
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 
 export const env = createEnv({
-  client: {
-    NEXT_PUBLIC_API_URL: z.string().url(),
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
-    NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
-  },
-  runtimeEnv: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-  },
+	client: {
+		NEXT_PUBLIC_API_URL: z.string().url(),
+		NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
+		NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
+	},
+	runtimeEnv: {
+		NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+		NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+		NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
+	},
 });

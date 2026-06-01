@@ -1,47 +1,49 @@
+# @format
+
 name: CI
 
 on:
-  pull_request:
-  workflow_dispatch:
+    pull_request:
+    workflow_dispatch:
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
-  verify:
-    runs-on: ubuntu-latest
-    env:
-      DATABASE_URL: postgresql://postgres:postgres@localhost:5432/firstday_ci
-      GEMINI_API_KEY: ci-placeholder
-      JOINEE_JWT_SECRET: ci-placeholder-joinee-secret-32-characters
-      RESEND_API_KEY: ci-placeholder
-      SUPABASE_JWT_SECRET: ci-placeholder-supabase-secret-32-characters
-      SUPABASE_SERVICE_ROLE_KEY: ci-placeholder
-      SUPABASE_URL: https://example.supabase.co
-      WEB_ORIGIN: http://localhost:3000
-      NEXT_PUBLIC_API_URL: http://localhost:4000
-      NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder
-      NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
-    steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
-        with:
-          version: 9.15.4
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm validate:env
-      - run: pnpm lint
-      - run: pnpm format
-      - run: pnpm test
-      - run: pnpm audit:ci
-      - uses: trufflesecurity/trufflehog@main
-        with:
-          path: ./
-          base: ${{ github.event.repository.default_branch }}
-          head: HEAD
-      - run: pnpm --filter @onboarding/api prisma:migrate:dry
-      - run: pnpm build
-      - run: pnpm --filter @onboarding/web e2e
+    verify:
+        runs-on: ubuntu-latest
+        env:
+            DATABASE_URL: postgresql://postgres:postgres@localhost:5432/firstday_ci
+            GEMINI_API_KEY: ci-placeholder
+            JOINEE_JWT_SECRET: ci-placeholder-joinee-secret-32-characters
+            RESEND_API_KEY: ci-placeholder
+            SUPABASE_JWT_SECRET: ci-placeholder-supabase-secret-32-characters
+            SUPABASE_SERVICE_ROLE_KEY: ci-placeholder
+            SUPABASE_URL: https://example.supabase.co
+            WEB_ORIGIN: http://localhost:3000
+            NEXT_PUBLIC_API_URL: http://localhost:4000
+            NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder
+            NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+        steps:
+            - uses: actions/checkout@v6
+            - uses: pnpm/action-setup@v6
+              with:
+                  version: 9.15.4
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: 24
+                  cache: pnpm
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm validate:env
+            - run: pnpm lint
+            - run: pnpm format
+            - run: pnpm test
+            - run: pnpm audit:ci
+            - uses: trufflesecurity/trufflehog@main
+              with:
+                  path: ./
+                  base: ${{ github.event.repository.default_branch }}
+                  head: HEAD
+            - run: pnpm --filter @onboarding/api prisma:migrate:dry
+            - run: pnpm build
+            - run: pnpm --filter @onboarding/web e2e

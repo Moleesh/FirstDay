@@ -1,35 +1,37 @@
+# @format
+
 name: Security
 
 on:
-  schedule:
-    - cron: "0 3 * * 1"
-  workflow_dispatch:
+    schedule:
+        - cron: '0 3 * * 1'
+    workflow_dispatch:
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+    FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
-  scan:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: pnpm/action-setup@v6
-        with:
-          version: 9.15.4
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm audit:ci
-      - run: pnpm dlx snyk test
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-      - uses: trufflesecurity/trufflehog@main
-        with:
-          path: ./
-      - uses: peter-evans/create-issue-from-file@v5
-        if: failure()
-        with:
-          title: Security scan findings
-          content-filepath: README.md
+    scan:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v6
+            - uses: pnpm/action-setup@v6
+              with:
+                  version: 9.15.4
+            - uses: actions/setup-node@v6
+              with:
+                  node-version: 24
+                  cache: pnpm
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm audit:ci
+            - run: pnpm dlx snyk test
+              env:
+                  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+            - uses: trufflesecurity/trufflehog@main
+              with:
+                  path: ./
+            - uses: peter-evans/create-issue-from-file@v5
+              if: failure()
+              with:
+                  title: Security scan findings
+                  content-filepath: README.md

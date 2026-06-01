@@ -1,8 +1,10 @@
 /**
+ * @format
  * @module OnboardingStyles
  * @description Joinee onboarding route-level surface styles.
  */
+
 .onboarding-surface {
-  background: var(--surface);
-  min-height: 100vh;
+	background: var(--surface);
+	min-height: 100vh;
 }
