@@ -15,16 +15,18 @@ const DEV_JOINEE_DISPLAY_ID = 'JN-2026-00042';
 const DEV_RECRUITER_PASSWORD = 'firstday';
 const DEV_RECRUITER_USERNAME = 'recruiter';
 
+export type LoginSession = {
+    redirectTo: string;
+    token: string;
+};
+
 /**
  * Authenticates the hard-coded development recruiter account.
  * @param username - Recruiter username.
  * @param password - Recruiter password.
  * @returns Session token and redirect path.
  */
-export async function loginRecruiter(
-    username: string,
-    password: string,
-): Promise<{ token: string; redirectTo: string }> {
+export async function loginRecruiter(username: string, password: string): Promise<LoginSession> {
     if (username !== DEV_RECRUITER_USERNAME || password !== DEV_RECRUITER_PASSWORD) {
         throw new Error('Invalid recruiter credentials');
     }
@@ -36,9 +38,7 @@ export async function loginRecruiter(
  * @param input - Joinee login credentials.
  * @returns Session token and redirect path.
  */
-export async function loginJoinee(
-    input: JoineeLogin,
-): Promise<{ token: string; redirectTo: string }> {
+export async function loginJoinee(input: JoineeLogin): Promise<LoginSession> {
     const payload = joineeLoginSchema.parse(input);
     if (
         payload.displayId === DEV_JOINEE_DISPLAY_ID &&

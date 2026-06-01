@@ -13,8 +13,8 @@ import { useRouter } from 'next/navigation';
 import { type FormEvent, useState } from 'react';
 import { Button } from '@onboarding/ui';
 import styles from '@/app/(auth)/login/_styles/AuthForm.module.scss';
+import { useJoineeLogin } from '@/hooks/useLoginMutations';
 import { en } from '@/i18n/en';
-import { loginJoinee } from '@/lib/apiClient';
 import { useSessionStore } from '@/stores/sessionStore';
 
 /**
@@ -23,11 +23,11 @@ import { useSessionStore } from '@/stores/sessionStore';
  */
 export function JoineeForm(): JSX.Element {
     const router = useRouter();
+    const login = useJoineeLogin();
     const setSession = useSessionStore((state) => state.setSession);
     const [displayId, setDisplayId] = useState('JN-2026-00042');
     const [accessCode, setAccessCode] = useState('firstday');
     const [error, setError] = useState('');
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     /**
      * Handles joinee login form submission.
@@ -39,16 +39,13 @@ export function JoineeForm(): JSX.Element {
             setError(en.loginJoineeError);
             return;
         }
-        setIsSubmitting(true);
         setError('');
         try {
-            const session = await loginJoinee({ accessCode, displayId });
+            const session = await login.mutateAsync({ accessCode, displayId });
             setSession('joinee', session.token, displayId);
             router.push(session.redirectTo);
         } catch {
             setError(en.loginJoineeError);
-        } finally {
-            setIsSubmitting(false);
         }
     }
 
@@ -82,12 +79,12 @@ export function JoineeForm(): JSX.Element {
             {error ? <div className={`${styles.message} ${styles.error}`}>{error}</div> : null}
             <Button
                 className={styles.button}
-                disabled={isSubmitting}
+                disabled={login.isPending}
                 type="submit"
                 variant="secondary"
             >
                 <KeyRound size={16} />
-                {isSubmitting ? en.redirecting : en.loginJoineeCta}
+                {login.isPending ? en.redirecting : en.loginJoineeCta}
             </Button>
         </form>
     );

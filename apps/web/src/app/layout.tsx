@@ -7,6 +7,7 @@
  */
 
 import type { ReactNode } from 'react';
+import { QueryProvider } from '@/components/shared/QueryProvider';
 import { ThemeProvider } from '@/components/shared/ThemeProvider';
 import '@/styles/globals.scss';
 
@@ -19,7 +20,9 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
     return (
         <html lang="en">
             <body>
-                <ThemeProvider>{children}</ThemeProvider>
+                <QueryProvider>
+                    <ThemeProvider>{children}</ThemeProvider>
+                </QueryProvider>
             </body>
         </html>
     );

@@ -13,8 +13,8 @@ import { useRouter } from 'next/navigation';
 import { type FormEvent, useState } from 'react';
 import { Button } from '@onboarding/ui';
 import styles from '@/app/(auth)/login/_styles/AuthForm.module.scss';
+import { useRecruiterLogin } from '@/hooks/useLoginMutations';
 import { en } from '@/i18n/en';
-import { loginRecruiter } from '@/lib/apiClient';
 import { useSessionStore } from '@/stores/sessionStore';
 
 /**
@@ -23,11 +23,11 @@ import { useSessionStore } from '@/stores/sessionStore';
  */
 export function RecruiterForm(): JSX.Element {
     const router = useRouter();
+    const login = useRecruiterLogin();
     const setSession = useSessionStore((state) => state.setSession);
     const [username, setUsername] = useState('recruiter');
     const [password, setPassword] = useState('firstday');
     const [message, setMessage] = useState('');
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     /**
      * Handles recruiter sign-in form submission.
@@ -39,16 +39,13 @@ export function RecruiterForm(): JSX.Element {
             setMessage(en.loginRecruiterError);
             return;
         }
-        setIsSubmitting(true);
         setMessage('');
         try {
-            const session = await loginRecruiter(username.trim(), password);
+            const session = await login.mutateAsync({ password, username: username.trim() });
             setSession('recruiter', session.token, username.trim());
             router.push(session.redirectTo);
         } catch {
             setMessage(en.loginRecruiterError);
-        } finally {
-            setIsSubmitting(false);
         }
     }
 
@@ -78,9 +75,9 @@ export function RecruiterForm(): JSX.Element {
                 />
             </label>
             {message ? <div className={`${styles.message} ${styles.error}`}>{message}</div> : null}
-            <Button className={styles.button} disabled={isSubmitting} type="submit">
+            <Button className={styles.button} disabled={login.isPending} type="submit">
                 <LogIn size={16} />
-                {isSubmitting ? en.redirecting : en.loginRecruiterCta}
+                {login.isPending ? en.redirecting : en.loginRecruiterCta}
             </Button>
         </form>
     );
