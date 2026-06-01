@@ -18,7 +18,7 @@ import { FirstDayLogo } from '@/components/shared/FirstDayLogo';
 import { ThemeMenu } from '@/components/shared/ThemeMenu';
 import { useSessionStore } from '@/stores/sessionStore';
 
-export function AppShell({ children }: { children: ReactNode }): JSX.Element {
+export function AppShell({ children }: { children: ReactNode }): React.JSX.Element {
     const router = useRouter();
     const clearSession = useSessionStore((state) => state.clearSession);
     const userLabel = useSessionStore((state) => state.userLabel) ?? 'Signed-in recruiter';

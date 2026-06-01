@@ -27,12 +27,13 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
  * @param props - Button rendering and variant props.
  * @returns A styled button element.
  */
-export function Button({ asChild, className, variant, ...props }: ButtonProps): JSX.Element {
+export function Button(props: ButtonProps): React.JSX.Element {
+    const { asChild, className, variant, ...buttonProps } = props;
     const Comp = asChild ? Slot : 'button';
     return (
         <Comp
             className={cn('button', buttonVariants[variant ?? 'primary'], className)}
-            {...props}
+            {...buttonProps}
         />
     );
 }

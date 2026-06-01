@@ -23,7 +23,7 @@ export type LoginToggleProps = {
  * @param props - Selected role and change handler.
  * @returns Login role toggle element.
  */
-export function LoginToggle({ selectedRole, onRoleChange }: LoginToggleProps): JSX.Element {
+export function LoginToggle({ selectedRole, onRoleChange }: LoginToggleProps): React.JSX.Element {
     return (
         <div className={styles.toggle} aria-label="Login role">
             <button

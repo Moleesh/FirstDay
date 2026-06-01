@@ -13,7 +13,7 @@ import { en } from '@/i18n/en';
  * Renders recruiter dashboard.
  * @returns Dashboard page.
  */
-export default function DashboardPage(): JSX.Element {
+export default function DashboardPage(): React.JSX.Element {
     return (
         <main className="dashboard-page">
             <section className="dashboard-hero">

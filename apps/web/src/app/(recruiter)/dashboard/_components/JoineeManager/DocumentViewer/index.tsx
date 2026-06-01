@@ -20,7 +20,7 @@ function downloadSample(name: string): void {
     URL.revokeObjectURL(link.href);
 }
 
-export function DocumentViewer(): JSX.Element {
+export function DocumentViewer(): React.JSX.Element {
     const [copied, setCopied] = useState(false);
     const welcomeMessage = `Welcome to FirstDay. Complete your onboarding pack here: ${welcomeLink}`;
 

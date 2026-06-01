@@ -8,6 +8,6 @@
 
 import styles from '@/app/(joinee)/onboarding/_styles/OnboardingWizard.module.scss';
 
-export function AIAutofillBanner(): JSX.Element {
+export function AIAutofillBanner(): React.JSX.Element {
     return <div className={styles.note}>Autofill suggestions ready</div>;
 }

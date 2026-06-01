@@ -1,7 +1,5 @@
 <!-- @format -->
 
-<div align="center">
-
 # 🌈 FirstDay 😊
 
 ### A clear, calm onboarding workspace for recruiters and joinees ✨
@@ -22,8 +20,6 @@ Joinees get a simple guided flow from upload to download. 😊
 [Pages Deployments](https://github.com/Moleesh/FirstDay/actions/workflows/pages.yml) ·
 [Security Scans](https://github.com/Moleesh/FirstDay/actions/workflows/security.yml) ·
 [Issues](https://github.com/Moleesh/FirstDay/issues)
-
-</div>
 
 ## ✨ Product Tour
 
@@ -59,6 +55,17 @@ On Windows PowerShell, use `Copy-Item .env.example .env` instead of `cp`.
 
 Open the published app at
 [https://moleesh.github.io/FirstDay](https://moleesh.github.io/FirstDay). 🌍
+
+## 🌍 GitHub Pages
+
+FirstDay is published as a static Next.js export through GitHub Pages.
+
+| Item       | Value                                                                    |
+| ---------- | ------------------------------------------------------------------------ |
+| Live app   | [https://moleesh.github.io/FirstDay](https://moleesh.github.io/FirstDay) |
+| Workflow   | [`.github/workflows/pages.yml`](.github/workflows/pages.yml)             |
+| Runs from  | Pushes to `main`                                                         |
+| Build path | `apps/web/out`                                                           |
 
 ### Trial Sign-In 😊
 
@@ -99,7 +106,7 @@ flowchart LR
 | ---------- | ---------------------------------------------------------------------- |
 | Monorepo   | Turborepo, pnpm workspaces                                             |
 | Web        | Next.js 15, React 18, SCSS modules, Zustand, Jotai, TanStack Query     |
-| Documents  | `pdf-lib`, React PDF, signature canvas                                 |
+| Documents  | Signature canvas and browser-side onboarding document previews         |
 | Quality    | Vitest 4, Vite 8, Playwright, ESLint, Prettier, pnpm audit, TruffleHog |
 | Deployment | GitHub Pages static export through GitHub Actions                      |
 
@@ -171,8 +178,4 @@ until a license is added.
 
 ---
 
-<div align="center">
-
 Built to make every first day feel lighter, clearer, and happier. 😊 🌈 ✨
-
-</div>

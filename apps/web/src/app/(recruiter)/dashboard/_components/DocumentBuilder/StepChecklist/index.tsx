@@ -49,7 +49,7 @@ function loadDocuments(): RequiredDocument[] {
     return saved ? (JSON.parse(saved) as RequiredDocument[]) : [...defaultDocumentRecords];
 }
 
-export function StepChecklist(): JSX.Element {
+export function StepChecklist(): React.JSX.Element {
     const [customLabel, setCustomLabel] = useState('');
     const [documents, setDocuments] = useState<RequiredDocument[]>(loadDocuments);
     const [selected, setSelected] = useState<string[]>(() => {

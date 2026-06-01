@@ -23,7 +23,7 @@ const accents: Array<{ label: string; value: AccentTheme }> = [
     { label: 'Violet', value: 'violet' },
 ];
 
-export function ThemeMenu(): JSX.Element {
+export function ThemeMenu(): React.JSX.Element {
     const { accent, mode, setAccent, setMode } = useTheme();
 
     return (

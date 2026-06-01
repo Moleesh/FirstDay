@@ -30,7 +30,7 @@ function applyAppearance(mode: ColorMode, accent: AccentTheme): void {
     document.documentElement.dataset.theme = resolvedMode;
 }
 
-export function ThemeProvider({ children }: { children: ReactNode }): JSX.Element {
+export function ThemeProvider({ children }: { children: ReactNode }): React.JSX.Element {
     const [mode, setMode] = useState<ColorMode>('system');
     const [accent, setAccent] = useState<AccentTheme>('ocean');
 

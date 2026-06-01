@@ -16,7 +16,7 @@ import Link from 'next/link';
  * Renders the login page.
  * @returns Login page element.
  */
-export default function LoginPage(): JSX.Element {
+export default function LoginPage(): React.JSX.Element {
     return (
         <main className={styles.shell}>
             <LoginRedirect />

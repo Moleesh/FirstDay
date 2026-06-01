@@ -17,7 +17,7 @@ export function CreateJoineeForm({
     onCreate,
 }: {
     onCreate: (fullName: string) => void;
-}): JSX.Element {
+}): React.JSX.Element {
     const [fullName, setFullName] = useState('');
 
     function submit(event: FormEvent<HTMLFormElement>): void {

@@ -18,7 +18,7 @@ import { useWizardDraft } from '@/hooks/useWizardDraft';
 import styles from '@/app/(joinee)/onboarding/_styles/OnboardingWizard.module.scss';
 import { en } from '@/i18n/en';
 
-export function WizardShell({ children }: { children: ReactNode }): JSX.Element {
+export function WizardShell({ children }: { children: ReactNode }): React.JSX.Element {
     const steps = useMemo(() => Children.toArray(children), [children]);
     const [step, setStep] = useState(0);
     const { saveDraft } = useWizardDraft();

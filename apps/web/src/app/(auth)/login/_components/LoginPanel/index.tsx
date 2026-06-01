@@ -20,7 +20,7 @@ import { en } from '@/i18n/en';
  * Renders the selected role's login form.
  * @returns Interactive login panel.
  */
-export function LoginPanel(): JSX.Element {
+export function LoginPanel(): React.JSX.Element {
     const [role, setRole] = useState<LoginRole>('recruiter');
     const content = role === 'recruiter' ? en.loginRecruiterAside : en.loginJoineeAside;
 

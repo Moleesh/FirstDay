@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
  * Renders a visual page-scroll progress rail.
  * @returns Scroll progress element.
  */
-export function ScrollProgress(): JSX.Element | null {
+export function ScrollProgress(): React.JSX.Element | null {
     const [progress, setProgress] = useState(0);
     const [scrollable, setScrollable] = useState(false);
 

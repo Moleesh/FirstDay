@@ -20,7 +20,7 @@ export type JoineeSummary = {
     status: string;
 };
 
-export function JoineeManager(): JSX.Element {
+export function JoineeManager(): React.JSX.Element {
     const [joinees, setJoinees] = useState<Array<JoineeSummary>>([
         { displayId: 'JN-2026-00042', fullName: 'Demo joinee', status: 'PENDING' },
     ]);

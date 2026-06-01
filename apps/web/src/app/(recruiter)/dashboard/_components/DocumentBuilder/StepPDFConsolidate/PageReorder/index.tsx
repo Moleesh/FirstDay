@@ -20,7 +20,7 @@ const initialPages = [
     { id: 'consent', label: 'Consent and signature', fields: ['Signature'] },
 ];
 
-export function PageReorder(): JSX.Element {
+export function PageReorder(): React.JSX.Element {
     const [pages, setPages] = useState(initialPages);
     const [activeId, setActiveId] = useState('personal');
     const [annotation, setAnnotation] = useState('');

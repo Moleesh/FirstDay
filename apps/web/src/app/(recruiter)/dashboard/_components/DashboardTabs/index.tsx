@@ -26,7 +26,7 @@ const tabs = [
  * Renders dashboard workspace tabs.
  * @returns Tabbed recruiter workspace.
  */
-export function DashboardTabs(): JSX.Element {
+export function DashboardTabs(): React.JSX.Element {
     const [activeTab, setActiveTab] = useState<Workspace>('builder');
 
     return (

@@ -11,7 +11,7 @@ import { Button } from '@onboarding/ui';
 import styles from '@/app/(joinee)/onboarding/_styles/OnboardingWizard.module.scss';
 import { en } from '@/i18n/en';
 
-export function Step4Download(): JSX.Element {
+export function Step4Download(): React.JSX.Element {
     return (
         <section>
             <h3 className={styles.stepTitle}>{en.downloadPack}</h3>

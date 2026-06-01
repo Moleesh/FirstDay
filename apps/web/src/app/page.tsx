@@ -21,7 +21,7 @@ import { en } from '@/i18n/en';
  * Renders the application entry screen.
  * @returns Home page element.
  */
-export default function Page(): JSX.Element {
+export default function Page(): React.JSX.Element {
     return (
         <main className={styles.shell}>
             <header className={styles.topbar}>

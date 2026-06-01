@@ -27,7 +27,7 @@ const initialRecruiters: RecruiterSummary[] = [
  * Renders admin recruiter management controls.
  * @returns Recruiter manager workspace.
  */
-export function RecruiterManager(): JSX.Element {
+export function RecruiterManager(): React.JSX.Element {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [recruiters, setRecruiters] = useState(initialRecruiters);

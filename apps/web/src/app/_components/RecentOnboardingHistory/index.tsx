@@ -58,7 +58,7 @@ const PAGE_SIZE = 2;
  * Renders paginated onboarding history with modal quick details.
  * @returns History list.
  */
-export function RecentOnboardingHistory(): JSX.Element {
+export function RecentOnboardingHistory(): React.JSX.Element {
     const [selectedName, setSelectedName] = useState<string>();
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
     const selectedPerson = people.find(({ name }) => name === selectedName);

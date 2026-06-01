@@ -10,7 +10,7 @@ import { CameraCapture } from './CameraCapture';
 import styles from '@/app/(joinee)/onboarding/_styles/OnboardingWizard.module.scss';
 import { en } from '@/i18n/en';
 
-export function Step1Upload(): JSX.Element {
+export function Step1Upload(): React.JSX.Element {
     return (
         <section>
             <h3 className={styles.stepTitle}>{en.uploadDocuments}</h3>

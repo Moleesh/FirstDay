@@ -21,7 +21,7 @@ import { useSessionStore } from '@/stores/sessionStore';
  * Renders joinee access controls.
  * @returns Joinee login form.
  */
-export function JoineeForm(): JSX.Element {
+export function JoineeForm(): React.JSX.Element {
     const router = useRouter();
     const login = useJoineeLogin();
     const setSession = useSessionStore((state) => state.setSession);

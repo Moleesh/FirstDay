@@ -22,7 +22,7 @@ export type RouteGuardProps = {
  * @param props - Guard props and protected children.
  * @returns Protected content or a loading placeholder.
  */
-export function RouteGuard({ children, requiredRole }: RouteGuardProps): JSX.Element {
+export function RouteGuard({ children, requiredRole }: RouteGuardProps): React.JSX.Element {
     const router = useRouter();
     const hasHydrated = useSessionStore((state) => state.hasHydrated);
     const role = useSessionStore((state) => state.role);

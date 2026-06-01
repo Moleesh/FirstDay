@@ -11,7 +11,7 @@
 import SignatureCanvas from 'react-signature-canvas';
 import styles from '@/app/(joinee)/onboarding/_styles/OnboardingWizard.module.scss';
 
-export function SignaturePad(): JSX.Element {
+export function SignaturePad(): React.JSX.Element {
     return (
         <div className={styles.signaturePad}>
             <SignatureCanvas canvasProps={{ className: styles.signatureCanvas }} />

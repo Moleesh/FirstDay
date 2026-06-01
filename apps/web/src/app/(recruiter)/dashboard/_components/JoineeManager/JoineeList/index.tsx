@@ -9,7 +9,7 @@
 import { JoineeStatusBadge } from './JoineeStatusBadge';
 import type { JoineeSummary } from '@/app/(recruiter)/dashboard/_components/JoineeManager';
 
-export function JoineeList({ joinees }: { joinees: Array<JoineeSummary> }): JSX.Element {
+export function JoineeList({ joinees }: { joinees: Array<JoineeSummary> }): React.JSX.Element {
     return (
         <div className="joinee-list">
             {joinees.map((joinee) => (

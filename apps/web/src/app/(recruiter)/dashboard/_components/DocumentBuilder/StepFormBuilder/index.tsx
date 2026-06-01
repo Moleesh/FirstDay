@@ -14,7 +14,7 @@ import { Button } from '@onboarding/ui';
 
 const extractedDefaults = ['Full name', 'Date of birth', 'Address', 'PAN number'];
 
-export function StepFormBuilder(): JSX.Element {
+export function StepFormBuilder(): React.JSX.Element {
     const [customField, setCustomField] = useState('');
     const [fields, setFields] = useState<string[]>([]);
     const [fileName, setFileName] = useState('');

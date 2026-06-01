@@ -21,7 +21,7 @@ import { useSessionStore } from '@/stores/sessionStore';
  * Renders recruiter authentication controls.
  * @returns Recruiter login form.
  */
-export function RecruiterForm(): JSX.Element {
+export function RecruiterForm(): React.JSX.Element {
     const router = useRouter();
     const login = useRecruiterLogin();
     const setSession = useSessionStore((state) => state.setSession);

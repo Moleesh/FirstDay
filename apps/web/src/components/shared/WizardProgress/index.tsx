@@ -1,7 +1,7 @@
 /**
  * @format
  * @module WizardProgress
- * @description Displays progress through a multi-step wizard.
+ * @description Displays progress through a multistep wizard.
  * @author auto
  * @since 1.0.0
  */
@@ -12,7 +12,7 @@ export function WizardProgress({
 }: {
     currentStep: number;
     totalSteps: number;
-}): JSX.Element {
+}): React.JSX.Element {
     return (
         <div className="wizard-progress">
             <div

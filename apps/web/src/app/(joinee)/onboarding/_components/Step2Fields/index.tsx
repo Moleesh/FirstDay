@@ -10,7 +10,7 @@ import { AIAutofillBanner } from './AIAutofillBanner';
 import styles from '@/app/(joinee)/onboarding/_styles/OnboardingWizard.module.scss';
 import { en } from '@/i18n/en';
 
-export function Step2Fields(): JSX.Element {
+export function Step2Fields(): React.JSX.Element {
     return (
         <section>
             <h3 className={styles.stepTitle}>{en.reviewFields}</h3>

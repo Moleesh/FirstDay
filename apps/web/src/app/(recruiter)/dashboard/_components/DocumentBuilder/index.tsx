@@ -29,7 +29,7 @@ const steps = [
  * Renders the template builder.
  * @returns Document builder component.
  */
-export function DocumentBuilder(): JSX.Element {
+export function DocumentBuilder(): React.JSX.Element {
     const [currentStep, setCurrentStep] = useState(0);
     const step = steps[currentStep] ?? steps[0];
 

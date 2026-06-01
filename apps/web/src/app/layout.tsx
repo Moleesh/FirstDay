@@ -16,7 +16,7 @@ import '@/styles/globals.scss';
  * @param props - Layout children.
  * @returns Root layout element.
  */
-export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
+export default function RootLayout({ children }: { children: ReactNode }): React.JSX.Element {
     return (
         <html lang="en">
             <body>
