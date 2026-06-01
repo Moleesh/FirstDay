@@ -12,10 +12,9 @@ import { z } from 'zod';
 export const env = createEnv({
 	server: {
 		GEMINI_API_KEY: z.string().optional(),
-		JOINEE_JWT_SECRET: z.string().min(32),
 		RESEND_API_KEY: z.string().optional(),
 		SUPABASE_SECRET_KEY: z.string().min(1),
-		SUPABASE_URL: z.string().url(),
+		NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
 		WEB_ORIGIN: z.string().url(),
 	},
 	runtimeEnv: process.env,

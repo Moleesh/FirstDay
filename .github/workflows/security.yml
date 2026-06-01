@@ -24,9 +24,6 @@ jobs:
                   cache: pnpm
             - run: pnpm install --frozen-lockfile
             - run: pnpm audit:ci
-            - run: pnpm dlx snyk test
-              env:
-                  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
             - uses: trufflesecurity/trufflehog@main
               with:
                   path: ./

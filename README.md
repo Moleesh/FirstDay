@@ -81,15 +81,13 @@ Never commit `.env` files. For GitHub Actions, use
 [`.env.ci.example`](./.env.ci.example) as a safe reference and add the real
 values as repository secrets. 🔐
 
-| Name                                   | Used By | Purpose                                     |
-| -------------------------------------- | ------- | ------------------------------------------- |
-| `JOINEE_JWT_SECRET`                    | API     | Joinee token secret, at least 32 characters |
-| `SUPABASE_SECRET_KEY`                  | API     | Server-only Supabase secret key             |
-| `SUPABASE_URL`                         | API     | Supabase project URL                        |
-| `WEB_ORIGIN`                           | API     | Allowed browser origin                      |
-| `NEXT_PUBLIC_API_URL`                  | Web     | Browser-facing API URL                      |
-| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Web     | Browser-safe Supabase publishable key       |
-| `NEXT_PUBLIC_SUPABASE_URL`             | Web     | Browser-facing Supabase project URL         |
+| Name                                   | Used By | Purpose                               |
+| -------------------------------------- | ------- | ------------------------------------- |
+| `SUPABASE_SECRET_KEY`                  | API     | Server-only Supabase secret key       |
+| `WEB_ORIGIN`                           | API     | Allowed browser origin                |
+| `NEXT_PUBLIC_API_URL`                  | Web     | Browser-facing API URL                |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Web     | Browser-safe Supabase publishable key |
+| `NEXT_PUBLIC_SUPABASE_URL`             | API/Web | Shared Supabase project URL           |
 
 Optional integrations:
 
@@ -116,7 +114,7 @@ flowchart LR
 | Web        | Next.js 14, React 18, SCSS modules, Zustand, Jotai, TanStack Query |
 | API        | NestJS 10, Fastify, Supabase JS, Passport, Swagger                 |
 | Documents  | Gemini, `pdf-lib`, React PDF, signature canvas                     |
-| Quality    | Vitest, Playwright, ESLint, Prettier, pnpm audit, TruffleHog, Snyk |
+| Quality    | Vitest, Playwright, ESLint, Prettier, pnpm audit, TruffleHog       |
 | Deployment | Platform-neutral GitHub Actions checks                             |
 
 ```text
@@ -151,14 +149,11 @@ before running deployments:
 
 | Secret                                 | Required For                     |
 | -------------------------------------- | -------------------------------- |
-| `JOINEE_JWT_SECRET`                    | Joinee access tokens             |
 | `SUPABASE_SECRET_KEY`                  | Server-side Supabase operations  |
-| `SUPABASE_URL`                         | Server-side Supabase operations  |
 | `WEB_ORIGIN`                           | API browser-origin allowlist     |
 | `NEXT_PUBLIC_API_URL`                  | Browser API endpoint             |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Browser-safe Supabase access     |
-| `NEXT_PUBLIC_SUPABASE_URL`             | Browser-facing Supabase endpoint |
-| `SNYK_TOKEN`                           | Scheduled security scan          |
+| `NEXT_PUBLIC_SUPABASE_URL`             | Shared Supabase project endpoint |
 
 Optional deployment secrets: `GEMINI_API_KEY` enables document extraction and
 `RESEND_API_KEY` enables notification emails.
@@ -176,7 +171,6 @@ features that use new tables.
 
 - Keep local secrets in `.env` and deployment secrets in GitHub Actions. 🔐
 - Keep Supabase secret keys server-side only.
-- Use a secret of at least 32 characters for joinee JWT signing.
 - Trial credentials are for development reviews only.
 - The API includes Helmet, throttling, CSRF protection, audit logging, signed
   storage URLs, and server-side MIME validation.

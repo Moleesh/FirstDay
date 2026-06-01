@@ -53,9 +53,9 @@ export async function loginJoinee(
 		method: 'POST',
 	});
 	if (response.ok) {
-		const json = (await response.json()) as { data?: { token?: string } };
-		if (json.data?.token) {
-			return { redirectTo: '/onboarding', token: json.data.token };
+		const json = (await response.json()) as { data?: { joineeId?: string } };
+		if (json.data?.joineeId) {
+			return { redirectTo: '/onboarding', token: json.data.joineeId };
 		}
 	}
 	throw new Error('Invalid joinee credentials');

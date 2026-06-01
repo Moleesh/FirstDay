@@ -13,8 +13,3 @@ export type RecruiterPrincipal = {
 	supabaseUserId: string;
 	email: string;
 };
-
-export type JoineePrincipal = {
-	id: string;
-	displayId: string;
-};

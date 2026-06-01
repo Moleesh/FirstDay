@@ -7,13 +7,12 @@
  */
 
 import bcrypt from 'bcryptjs';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { AuthService } from '@/modules/auth/auth.service';
 
 describe('AuthService joinee login', () => {
-	it('issues scoped tokens for stored access-code hashes', async () => {
+	it('returns identity for stored access-code hashes', async () => {
 		const hash = await bcrypt.hash('123456', 4);
-		const jwtService = { signAsync: vi.fn(async (): Promise<string> => 'signed-token') };
 		const supabase = {
 			assertNoError: (): void => undefined,
 			client: {
@@ -33,16 +32,12 @@ describe('AuthService joinee login', () => {
 				}),
 			},
 		};
-		const service = new AuthService(jwtService as never, supabase as never);
+		const service = new AuthService(supabase as never);
 		const result = await service.loginJoinee({
 			accessCode: '123456',
 			displayId: 'JN-2026-00042',
 		});
 
-		expect(result.token).toBe('signed-token');
-		expect(jwtService.signAsync).toHaveBeenCalledWith({
-			displayId: 'JN-2026-00042',
-			joineeId: 'joinee-1',
-		});
+		expect(result).toEqual({ displayId: 'JN-2026-00042', joineeId: 'joinee-1' });
 	});
 });

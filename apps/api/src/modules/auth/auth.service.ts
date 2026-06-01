@@ -1,13 +1,12 @@
 /**
  * @format
  * @module AuthService
- * @description Coordinates Supabase recruiter auth and joinee scoped tokens.
+ * @description Coordinates Supabase recruiter auth and joinee access-code verification.
  * @author auto
  * @since 1.0.0
  */
 
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 import bcrypt from 'bcryptjs';
 import type { JoineeLogin, RecruiterSession } from '@onboarding/types';
 import type { RecruiterPrincipal } from '@/modules/auth/auth.types';
@@ -15,10 +14,7 @@ import { SupabaseService } from '@/modules/supabase/supabase.service';
 
 @Injectable()
 export class AuthService {
-	constructor(
-		private readonly jwtService: JwtService,
-		private readonly supabaseService: SupabaseService,
-	) {}
+	constructor(private readonly supabaseService: SupabaseService) {}
 
 	/**
 	 * Resolves a recruiter principal from a Supabase access token.
@@ -58,11 +54,11 @@ export class AuthService {
 	}
 
 	/**
-	 * Issues a scoped joinee token after access-code validation.
+	 * Resolves joinee identity after access-code validation.
 	 * @param login - Joinee display ID and access code.
-	 * @returns A signed joinee token payload.
+	 * @returns Verified joinee identity.
 	 */
-	async loginJoinee(login: JoineeLogin): Promise<{ token: string; displayId: string }> {
+	async loginJoinee(login: JoineeLogin): Promise<{ joineeId: string; displayId: string }> {
 		const { data: joinee, error } = await this.supabaseService.client
 			.from('joinees')
 			.select('id, display_id, access_code_hash')
@@ -74,10 +70,7 @@ export class AuthService {
 		}
 		return {
 			displayId: login.displayId,
-			token: await this.jwtService.signAsync({
-				displayId: login.displayId,
-				joineeId: joinee.id,
-			}),
+			joineeId: joinee.id,
 		};
 	}
 }

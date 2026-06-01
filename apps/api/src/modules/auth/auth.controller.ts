@@ -28,7 +28,7 @@ export class AuthController {
 	/**
 	 * Authenticates a joinee by display ID and access code.
 	 * @param dto - Joinee login credentials.
-	 * @returns A scoped joinee token.
+	 * @returns Verified joinee identity.
 	 */
 	@Post('joinee/login')
 	loginJoinee(@Body() dto: JoineeLoginDto): Promise<unknown> {
