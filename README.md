@@ -7,6 +7,7 @@
 ### A clear, calm onboarding workspace for recruiters and joinees ✨
 
 [![CI](https://github.com/Moleesh/FirstDay/actions/workflows/ci.yml/badge.svg)](https://github.com/Moleesh/FirstDay/actions/workflows/ci.yml)
+[![Deploy Pages](https://github.com/Moleesh/FirstDay/actions/workflows/pages.yml/badge.svg)](https://github.com/Moleesh/FirstDay/actions/workflows/pages.yml)
 [![Security](https://github.com/Moleesh/FirstDay/actions/workflows/security.yml/badge.svg)](https://github.com/Moleesh/FirstDay/actions/workflows/security.yml)
 [![Node.js](https://img.shields.io/badge/Node.js-24-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![pnpm](https://img.shields.io/badge/pnpm-11.5.0-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
@@ -18,6 +19,7 @@ Joinees get a simple guided flow from upload to download. 😊
 [Live App](https://moleesh.github.io/FirstDay) ·
 [Repository](https://github.com/Moleesh/FirstDay) ·
 [CI Runs](https://github.com/Moleesh/FirstDay/actions/workflows/ci.yml) ·
+[Pages Deployments](https://github.com/Moleesh/FirstDay/actions/workflows/pages.yml) ·
 [Security Scans](https://github.com/Moleesh/FirstDay/actions/workflows/security.yml) ·
 [Issues](https://github.com/Moleesh/FirstDay/issues)
 
@@ -135,11 +137,11 @@ these environment secrets before running CI or deployments:
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Browser-safe Supabase access |
 | `NEXT_PUBLIC_SUPABASE_URL`             | Supabase project endpoint    |
 
-| Workflow                                                                       | Trigger                              |
-| ------------------------------------------------------------------------------ | ------------------------------------ |
-| [CI](https://github.com/Moleesh/FirstDay/actions/workflows/ci.yml)             | Pull requests and manual runs        |
-| [Pages](https://github.com/Moleesh/FirstDay/actions/workflows/pages.yml)       | Pushes to `main` and manual runs     |
-| [Security](https://github.com/Moleesh/FirstDay/actions/workflows/security.yml) | Mondays at 03:00 UTC and manual runs |
+| Workflow                                                                       | Trigger                                          |
+| ------------------------------------------------------------------------------ | ------------------------------------------------ |
+| [CI](https://github.com/Moleesh/FirstDay/actions/workflows/ci.yml)             | Pushes to `main`, pull requests, and manual runs |
+| [Pages](https://github.com/Moleesh/FirstDay/actions/workflows/pages.yml)       | Pushes to `main` and manual runs                 |
+| [Security](https://github.com/Moleesh/FirstDay/actions/workflows/security.yml) | Mondays at 03:00 UTC and manual runs             |
 
 Database schema changes live in [`supabase/migrations`](./supabase/migrations).
 Apply them through the Supabase dashboard or Supabase CLI before deploying
