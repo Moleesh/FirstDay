@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { ClipboardList, UserCog, Users } from 'lucide-react';
 import { useState } from 'react';
 import { DocumentBuilder } from '@/app/(recruiter)/dashboard/_components/DocumentBuilder';
@@ -26,7 +27,7 @@ const tabs = [
  * Renders dashboard workspace tabs.
  * @returns Tabbed recruiter workspace.
  */
-export function DashboardTabs(): React.JSX.Element {
+export function DashboardTabs(): JSX.Element {
     const [activeTab, setActiveTab] = useState<Workspace>('builder');
 
     return (

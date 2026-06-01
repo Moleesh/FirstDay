@@ -6,6 +6,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { ChevronLeft, ChevronRight, FileText, GripVertical } from 'lucide-react';
 import { useState } from 'react';
 
@@ -20,7 +21,7 @@ const initialPages = [
     { id: 'consent', label: 'Consent and signature', fields: ['Signature'] },
 ];
 
-export function PageReorder(): React.JSX.Element {
+export function PageReorder(): JSX.Element {
     const [pages, setPages] = useState(initialPages);
     const [activeId, setActiveId] = useState('personal');
     const [annotation, setAnnotation] = useState('');

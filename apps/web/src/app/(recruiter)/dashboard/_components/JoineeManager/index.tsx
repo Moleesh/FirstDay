@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { useState } from 'react';
 import { CreateJoineeForm } from './CreateJoineeForm';
 import { DocumentViewer } from './DocumentViewer';
@@ -20,7 +21,7 @@ export type JoineeSummary = {
     status: string;
 };
 
-export function JoineeManager(): React.JSX.Element {
+export function JoineeManager(): JSX.Element {
     const [joinees, setJoinees] = useState<Array<JoineeSummary>>([
         { displayId: 'JN-2026-00042', fullName: 'Demo joinee', status: 'PENDING' },
     ]);

@@ -6,6 +6,7 @@
  * @since 1.0.0
  */
 
+import type { JSX } from 'react';
 import { DashboardTabs } from '@/app/(recruiter)/dashboard/_components/DashboardTabs';
 import { en } from '@/i18n/en';
 
@@ -13,7 +14,7 @@ import { en } from '@/i18n/en';
  * Renders recruiter dashboard.
  * @returns Dashboard page.
  */
-export default function DashboardPage(): React.JSX.Element {
+export default function DashboardPage(): JSX.Element {
     return (
         <main className="dashboard-page">
             <section className="dashboard-hero">

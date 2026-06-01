@@ -6,10 +6,11 @@
  * @since 1.0.0
  */
 
+import type { JSX } from 'react';
 import { JoineeStatusBadge } from './JoineeStatusBadge';
 import type { JoineeSummary } from '@/app/(recruiter)/dashboard/_components/JoineeManager';
 
-export function JoineeList({ joinees }: { joinees: Array<JoineeSummary> }): React.JSX.Element {
+export function JoineeList({ joinees }: { joinees: Array<JoineeSummary> }): JSX.Element {
     return (
         <div className="joinee-list">
             {joinees.map((joinee) => (

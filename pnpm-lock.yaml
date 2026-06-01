@@ -54,9 +54,6 @@ importers:
             framer-motion:
                 specifier: ^11.15.0
                 version: 11.18.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-            jotai:
-                specifier: ^2.10.3
-                version: 2.20.0(@types/react@18.3.29)(react@18.3.1)
             lucide-react:
                 specifier: ^0.468.0
                 version: 0.468.0(react@18.3.1)
@@ -82,6 +79,9 @@ importers:
                 specifier: ^5.0.2
                 version: 5.0.14(@types/react@18.3.29)(react@18.3.1)
         devDependencies:
+            '@eslint/eslintrc':
+                specifier: ^3.3.1
+                version: 3.3.5
             '@playwright/test':
                 specifier: ^1.49.1
                 version: 1.60.0
@@ -3308,27 +3308,6 @@ packages:
                 integrity: sha512-H0dkQoCa3b2VEeKQBOxFph+JAbcrQdE7KC0UkqwpLmv2EC4P41QXP+rqo9wYodACiG5/WM5s9oDApTU8utwj9g==,
             }
         engines: { node: '>= 0.4' }
-
-    jotai@2.20.0:
-        resolution:
-            {
-                integrity: sha512-b5GAqgmXmXzB4WPaTH26ppk9Sl7AA9WSQX7yfdM+gJ1rFROiWcVbi97gFuN/yVCojOcbcvop2sfLL+fjxW0JVg==,
-            }
-        engines: { node: '>=12.20.0' }
-        peerDependencies:
-            '@babel/core': '>=7.0.0'
-            '@babel/template': '>=7.0.0'
-            '@types/react': '>=17.0.0'
-            react: '>=17.0.0'
-        peerDependenciesMeta:
-            '@babel/core':
-                optional: true
-            '@babel/template':
-                optional: true
-            '@types/react':
-                optional: true
-            react:
-                optional: true
 
     js-tokens@10.0.0:
         resolution:
@@ -6610,11 +6589,6 @@ snapshots:
             get-proto: 1.0.1
             has-symbols: 1.1.0
             set-function-name: 2.0.2
-
-    jotai@2.20.0(@types/react@18.3.29)(react@18.3.1):
-        optionalDependencies:
-            '@types/react': 18.3.29
-            react: 18.3.1
 
     js-tokens@10.0.0: {}
 

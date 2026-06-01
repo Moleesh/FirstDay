@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { ChevronLeft, ChevronRight, Check } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@onboarding/ui';
@@ -29,7 +30,7 @@ const steps = [
  * Renders the template builder.
  * @returns Document builder component.
  */
-export function DocumentBuilder(): React.JSX.Element {
+export function DocumentBuilder(): JSX.Element {
     const [currentStep, setCurrentStep] = useState(0);
     const step = steps[currentStep] ?? steps[0];
 

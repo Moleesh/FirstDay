@@ -6,6 +6,7 @@
  * @since 1.0.0
  */
 
+import type { JSX } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, CheckCircle2, ClipboardCheck, FileSignature } from 'lucide-react';
 import { RecentOnboardingHistory } from '@/app/_components/RecentOnboardingHistory';
@@ -21,7 +22,7 @@ import { en } from '@/i18n/en';
  * Renders the application entry screen.
  * @returns Home page element.
  */
-export default function Page(): React.JSX.Element {
+export default function Page(): JSX.Element {
     return (
         <main className={styles.shell}>
             <header className={styles.topbar}>

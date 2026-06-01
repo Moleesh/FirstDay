@@ -8,7 +8,9 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { ChevronRight, X } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
 import previewStyles from '@/app/_styles/HomePreview.module.scss';
 import modalStyles from '@/app/_styles/HomePreviewModal.module.scss';
@@ -58,7 +60,7 @@ const PAGE_SIZE = 2;
  * Renders paginated onboarding history with modal quick details.
  * @returns History list.
  */
-export function RecentOnboardingHistory(): React.JSX.Element {
+export function RecentOnboardingHistory(): JSX.Element {
     const [selectedName, setSelectedName] = useState<string>();
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
     const selectedPerson = people.find(({ name }) => name === selectedName);
@@ -116,12 +118,12 @@ export function RecentOnboardingHistory(): React.JSX.Element {
                             <X size={16} />
                         </button>
                         <div className={modalStyles.profile}>
-                            <img
+                            <Image
                                 alt={`${selectedPerson.name} profile`}
                                 className={modalStyles.avatar}
-                                height="72"
+                                height={72}
                                 src={selectedPerson.photoUrl}
-                                width="72"
+                                width={72}
                             />
                             <div>
                                 <span className={modalStyles.eyebrow}>Onboarding complete</span>

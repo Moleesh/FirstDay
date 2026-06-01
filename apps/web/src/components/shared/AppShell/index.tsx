@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { LogOut } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -18,7 +19,7 @@ import { FirstDayLogo } from '@/components/shared/FirstDayLogo';
 import { ThemeMenu } from '@/components/shared/ThemeMenu';
 import { useSessionStore } from '@/stores/sessionStore';
 
-export function AppShell({ children }: { children: ReactNode }): React.JSX.Element {
+export function AppShell({ children }: { children: ReactNode }): JSX.Element {
     const router = useRouter();
     const clearSession = useSessionStore((state) => state.clearSession);
     const userLabel = useSessionStore((state) => state.userLabel) ?? 'Signed-in recruiter';

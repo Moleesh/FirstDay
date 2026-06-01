@@ -6,6 +6,7 @@
  * @since 1.0.0
  */
 
+import type { JSX } from 'react';
 import type { ReactNode } from 'react';
 
 export function FirstDayLogo({
@@ -14,7 +15,7 @@ export function FirstDayLogo({
 }: {
     meta?: ReactNode;
     size?: 'compact' | 'default';
-}): React.JSX.Element {
+}): JSX.Element {
     return (
         <span className={`firstday-logo firstday-logo--${size}`}>
             <span className="firstday-logo__mark" aria-hidden="true">

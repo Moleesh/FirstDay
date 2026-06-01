@@ -6,6 +6,7 @@
  * @since 1.0.0
  */
 
+import type { JSX } from 'react';
 import { LoginPanel } from '@/app/(auth)/login/_components/LoginPanel';
 import { LoginRedirect } from '@/components/shared/LoginRedirect';
 import styles from '@/app/(auth)/login/_styles/LoginPage.module.scss';
@@ -16,7 +17,7 @@ import Link from 'next/link';
  * Renders the login page.
  * @returns Login page element.
  */
-export default function LoginPage(): React.JSX.Element {
+export default function LoginPage(): JSX.Element {
     return (
         <main className={styles.shell}>
             <LoginRedirect />

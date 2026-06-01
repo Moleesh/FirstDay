@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { createContext, type ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 
 export type AccentTheme = 'ocean' | 'sunset' | 'violet';
@@ -30,7 +31,7 @@ function applyAppearance(mode: ColorMode, accent: AccentTheme): void {
     document.documentElement.dataset.theme = resolvedMode;
 }
 
-export function ThemeProvider({ children }: { children: ReactNode }): React.JSX.Element {
+export function ThemeProvider({ children }: { children: ReactNode }): JSX.Element {
     const [mode, setMode] = useState<ColorMode>('system');
     const [accent, setAccent] = useState<AccentTheme>('ocean');
 

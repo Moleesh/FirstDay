@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { Moon, Palette, Sun } from 'lucide-react';
 import { type AccentTheme, type ColorMode, useTheme } from '@/components/shared/ThemeProvider';
 
@@ -23,7 +24,7 @@ const accents: Array<{ label: string; value: AccentTheme }> = [
     { label: 'Violet', value: 'violet' },
 ];
 
-export function ThemeMenu(): React.JSX.Element {
+export function ThemeMenu(): JSX.Element {
     const { accent, mode, setAccent, setMode } = useTheme();
 
     return (

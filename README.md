@@ -105,7 +105,7 @@ flowchart LR
 | Layer      | Stack                                                                  |
 | ---------- | ---------------------------------------------------------------------- |
 | Monorepo   | Turborepo, pnpm workspaces                                             |
-| Web        | Next.js 15, React 18, SCSS modules, Zustand, Jotai, TanStack Query     |
+| Web        | Next.js 15, React 18, SCSS modules, Zustand, TanStack Query            |
 | Documents  | Signature canvas and browser-side onboarding document previews         |
 | Quality    | Vitest 4, Vite 8, Playwright, ESLint, Prettier, pnpm audit, TruffleHog |
 | Deployment | GitHub Pages static export through GitHub Actions                      |

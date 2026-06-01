@@ -6,9 +6,10 @@
  * @since 1.0.0
  */
 
+import type { JSX } from 'react';
 import { PageReorder } from './PageReorder';
 
-export function StepPDFConsolidate(): React.JSX.Element {
+export function StepPDFConsolidate(): JSX.Element {
     return (
         <div>
             <PageReorder />

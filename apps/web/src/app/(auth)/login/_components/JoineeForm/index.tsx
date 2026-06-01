@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { KeyRound } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { type FormEvent, useState } from 'react';
@@ -21,7 +22,7 @@ import { useSessionStore } from '@/stores/sessionStore';
  * Renders joinee access controls.
  * @returns Joinee login form.
  */
-export function JoineeForm(): React.JSX.Element {
+export function JoineeForm(): JSX.Element {
     const router = useRouter();
     const login = useJoineeLogin();
     const setSession = useSessionStore((state) => state.setSession);

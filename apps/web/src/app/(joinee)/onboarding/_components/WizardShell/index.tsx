@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { motion } from 'framer-motion';
 import { Children, type ReactNode, useMemo, useState } from 'react';
 import { ArrowLeft, ArrowRight, Check } from 'lucide-react';
@@ -18,7 +19,7 @@ import { useWizardDraft } from '@/hooks/useWizardDraft';
 import styles from '@/app/(joinee)/onboarding/_styles/OnboardingWizard.module.scss';
 import { en } from '@/i18n/en';
 
-export function WizardShell({ children }: { children: ReactNode }): React.JSX.Element {
+export function WizardShell({ children }: { children: ReactNode }): JSX.Element {
     const steps = useMemo(() => Children.toArray(children), [children]);
     const [step, setStep] = useState(0);
     const { saveDraft } = useWizardDraft();

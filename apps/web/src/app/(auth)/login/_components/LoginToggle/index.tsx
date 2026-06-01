@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import styles from './_styles/LoginToggle.module.scss';
 import { en } from '@/i18n/en';
 
@@ -23,7 +24,7 @@ export type LoginToggleProps = {
  * @param props - Selected role and change handler.
  * @returns Login role toggle element.
  */
-export function LoginToggle({ selectedRole, onRoleChange }: LoginToggleProps): React.JSX.Element {
+export function LoginToggle({ selectedRole, onRoleChange }: LoginToggleProps): JSX.Element {
     return (
         <div className={styles.toggle} aria-label="Login role">
             <button

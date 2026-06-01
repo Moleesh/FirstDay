@@ -4,12 +4,13 @@
  * @description Tests stored appearance preferences and context access.
  */
 
+import type { JSX } from 'react';
 import { act, renderHook, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ThemeProvider, useTheme } from '@/components/shared/ThemeProvider';
 
-const wrapper = ({ children }: { children: ReactNode }): React.JSX.Element => (
+const wrapper = ({ children }: { children: ReactNode }): JSX.Element => (
     <ThemeProvider>{children}</ThemeProvider>
 );
 

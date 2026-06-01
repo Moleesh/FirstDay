@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { useRouter } from 'next/navigation';
 import { type ReactNode, useEffect } from 'react';
 import { useSessionStore } from '@/stores/sessionStore';
@@ -22,7 +23,7 @@ export type RouteGuardProps = {
  * @param props - Guard props and protected children.
  * @returns Protected content or a loading placeholder.
  */
-export function RouteGuard({ children, requiredRole }: RouteGuardProps): React.JSX.Element {
+export function RouteGuard({ children, requiredRole }: RouteGuardProps): JSX.Element {
     const router = useRouter();
     const hasHydrated = useSessionStore((state) => state.hasHydrated);
     const role = useSessionStore((state) => state.role);

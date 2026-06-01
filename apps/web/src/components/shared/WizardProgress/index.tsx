@@ -12,7 +12,7 @@ export function WizardProgress({
 }: {
     currentStep: number;
     totalSteps: number;
-}): React.JSX.Element {
+}): JSX.Element {
     return (
         <div className="wizard-progress">
             <div

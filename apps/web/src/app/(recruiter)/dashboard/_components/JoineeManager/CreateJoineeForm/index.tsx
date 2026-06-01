@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { type FormEvent, useState } from 'react';
 import { Plus } from 'lucide-react';
 import { Button } from '@onboarding/ui';
@@ -17,7 +18,7 @@ export function CreateJoineeForm({
     onCreate,
 }: {
     onCreate: (fullName: string) => void;
-}): React.JSX.Element {
+}): JSX.Element {
     const [fullName, setFullName] = useState('');
 
     function submit(event: FormEvent<HTMLFormElement>): void {

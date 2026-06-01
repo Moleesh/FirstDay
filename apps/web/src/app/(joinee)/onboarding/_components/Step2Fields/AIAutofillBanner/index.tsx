@@ -6,8 +6,9 @@
  * @since 1.0.0
  */
 
+import type { JSX } from 'react';
 import styles from '@/app/(joinee)/onboarding/_styles/OnboardingWizard.module.scss';
 
-export function AIAutofillBanner(): React.JSX.Element {
+export function AIAutofillBanner(): JSX.Element {
     return <div className={styles.note}>Autofill suggestions ready</div>;
 }

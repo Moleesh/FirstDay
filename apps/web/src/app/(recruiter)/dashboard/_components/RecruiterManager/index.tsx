@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { type FormEvent, useState } from 'react';
 import { Plus, ShieldCheck } from 'lucide-react';
 import { Button } from '@onboarding/ui';
@@ -27,7 +28,7 @@ const initialRecruiters: RecruiterSummary[] = [
  * Renders admin recruiter management controls.
  * @returns Recruiter manager workspace.
  */
-export function RecruiterManager(): React.JSX.Element {
+export function RecruiterManager(): JSX.Element {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [recruiters, setRecruiters] = useState(initialRecruiters);

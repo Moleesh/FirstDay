@@ -6,6 +6,7 @@
  * @since 1.0.0
  */
 
+import type { JSX } from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { cn } from './utils';
@@ -27,7 +28,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
  * @param props - Button rendering and variant props.
  * @returns A styled button element.
  */
-export function Button(props: ButtonProps): React.JSX.Element {
+export function Button(props: ButtonProps): JSX.Element {
     const { asChild, className, variant, ...buttonProps } = props;
     const Comp = asChild ? Slot : 'button';
     return (

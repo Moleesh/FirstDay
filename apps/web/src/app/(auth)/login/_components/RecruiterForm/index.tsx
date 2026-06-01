@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { LogIn } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { type FormEvent, useState } from 'react';
@@ -21,7 +22,7 @@ import { useSessionStore } from '@/stores/sessionStore';
  * Renders recruiter authentication controls.
  * @returns Recruiter login form.
  */
-export function RecruiterForm(): React.JSX.Element {
+export function RecruiterForm(): JSX.Element {
     const router = useRouter();
     const login = useRecruiterLogin();
     const setSession = useSessionStore((state) => state.setSession);

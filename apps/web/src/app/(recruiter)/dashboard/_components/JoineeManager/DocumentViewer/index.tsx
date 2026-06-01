@@ -6,6 +6,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { CheckCircle2, Clipboard, Download, FileText } from 'lucide-react';
 import { useState } from 'react';
 
@@ -20,7 +21,7 @@ function downloadSample(name: string): void {
     URL.revokeObjectURL(link.href);
 }
 
-export function DocumentViewer(): React.JSX.Element {
+export function DocumentViewer(): JSX.Element {
     const [copied, setCopied] = useState(false);
     const welcomeMessage = `Welcome to FirstDay. Complete your onboarding pack here: ${welcomeLink}`;
 

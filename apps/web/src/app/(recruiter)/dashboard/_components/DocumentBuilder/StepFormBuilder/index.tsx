@@ -8,13 +8,14 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { FileUp, Plus, Sparkles, UploadCloud } from 'lucide-react';
 import { Button } from '@onboarding/ui';
 
 const extractedDefaults = ['Full name', 'Date of birth', 'Address', 'PAN number'];
 
-export function StepFormBuilder(): React.JSX.Element {
+export function StepFormBuilder(): JSX.Element {
     const [customField, setCustomField] = useState('');
     const [fields, setFields] = useState<string[]>([]);
     const [fileName, setFileName] = useState('');

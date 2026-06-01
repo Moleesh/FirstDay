@@ -8,6 +8,7 @@
 
 'use client';
 
+import type { JSX } from 'react';
 import { type FormEvent, useEffect, useState } from 'react';
 import { Plus } from 'lucide-react';
 import { Button } from '@onboarding/ui';
@@ -49,7 +50,7 @@ function loadDocuments(): RequiredDocument[] {
     return saved ? (JSON.parse(saved) as RequiredDocument[]) : [...defaultDocumentRecords];
 }
 
-export function StepChecklist(): React.JSX.Element {
+export function StepChecklist(): JSX.Element {
     const [customLabel, setCustomLabel] = useState('');
     const [documents, setDocuments] = useState<RequiredDocument[]>(loadDocuments);
     const [selected, setSelected] = useState<string[]>(() => {

@@ -6,10 +6,11 @@
  * @since 1.0.0
  */
 
+import type { JSX } from 'react';
 import type { ReactNode } from 'react';
 import { RouteGuard } from '@/components/shared/RouteGuard';
 
-export default function OnboardingLayout({ children }: { children: ReactNode }): React.JSX.Element {
+export default function OnboardingLayout({ children }: { children: ReactNode }): JSX.Element {
     return (
         <RouteGuard requiredRole="joinee">
             <div className="onboarding-surface">{children}</div>
