@@ -1,0 +1,16 @@
+/**
+ * @module WizardProgressStyles
+ * @description Progress rail for multi-step onboarding flows.
+ */
+.wizard-progress {
+  background: var(--border);
+  border-radius: 999px;
+  height: 0.5rem;
+  overflow: hidden;
+}
+
+.wizard-progress__value {
+  background: var(--accent);
+  border-radius: inherit;
+  height: 100%;
+}

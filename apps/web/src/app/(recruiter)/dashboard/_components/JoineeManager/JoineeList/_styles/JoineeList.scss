@@ -1,0 +1,18 @@
+/**
+ * @module JoineeListStyles
+ * @description Recruiter joinee roster and card styles.
+ */
+.joinee-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.joinee-card__row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.joinee-card__name {
+  font-weight: 700;
+}

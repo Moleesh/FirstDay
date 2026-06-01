@@ -4,16 +4,21 @@
  */
 @import "./variables";
 @import "./theme-tokens";
-@import "./brand";
-@import "./app-shell";
-@import "./dashboard";
-@import "./dashboard-tabs";
-@import "./document-checklist";
-@import "./field-builder";
-@import "./pdf-review";
-@import "./delivery-panel";
-@import "./recruiter-admin";
-@import "./components";
+@import "../components/shared/FirstDayLogo/_styles/FirstDayLogo";
+@import "../components/shared/AppShell/_styles/AppShell";
+@import "../components/shared/ScrollProgress/_styles/ScrollProgress";
+@import "../components/shared/WizardProgress/_styles/WizardProgress";
+@import "../app/(joinee)/onboarding/_styles/Onboarding";
+@import "../app/(recruiter)/dashboard/_styles/Dashboard";
+@import "../app/(recruiter)/dashboard/_components/DocumentBuilder/_styles/DocumentBuilder";
+@import "../app/(recruiter)/dashboard/_components/DashboardTabs/_styles/DashboardTabs";
+@import "../app/(recruiter)/dashboard/_components/DocumentBuilder/StepChecklist/_styles/StepChecklist";
+@import "../app/(recruiter)/dashboard/_components/DocumentBuilder/StepFormBuilder/_styles/StepFormBuilder";
+@import "../app/(recruiter)/dashboard/_components/DocumentBuilder/StepPDFConsolidate/PageReorder/_styles/PageReorder";
+@import "../app/(recruiter)/dashboard/_components/JoineeManager/DocumentViewer/_styles/DocumentViewer";
+@import "../app/(recruiter)/dashboard/_components/JoineeManager/JoineeList/_styles/JoineeList";
+@import "../app/(recruiter)/dashboard/_components/RecruiterManager/_styles/RecruiterManager";
+@import "../../../../packages/ui/src/_styles/Button";
 
 * {
   box-sizing: border-box;
@@ -59,27 +64,6 @@ html::-webkit-scrollbar-thumb {
   border-radius: 999px;
 }
 
-.scroll-progress {
-  background: color-mix(in srgb, var(--border) 72%, transparent);
-  border-radius: 999px;
-  bottom: 1rem;
-  pointer-events: none;
-  position: fixed;
-  right: 0.35rem;
-  top: 5rem;
-  width: 0.26rem;
-  z-index: 20;
-}
-
-.scroll-progress span {
-  background: var(--accent);
-  border-radius: inherit;
-  display: block;
-  height: 100%;
-  transform-origin: top;
-  transition: transform 120ms ease-out;
-}
-
 button,
 input,
 select,
@@ -119,4 +103,33 @@ select:disabled,
 textarea:disabled,
 [aria-disabled="true"] {
   cursor: not-allowed;
+}
+
+.stack-sm {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.stack-md {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.role-badge,
+.status-badge {
+  background: var(--surface-raised);
+  border-radius: 999px;
+  color: var(--muted);
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.25rem 0.55rem;
+}
+
+.nav-button {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 0.55rem;
+  color: var(--ink);
+  padding: 0.5rem;
 }

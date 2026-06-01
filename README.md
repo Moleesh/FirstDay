@@ -76,7 +76,9 @@ login page.
 ## 🔑 Environment Variables
 
 Create `.env` from [`.env.example`](./.env.example) and replace sample values.
-Never commit `.env` files. 🔐
+Never commit `.env` files. For GitHub Actions, use
+[`.env.ci.example`](./.env.ci.example) as a safe reference and add the real
+values as repository secrets. 🔐
 
 | Name                            | Used By | Purpose                                                   |
 | ------------------------------- | ------- | --------------------------------------------------------- |
@@ -144,14 +146,24 @@ packages/
 Add these repository secrets under **Settings → Secrets and variables → Actions**
 before running deployments:
 
-| Secret              | Required For                 |
-| ------------------- | ---------------------------- |
-| `DATABASE_URL`      | Prisma deployment migrations |
-| `RAILWAY_TOKEN`     | Railway API deployment       |
-| `VERCEL_TOKEN`      | Vercel web deployment        |
-| `VERCEL_ORG_ID`     | Vercel project selection     |
-| `VERCEL_PROJECT_ID` | Vercel project selection     |
-| `SNYK_TOKEN`        | Scheduled security scan      |
+| Secret                          | Required For                     |
+| ------------------------------- | -------------------------------- |
+| `DATABASE_URL`                  | Prisma deployment migrations     |
+| `GEMINI_API_KEY`                | Document extraction API          |
+| `JOINEE_JWT_SECRET`             | Joinee access tokens             |
+| `RESEND_API_KEY`                | Notification emails              |
+| `SUPABASE_JWT_SECRET`           | Recruiter token verification     |
+| `SUPABASE_SERVICE_ROLE_KEY`     | Server-side Supabase operations  |
+| `SUPABASE_URL`                  | Server-side Supabase operations  |
+| `WEB_ORIGIN`                    | API browser-origin allowlist     |
+| `NEXT_PUBLIC_API_URL`           | Browser API endpoint             |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Browser-safe Supabase access     |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Browser-facing Supabase endpoint |
+| `RAILWAY_TOKEN`                 | Railway API deployment           |
+| `VERCEL_TOKEN`                  | Vercel web deployment            |
+| `VERCEL_ORG_ID`                 | Vercel project selection         |
+| `VERCEL_PROJECT_ID`             | Vercel project selection         |
+| `SNYK_TOKEN`                    | Scheduled security scan          |
 
 | Workflow                                                                       | Trigger                              |
 | ------------------------------------------------------------------------------ | ------------------------------------ |
@@ -163,6 +175,12 @@ before running deployments:
 > Prisma currently has a schema but no checked-in migration directory. Generate
 > and review the first migration before relying on `prisma:migrate:deploy` in a
 > production environment.
+
+For Supabase migrations from GitHub Actions, set `DATABASE_URL` to the
+**session pooler** connection string shown by Supabase Connect. Hosted runners
+may not reach the direct `db.PROJECT_REF.supabase.co:5432` hostname. The
+workflows validate this before invoking Prisma so configuration errors are
+reported clearly.
 
 ## 🛡️ Security Notes
 
