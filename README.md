@@ -77,7 +77,7 @@ login page.
 Create `.env` from [`.env.example`](./.env.example) and replace sample values.
 Never commit `.env` files. For GitHub Actions, use
 [`.env.ci.example`](./.env.ci.example) as a safe reference and add the real
-values as repository variables or secrets. 🔐
+values as secrets in the `FirstDay` GitHub environment. 🔐
 
 | Name                                   | Used By | Purpose                               |
 | -------------------------------------- | ------- | ------------------------------------- |
@@ -127,10 +127,10 @@ packages/
 
 ## 🚢 GitHub Actions Setup
 
-Add these values under **Settings → Secrets and variables → Actions** before
-running deployments:
+Create a `FirstDay` environment under **Settings → Environments**, then add
+these environment secrets before running CI or deployments:
 
-| Variable                               | Required For                 |
+| Secret                                 | Required For                 |
 | -------------------------------------- | ---------------------------- |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Browser-safe Supabase access |
 | `NEXT_PUBLIC_SUPABASE_URL`             | Supabase project endpoint    |

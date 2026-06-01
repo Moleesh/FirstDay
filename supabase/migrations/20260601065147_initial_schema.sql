@@ -104,4 +104,4 @@ alter table public.template_fields enable row level security;
 alter table public.template_pages enable row level security;
 alter table public.submissions enable row level security;
 alter table public.uploaded_docs enable row level security;
-alter table public.audit_logs enable row level security;
+alter table public.audit_logs enable row level security;;

@@ -19,12 +19,12 @@ concurrency:
 jobs:
     deploy:
         environment:
-            name: github-pages
+            name: FirstDay
             url: ${{ steps.deployment.outputs.page_url }}
         runs-on: ubuntu-latest
         env:
-            NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
-            NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+            NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+            NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
         steps:
             - uses: actions/checkout@v6
             - uses: pnpm/action-setup@v6
