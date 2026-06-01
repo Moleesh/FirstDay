@@ -154,6 +154,11 @@ CI validates environment variables, linting, formatting, TypeScript, unit tests,
 dependency audit results, committed secrets, the production build, and
 Playwright flows before a change is considered ready.
 
+Unit coverage includes authentication helpers, session state, route guards,
+appearance preferences, onboarding drafts, recruiter invitations, joinee
+assignments, document delivery actions, template-building flows, and shared UI
+utilities.
+
 Database schema changes live in [`supabase/migrations`](./supabase/migrations).
 Apply them through the Supabase dashboard or Supabase CLI before deploying
 features that use new tables.
