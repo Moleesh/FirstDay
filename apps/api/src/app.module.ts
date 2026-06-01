@@ -17,7 +17,7 @@ import { JoineesModule } from '@/modules/joinees/joinees.module';
 import { NotificationsModule } from '@/modules/notifications/notifications.module';
 import { RecruitersModule } from '@/modules/recruiters/recruiters.module';
 import { StorageModule } from '@/modules/storage/storage.module';
-import { PrismaModule } from '@/prisma/prisma.module';
+import { SupabaseModule } from '@/modules/supabase/supabase.module';
 import { GlobalExceptionFilter } from '@/common/filters/global-exception.filter';
 import { AuditInterceptor } from '@/common/interceptors/audit.interceptor';
 import { RequestIdInterceptor } from '@/common/interceptors/request-id.interceptor';
@@ -31,7 +31,7 @@ import { TransformInterceptor } from '@/common/interceptors/transform.intercepto
 		DocumentsModule,
 		JoineesModule,
 		NotificationsModule,
-		PrismaModule,
+		SupabaseModule,
 		RecruitersModule,
 		StorageModule,
 	],

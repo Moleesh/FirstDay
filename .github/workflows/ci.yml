@@ -13,16 +13,14 @@ jobs:
     verify:
         runs-on: ubuntu-latest
         env:
-            DATABASE_URL: postgresql://postgres:postgres@localhost:5432/firstday_ci
             GEMINI_API_KEY: ci-placeholder
             JOINEE_JWT_SECRET: ci-placeholder-joinee-secret-32-characters
             RESEND_API_KEY: ci-placeholder
-            SUPABASE_JWT_SECRET: ci-placeholder-supabase-secret-32-characters
-            SUPABASE_SERVICE_ROLE_KEY: ci-placeholder
+            SUPABASE_SECRET_KEY: ci-placeholder
             SUPABASE_URL: https://example.supabase.co
             WEB_ORIGIN: http://localhost:3000
             NEXT_PUBLIC_API_URL: http://localhost:4000
-            NEXT_PUBLIC_SUPABASE_ANON_KEY: ci-placeholder
+            NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ci-placeholder
             NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
         steps:
             - uses: actions/checkout@v6
@@ -44,6 +42,5 @@ jobs:
                   path: ./
                   base: ${{ github.event.repository.default_branch }}
                   head: HEAD
-            - run: pnpm --filter @onboarding/api prisma:migrate:dry
             - run: pnpm build
             - run: pnpm --filter @onboarding/web e2e

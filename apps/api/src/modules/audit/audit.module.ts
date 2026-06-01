@@ -8,10 +8,8 @@
 
 import { Module } from '@nestjs/common';
 import { AuditService } from '@/modules/audit/audit.service';
-import { PrismaModule } from '@/prisma/prisma.module';
 
 @Module({
-	imports: [PrismaModule],
 	providers: [AuditService],
 	exports: [AuditService],
 })

@@ -21,17 +21,29 @@ describe('generateJoineeId', () => {
 
 describe('JoineesService', () => {
 	it('persists joinees with a one-time access code', async () => {
-		const prisma = {
-			joinee: {
-				count: async (): Promise<number> => 41,
-				create: async ({ data }: { data: { displayId: string } }): Promise<unknown> => ({
-					displayId: data.displayId,
-					id: 'joinee-1',
-					templateId: 'template-1',
+		const countQuery = { like: async (): Promise<unknown> => ({ count: 41, error: null }) };
+		const insertQuery = {
+			select: (): unknown => ({
+				single: async (): Promise<unknown> => ({
+					data: {
+						display_id: 'JN-2026-00042',
+						id: 'joinee-1',
+						template_id: 'template-1',
+					},
+					error: null,
+				}),
+			}),
+		};
+		const supabase = {
+			assertNoError: (): void => undefined,
+			client: {
+				from: (): unknown => ({
+					insert: (): unknown => insertQuery,
+					select: (): unknown => countQuery,
 				}),
 			},
 		};
-		const service = new JoineesService(prisma as never);
+		const service = new JoineesService(supabase as never);
 		const result = await service.create(
 			{ fullName: 'Alex Rao', templateId: 'template-1' },
 			{

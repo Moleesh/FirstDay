@@ -11,7 +11,7 @@ import { randomBytes } from 'node:crypto';
 import bcrypt from 'bcryptjs';
 import type { CreateJoineeInput } from '@onboarding/types';
 import type { RecruiterPrincipal } from '@/modules/auth/auth.types';
-import { PrismaService } from '@/prisma/prisma.service';
+import { SupabaseService } from '@/modules/supabase/supabase.service';
 
 const MAX_SEQUENCE = 99_999;
 const ID_PREFIX = 'JN';
@@ -34,18 +34,20 @@ export function generateJoineeId(year: number, sequence: number): string {
 
 @Injectable()
 export class JoineesService {
-	constructor(private readonly prismaService: PrismaService) {}
+	constructor(private readonly supabaseService: SupabaseService) {}
 
 	/**
 	 * Lists current joinee summaries.
 	 * @returns Joinee summaries.
 	 */
 	async list(user: RecruiterPrincipal): Promise<Array<{ displayId: string; status: string }>> {
-		return this.prismaService.joinee.findMany({
-			orderBy: { createdAt: 'desc' },
-			select: { displayId: true, status: true },
-			where: { recruiterId: user.id },
-		});
+		const { data, error } = await this.supabaseService.client
+			.from('joinees')
+			.select('display_id, status')
+			.eq('recruiter_id', user.id)
+			.order('created_at', { ascending: false });
+		this.supabaseService.assertNoError(error);
+		return (data ?? []).map(({ display_id, status }) => ({ displayId: display_id, status }));
 	}
 
 	/**
@@ -58,25 +60,30 @@ export class JoineesService {
 		user: RecruiterPrincipal,
 	): Promise<{ accessCode: string; displayId: string; id: string; templateId: string }> {
 		const year = new Date().getFullYear();
-		const sequence = await this.prismaService.joinee.count({
-			where: { displayId: { startsWith: `${ID_PREFIX}-${year}-` } },
-		});
+		const { count, error: countError } = await this.supabaseService.client
+			.from('joinees')
+			.select('*', { count: 'exact', head: true })
+			.like('display_id', `${ID_PREFIX}-${year}-%`);
+		this.supabaseService.assertNoError(countError);
 		const accessCode = randomBytes(ACCESS_CODE_BYTES).toString('hex');
-		const joinee = await this.prismaService.joinee.create({
-			data: {
-				accessCodeHash: await bcrypt.hash(accessCode, ACCESS_CODE_SALT_ROUNDS),
-				displayId: generateJoineeId(year, sequence + 1),
-				orgId: user.orgId,
-				recruiterId: user.id,
-				templateId: input.templateId,
-			},
-			select: { displayId: true, id: true, templateId: true },
-		});
+		const { data: joinee, error } = await this.supabaseService.client
+			.from('joinees')
+			.insert({
+				access_code_hash: await bcrypt.hash(accessCode, ACCESS_CODE_SALT_ROUNDS),
+				display_id: generateJoineeId(year, (count ?? 0) + 1),
+				org_id: user.orgId,
+				recruiter_id: user.id,
+				template_id: input.templateId,
+			})
+			.select('display_id, id, template_id')
+			.single();
+		this.supabaseService.assertNoError(error);
+		if (!joinee) throw new Error('Unable to create joinee');
 		return {
 			accessCode,
-			displayId: joinee.displayId,
+			displayId: joinee.display_id,
 			id: joinee.id,
-			templateId: joinee.templateId,
+			templateId: joinee.template_id,
 		};
 	}
 }

@@ -52,7 +52,6 @@ downloads, welcome-link sharing, role-aware login screens, redirect-safe
 ```bash
 pnpm install
 cp .env.example .env
-pnpm --filter @onboarding/api prisma:generate
 pnpm dev
 ```
 
@@ -82,19 +81,22 @@ Never commit `.env` files. For GitHub Actions, use
 [`.env.ci.example`](./.env.ci.example) as a safe reference and add the real
 values as repository secrets. 🔐
 
-| Name                            | Used By | Purpose                                                   |
-| ------------------------------- | ------- | --------------------------------------------------------- |
-| `DATABASE_URL`                  | API     | PostgreSQL connection URL                                 |
-| `GEMINI_API_KEY`                | API     | Gemini document extraction key                            |
-| `JOINEE_JWT_SECRET`             | API     | Joinee token secret, at least 32 characters               |
-| `RESEND_API_KEY`                | API     | Notification email key                                    |
-| `SUPABASE_JWT_SECRET`           | API     | Recruiter JWT verification secret, at least 32 characters |
-| `SUPABASE_SERVICE_ROLE_KEY`     | API     | Server-only Supabase service role key                     |
-| `SUPABASE_URL`                  | API     | Supabase project URL                                      |
-| `WEB_ORIGIN`                    | API     | Allowed browser origin                                    |
-| `NEXT_PUBLIC_API_URL`           | Web     | Browser-facing API URL                                    |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Web     | Browser-safe Supabase anonymous key                       |
-| `NEXT_PUBLIC_SUPABASE_URL`      | Web     | Browser-facing Supabase project URL                       |
+| Name                                   | Used By | Purpose                                     |
+| -------------------------------------- | ------- | ------------------------------------------- |
+| `JOINEE_JWT_SECRET`                    | API     | Joinee token secret, at least 32 characters |
+| `SUPABASE_SECRET_KEY`                  | API     | Server-only Supabase secret key             |
+| `SUPABASE_URL`                         | API     | Supabase project URL                        |
+| `WEB_ORIGIN`                           | API     | Allowed browser origin                      |
+| `NEXT_PUBLIC_API_URL`                  | Web     | Browser-facing API URL                      |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Web     | Browser-safe Supabase publishable key       |
+| `NEXT_PUBLIC_SUPABASE_URL`             | Web     | Browser-facing Supabase project URL         |
+
+Optional integrations:
+
+| Name             | Used By | Purpose                        |
+| ---------------- | ------- | ------------------------------ |
+| `GEMINI_API_KEY` | API     | Gemini document extraction key |
+| `RESEND_API_KEY` | API     | Notification email key         |
 
 ## 🧭 Architecture
 
@@ -112,14 +114,14 @@ flowchart LR
 | ---------- | ------------------------------------------------------------------ |
 | Monorepo   | Turborepo, pnpm workspaces                                         |
 | Web        | Next.js 14, React 18, SCSS modules, Zustand, Jotai, TanStack Query |
-| API        | NestJS 10, Fastify, Prisma, Passport, Swagger                      |
+| API        | NestJS 10, Fastify, Supabase JS, Passport, Swagger                 |
 | Documents  | Gemini, `pdf-lib`, React PDF, signature canvas                     |
 | Quality    | Vitest, Playwright, ESLint, Prettier, pnpm audit, TruffleHog, Snyk |
-| Deployment | Railway API and Vercel web app                                     |
+| Deployment | Platform-neutral GitHub Actions checks                             |
 
 ```text
 apps/
-├── api/       NestJS API, Prisma schema, and API tests
+├── api/       NestJS API, Supabase integration, and API tests
 └── web/       Next.js app, SCSS modules, components, and Playwright flows
 
 packages/
@@ -131,64 +133,50 @@ packages/
 
 ## 🧪 Commands
 
-| Command                                     | Purpose                        |
-| ------------------------------------------- | ------------------------------ |
-| `pnpm dev`                                  | Start the workspace            |
-| `pnpm build`                                | Build apps and packages        |
-| `pnpm lint`                                 | Run ESLint                     |
-| `pnpm format`                               | Check Prettier formatting      |
-| `pnpm test`                                 | Run automated tests            |
-| `pnpm typecheck`                            | Run TypeScript checks          |
-| `pnpm validate:env`                         | Validate environment variables |
-| `pnpm --filter @onboarding/web e2e`         | Run Playwright flows           |
-| `pnpm --filter @onboarding/api prisma:seed` | Seed development data          |
+| Command                             | Purpose                        |
+| ----------------------------------- | ------------------------------ |
+| `pnpm dev`                          | Start the workspace            |
+| `pnpm build`                        | Build apps and packages        |
+| `pnpm lint`                         | Run ESLint                     |
+| `pnpm format`                       | Check Prettier formatting      |
+| `pnpm test`                         | Run automated tests            |
+| `pnpm typecheck`                    | Run TypeScript checks          |
+| `pnpm validate:env`                 | Validate environment variables |
+| `pnpm --filter @onboarding/web e2e` | Run Playwright flows           |
 
 ## 🚢 GitHub Actions Setup
 
 Add these repository secrets under **Settings → Secrets and variables → Actions**
 before running deployments:
 
-| Secret                          | Required For                     |
-| ------------------------------- | -------------------------------- |
-| `DATABASE_URL`                  | Prisma deployment migrations     |
-| `GEMINI_API_KEY`                | Document extraction API          |
-| `JOINEE_JWT_SECRET`             | Joinee access tokens             |
-| `RESEND_API_KEY`                | Notification emails              |
-| `SUPABASE_JWT_SECRET`           | Recruiter token verification     |
-| `SUPABASE_SERVICE_ROLE_KEY`     | Server-side Supabase operations  |
-| `SUPABASE_URL`                  | Server-side Supabase operations  |
-| `WEB_ORIGIN`                    | API browser-origin allowlist     |
-| `NEXT_PUBLIC_API_URL`           | Browser API endpoint             |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Browser-safe Supabase access     |
-| `NEXT_PUBLIC_SUPABASE_URL`      | Browser-facing Supabase endpoint |
-| `RAILWAY_TOKEN`                 | Railway API deployment           |
-| `VERCEL_TOKEN`                  | Vercel web deployment            |
-| `VERCEL_ORG_ID`                 | Vercel project selection         |
-| `VERCEL_PROJECT_ID`             | Vercel project selection         |
-| `SNYK_TOKEN`                    | Scheduled security scan          |
+| Secret                                 | Required For                     |
+| -------------------------------------- | -------------------------------- |
+| `JOINEE_JWT_SECRET`                    | Joinee access tokens             |
+| `SUPABASE_SECRET_KEY`                  | Server-side Supabase operations  |
+| `SUPABASE_URL`                         | Server-side Supabase operations  |
+| `WEB_ORIGIN`                           | API browser-origin allowlist     |
+| `NEXT_PUBLIC_API_URL`                  | Browser API endpoint             |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Browser-safe Supabase access     |
+| `NEXT_PUBLIC_SUPABASE_URL`             | Browser-facing Supabase endpoint |
+| `SNYK_TOKEN`                           | Scheduled security scan          |
+
+Optional deployment secrets: `GEMINI_API_KEY` enables document extraction and
+`RESEND_API_KEY` enables notification emails.
 
 | Workflow                                                                       | Trigger                              |
 | ------------------------------------------------------------------------------ | ------------------------------------ |
 | [CI](https://github.com/Moleesh/FirstDay/actions/workflows/ci.yml)             | Pull requests and manual runs        |
-| [Deploy](https://github.com/Moleesh/FirstDay/actions/workflows/deploy.yml)     | Pushes to `main`                     |
-| [Migrate](https://github.com/Moleesh/FirstDay/actions/workflows/migrate.yml)   | Manual migration deployments         |
 | [Security](https://github.com/Moleesh/FirstDay/actions/workflows/security.yml) | Mondays at 03:00 UTC and manual runs |
 
-> Prisma currently has a schema but no checked-in migration directory. Generate
-> and review the first migration before relying on `prisma:migrate:deploy` in a
-> production environment.
-
-For Supabase migrations from GitHub Actions, set `DATABASE_URL` to the
-**session pooler** connection string shown by Supabase Connect. Hosted runners
-may not reach the direct `db.PROJECT_REF.supabase.co:5432` hostname. The
-workflows validate this before invoking Prisma so configuration errors are
-reported clearly.
+Database schema changes live in [`supabase/migrations`](./supabase/migrations).
+Apply them through the Supabase dashboard or Supabase CLI before deploying API
+features that use new tables.
 
 ## 🛡️ Security Notes
 
 - Keep local secrets in `.env` and deployment secrets in GitHub Actions. 🔐
-- Keep service-role keys server-side only.
-- Use secrets of at least 32 characters for joinee and recruiter JWT signing.
+- Keep Supabase secret keys server-side only.
+- Use a secret of at least 32 characters for joinee JWT signing.
 - Trial credentials are for development reviews only.
 - The API includes Helmet, throttling, CSRF protection, audit logging, signed
   storage URLs, and server-side MIME validation.

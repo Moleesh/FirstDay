@@ -10,7 +10,7 @@
 		"lint": "eslint src --ext .ts,.tsx",
 		"test": "vitest run --coverage",
 		"typecheck": "tsc -p tsconfig.json --noEmit",
-		"validate:env": "tsx src/env.ts"
+		"validate:env": "node --env-file-if-exists=../../.env --import tsx src/env.ts"
 	},
 	"dependencies": {
 		"@onboarding/schemas": "workspace:*",
@@ -50,6 +50,7 @@
 		"msw": "^2.6.8",
 		"typescript": "^5.6.3",
 		"typescript-eslint": "^8.18.2",
+		"tsx": "^4.19.2",
 		"vitest": "^2.1.8"
 	}
 }

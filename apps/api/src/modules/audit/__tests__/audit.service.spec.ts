@@ -11,18 +11,19 @@ import { AuditService } from '@/modules/audit/audit.service';
 
 describe('AuditService', () => {
 	it('stores mutation audit events', async () => {
-		const create = vi.fn(async (): Promise<unknown> => ({}));
-		const service = new AuditService({ auditLog: { create } } as never);
+		const insert = vi.fn(async (): Promise<unknown> => ({ error: null }));
+		const service = new AuditService({
+			assertNoError: vi.fn(),
+			client: { from: vi.fn(() => ({ insert })) },
+		} as never);
 
 		await service.recordMutation('POST', '/joinees', 'recruiter-1');
 
-		expect(create).toHaveBeenCalledWith({
-			data: {
-				action: 'POST',
-				entityId: '/joinees',
-				entityType: 'HTTP_ROUTE',
-				recruiterId: 'recruiter-1',
-			},
+		expect(insert).toHaveBeenCalledWith({
+			action: 'POST',
+			entity_id: '/joinees',
+			entity_type: 'HTTP_ROUTE',
+			recruiter_id: 'recruiter-1',
 		});
 	});
 });

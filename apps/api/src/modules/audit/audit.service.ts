@@ -8,7 +8,7 @@
 
 import { Injectable } from '@nestjs/common';
 import winston from 'winston';
-import { PrismaService } from '@/prisma/prisma.service';
+import { SupabaseService } from '@/modules/supabase/supabase.service';
 
 @Injectable()
 export class AuditService {
@@ -16,7 +16,7 @@ export class AuditService {
 		transports: [new winston.transports.Console()],
 	});
 
-	constructor(private readonly prismaService: PrismaService) {}
+	constructor(private readonly supabaseService: SupabaseService) {}
 
 	/**
 	 * Records a mutation audit event.
@@ -26,14 +26,13 @@ export class AuditService {
 	 * @returns A promise that resolves once logged.
 	 */
 	async recordMutation(method: string, url: string, recruiterId?: string): Promise<void> {
-		await this.prismaService.auditLog.create({
-			data: {
-				action: method,
-				entityId: url,
-				entityType: 'HTTP_ROUTE',
-				recruiterId,
-			},
+		const { error } = await this.supabaseService.client.from('audit_logs').insert({
+			action: method,
+			entity_id: url,
+			entity_type: 'HTTP_ROUTE',
+			recruiter_id: recruiterId,
 		});
+		this.supabaseService.assertNoError(error);
 		this.logger.info('audit.mutation', { method, url, recruiterId });
 	}
 }
