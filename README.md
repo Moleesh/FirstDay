@@ -141,7 +141,7 @@ these environment secrets before running CI or deployments:
 | ------------------------------------------------------------------------------ | ------------------------------------------------ |
 | [CI](https://github.com/Moleesh/FirstDay/actions/workflows/ci.yml)             | Pushes to `main`, pull requests, and manual runs |
 | [Pages](https://github.com/Moleesh/FirstDay/actions/workflows/pages.yml)       | Pushes to `main` and manual runs                 |
-| [Security](https://github.com/Moleesh/FirstDay/actions/workflows/security.yml) | Mondays at 03:00 UTC and manual runs             |
+| [Security](https://github.com/Moleesh/FirstDay/actions/workflows/security.yml) | Daily at 03:00 UTC and manual runs               |
 
 Database schema changes live in [`supabase/migrations`](./supabase/migrations).
 Apply them through the Supabase dashboard or Supabase CLI before deploying
