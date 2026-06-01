@@ -10,13 +10,14 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
     timeout: 60_000,
-    testDir: 'src/tests/e2e',
+    testDir: 'src/tests/e2e/__tests__',
     use: {
         baseURL: 'http://127.0.0.1:3000',
         trace: 'on-first-retry',
     },
     webServer: {
-        command: 'corepack pnpm dev',
+        command:
+            "node -e \"require('node:fs').rmSync('.next', { recursive: true, force: true })\" && corepack pnpm dev",
         port: 3000,
         reuseExistingServer: true,
     },

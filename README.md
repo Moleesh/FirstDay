@@ -150,6 +150,10 @@ these environment secrets before running CI or deployments:
 | [Pages](https://github.com/Moleesh/FirstDay/actions/workflows/pages.yml)       | Pushes to `main` and manual runs                 |
 | [Security](https://github.com/Moleesh/FirstDay/actions/workflows/security.yml) | Daily at 03:00 UTC and manual runs               |
 
+CI validates environment variables, linting, formatting, TypeScript, unit tests,
+dependency audit results, committed secrets, the production build, and
+Playwright flows before a change is considered ready.
+
 Database schema changes live in [`supabase/migrations`](./supabase/migrations).
 Apply them through the Supabase dashboard or Supabase CLI before deploying
 features that use new tables.

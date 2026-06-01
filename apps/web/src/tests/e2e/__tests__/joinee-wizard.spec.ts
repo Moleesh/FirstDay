@@ -14,7 +14,7 @@ test('joinee wizard renders', async ({ page }) => {
     await page.getByPlaceholder('Access code').fill('firstday');
     await page.getByRole('button', { name: /Continue onboarding/ }).click();
     await page.waitForURL('**/onboarding/');
-    await expect(page.getByText('Joinee onboarding')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Joinee onboarding' })).toBeVisible();
     await page.getByRole('button', { exact: true, name: 'Next' }).click();
     await expect(page.getByText('Review fields')).toBeVisible();
 });

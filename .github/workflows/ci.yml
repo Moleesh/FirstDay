@@ -31,12 +31,11 @@ jobs:
             - run: pnpm validate:env
             - run: pnpm lint
             - run: pnpm format
+            - run: pnpm typecheck
             - run: pnpm test
             - run: pnpm audit:ci
             - uses: trufflesecurity/trufflehog@main
               with:
                   path: ./
-                  base: ${{ github.event.repository.default_branch }}
-                  head: HEAD
             - run: pnpm build
             - run: pnpm --filter @onboarding/web e2e

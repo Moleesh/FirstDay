@@ -19,7 +19,13 @@ export default defineConfig({
     },
     test: {
         environment: 'jsdom',
-        exclude: ['.next/**', 'coverage/**', 'out/**', 'src/tests/e2e/**', 'node_modules/**'],
+        exclude: [
+            '.next/**',
+            'coverage/**',
+            'out/**',
+            'src/tests/e2e/__tests__/**',
+            'node_modules/**',
+        ],
         globals: true,
         setupFiles: ['src/tests/setup.ts'],
     },
