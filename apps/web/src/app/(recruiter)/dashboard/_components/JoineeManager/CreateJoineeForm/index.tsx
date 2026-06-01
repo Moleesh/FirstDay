@@ -14,34 +14,34 @@ import { Button } from '@onboarding/ui';
 import { en } from '@/i18n/en';
 
 export function CreateJoineeForm({
-	onCreate,
+    onCreate,
 }: {
-	onCreate: (fullName: string) => void;
+    onCreate: (fullName: string) => void;
 }): JSX.Element {
-	const [fullName, setFullName] = useState('');
+    const [fullName, setFullName] = useState('');
 
-	function submit(event: FormEvent<HTMLFormElement>): void {
-		event.preventDefault();
-		const value = fullName.trim();
-		if (!value) {
-			return;
-		}
-		onCreate(value);
-		setFullName('');
-	}
+    function submit(event: FormEvent<HTMLFormElement>): void {
+        event.preventDefault();
+        const value = fullName.trim();
+        if (!value) {
+            return;
+        }
+        onCreate(value);
+        setFullName('');
+    }
 
-	return (
-		<form className="stack-sm" onSubmit={submit}>
-			<input
-				className="app-input"
-				onChange={(event) => setFullName(event.target.value)}
-				placeholder="Joinee full name"
-				value={fullName}
-			/>
-			<Button className="app-button app-button--primary" type="submit">
-				<Plus size={16} />
-				{en.createJoinee}
-			</Button>
-		</form>
-	);
+    return (
+        <form className="stack-sm" onSubmit={submit}>
+            <input
+                className="app-input"
+                onChange={(event) => setFullName(event.target.value)}
+                placeholder="Joinee full name"
+                value={fullName}
+            />
+            <Button className="app-button app-button--primary" type="submit">
+                <Plus size={16} />
+                {en.createJoinee}
+            </Button>
+        </form>
+    );
 }

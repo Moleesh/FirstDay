@@ -9,9 +9,9 @@
 import { PageReorder } from './PageReorder';
 
 export function StepPDFConsolidate(): JSX.Element {
-	return (
-		<div>
-			<PageReorder />
-		</div>
-	);
+    return (
+        <div>
+            <PageReorder />
+        </div>
+    );
 }

@@ -1,16 +1,16 @@
 {
-	"extends": "../../tsconfig.base.json",
-	"compilerOptions": {
-		"baseUrl": ".",
-		"experimentalDecorators": true,
-		"emitDecoratorMetadata": true,
-		"module": "ESNext",
-		"moduleResolution": "Bundler",
-		"outDir": "dist",
-		"paths": {
-			"@/*": ["src/*"]
-		},
-		"rootDir": "src"
-	},
-	"include": ["src/**/*.ts"]
+    "extends": "../../tsconfig.base.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "outDir": "dist",
+        "paths": {
+            "@/*": ["src/*"]
+        },
+        "rootDir": "src"
+    },
+    "include": ["src/**/*.ts"]
 }

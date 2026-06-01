@@ -10,33 +10,33 @@ import { beforeEach, describe, expect, it } from 'vitest';
 import { useSessionStore } from '@/stores/sessionStore';
 
 describe('useSessionStore', () => {
-	beforeEach(() => {
-		useSessionStore.setState({
-			hasHydrated: false,
-			role: undefined,
-			token: undefined,
-			userLabel: undefined,
-		});
-	});
+    beforeEach(() => {
+        useSessionStore.setState({
+            hasHydrated: false,
+            role: undefined,
+            token: undefined,
+            userLabel: undefined,
+        });
+    });
 
-	it('marks a new session as hydrated', () => {
-		useSessionStore.getState().setSession('recruiter', 'token', 'recruiter');
+    it('marks a new session as hydrated', () => {
+        useSessionStore.getState().setSession('recruiter', 'token', 'recruiter');
 
-		expect(useSessionStore.getState()).toMatchObject({
-			hasHydrated: true,
-			role: 'recruiter',
-			token: 'token',
-			userLabel: 'recruiter',
-		});
-	});
+        expect(useSessionStore.getState()).toMatchObject({
+            hasHydrated: true,
+            role: 'recruiter',
+            token: 'token',
+            userLabel: 'recruiter',
+        });
+    });
 
-	it('keeps hydration complete when clearing a session', () => {
-		useSessionStore.getState().clearSession();
+    it('keeps hydration complete when clearing a session', () => {
+        useSessionStore.getState().clearSession();
 
-		expect(useSessionStore.getState()).toMatchObject({
-			hasHydrated: true,
-			role: undefined,
-			token: undefined,
-		});
-	});
+        expect(useSessionStore.getState()).toMatchObject({
+            hasHydrated: true,
+            role: undefined,
+            token: undefined,
+        });
+    });
 });

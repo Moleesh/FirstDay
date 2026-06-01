@@ -16,5 +16,5 @@ export const ROLES_KEY = 'roles';
  * @returns A Nest metadata decorator.
  */
 export function Roles(...roles: string[]): ReturnType<typeof SetMetadata> {
-	return SetMetadata(ROLES_KEY, roles);
+    return SetMetadata(ROLES_KEY, roles);
 }

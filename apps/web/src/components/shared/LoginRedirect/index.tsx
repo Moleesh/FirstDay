@@ -13,8 +13,8 @@ import { useEffect } from 'react';
 import { useSessionStore } from '@/stores/sessionStore';
 
 const ROLE_DESTINATIONS = {
-	joinee: '/onboarding',
-	recruiter: '/dashboard',
+    joinee: '/onboarding',
+    recruiter: '/dashboard',
 } as const;
 
 /**
@@ -22,16 +22,16 @@ const ROLE_DESTINATIONS = {
  * @returns No rendered UI.
  */
 export function LoginRedirect(): null {
-	const router = useRouter();
-	const hasHydrated = useSessionStore((state) => state.hasHydrated);
-	const role = useSessionStore((state) => state.role);
-	const token = useSessionStore((state) => state.token);
+    const router = useRouter();
+    const hasHydrated = useSessionStore((state) => state.hasHydrated);
+    const role = useSessionStore((state) => state.role);
+    const token = useSessionStore((state) => state.token);
 
-	useEffect(() => {
-		if (hasHydrated && role && token) {
-			router.replace(ROLE_DESTINATIONS[role]);
-		}
-	}, [hasHydrated, role, router, token]);
+    useEffect(() => {
+        if (hasHydrated && role && token) {
+            router.replace(ROLE_DESTINATIONS[role]);
+        }
+    }, [hasHydrated, role, router, token]);
 
-	return null;
+    return null;
 }

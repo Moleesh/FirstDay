@@ -13,14 +13,14 @@ import { RecruitersService } from '@/modules/recruiters/recruiters.service';
 @UseGuards(JwtAuthGuard)
 @Controller('recruiters')
 export class RecruitersController {
-	constructor(private readonly recruitersService: RecruitersService) {}
+    constructor(private readonly recruitersService: RecruitersService) {}
 
-	/**
-	 * Returns dashboard summary counts.
-	 * @returns Recruiter dashboard metrics.
-	 */
-	@Get('dashboard')
-	dashboard(): Promise<unknown> {
-		return this.recruitersService.dashboard();
-	}
+    /**
+     * Returns dashboard summary counts.
+     * @returns Recruiter dashboard metrics.
+     */
+    @Get('dashboard')
+    dashboard(): Promise<unknown> {
+        return this.recruitersService.dashboard();
+    }
 }

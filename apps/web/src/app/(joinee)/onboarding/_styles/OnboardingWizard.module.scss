@@ -5,168 +5,168 @@
  */
 
 .shell {
-	background: linear-gradient(135deg, rgba(15, 118, 110, 0.1), transparent 34%), #f6f7f9;
-	color: #172033;
-	min-height: 100vh;
-	padding: 28px;
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.1), transparent 34%), #f6f7f9;
+    color: #172033;
+    min-height: 100vh;
+    padding: 28px;
 }
 
 .layout {
-	display: grid;
-	gap: 22px;
-	margin: 0 auto;
-	max-width: 960px;
+    display: grid;
+    gap: 22px;
+    margin: 0 auto;
+    max-width: 960px;
 }
 
 .header,
 .card,
 .nav {
-	background: #ffffff;
-	border: 1px solid #d9dee7;
-	border-radius: 14px;
+    background: #ffffff;
+    border: 1px solid #d9dee7;
+    border-radius: 14px;
 }
 
 .header {
-	display: grid;
-	gap: 14px;
-	padding: 24px;
+    display: grid;
+    gap: 14px;
+    padding: 24px;
 }
 
 .eyebrow {
-	color: #0f766e;
-	font-size: 0.78rem;
-	font-weight: 800;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
+    color: #0f766e;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .title {
-	font-size: clamp(2rem, 5vw, 3.2rem);
-	letter-spacing: -0.045em;
-	line-height: 1.02;
-	margin: 0;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    margin: 0;
 }
 
 .copy {
-	color: #657084;
-	line-height: 1.6;
-	margin: 0 0 16px;
-	max-width: 680px;
+    color: #657084;
+    line-height: 1.6;
+    margin: 0 0 16px;
+    max-width: 680px;
 }
 
 .card {
-	box-shadow: 0 20px 60px rgba(23, 32, 51, 0.1);
-	display: grid;
-	gap: 18px;
-	min-height: 360px;
-	padding: 26px;
+    box-shadow: 0 20px 60px rgba(23, 32, 51, 0.1);
+    display: grid;
+    gap: 18px;
+    min-height: 360px;
+    padding: 26px;
 }
 
 .stepHeader,
 .nav,
 .consent {
-	align-items: center;
-	display: flex;
+    align-items: center;
+    display: flex;
 }
 
 .stepHeader,
 .nav {
-	justify-content: space-between;
+    justify-content: space-between;
 }
 
 .stepTitle {
-	font-size: 1.25rem;
-	font-weight: 800;
-	margin: 0 0 12px;
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0 0 12px;
 }
 
 .stepMeta {
-	background: #eef2f7;
-	border-radius: 999px;
-	color: #475569;
-	font-size: 0.76rem;
-	font-weight: 800;
-	padding: 6px 10px;
+    background: #eef2f7;
+    border-radius: 999px;
+    color: #475569;
+    font-size: 0.76rem;
+    font-weight: 800;
+    padding: 6px 10px;
 }
 
 .nav {
-	gap: 12px;
-	padding: 14px;
+    gap: 12px;
+    padding: 14px;
 }
 
 .navGroup,
 .consent {
-	display: flex;
-	gap: 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .fieldGrid {
-	display: grid;
-	gap: 12px;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .field {
-	display: grid;
-	gap: 6px;
+    display: grid;
+    gap: 6px;
 }
 
 .label {
-	color: #334155;
-	font-size: 0.82rem;
-	font-weight: 800;
+    color: #334155;
+    font-size: 0.82rem;
+    font-weight: 800;
 }
 
 .input,
 .fileInput {
-	border: 1px solid #cfd6e2;
-	border-radius: 8px;
-	font: inherit;
-	min-height: 44px;
-	padding: 10px 12px;
+    border: 1px solid #cfd6e2;
+    border-radius: 8px;
+    font: inherit;
+    min-height: 44px;
+    padding: 10px 12px;
 }
 
 .note {
-	background: #e8f6f3;
-	border: 1px solid #bfe7df;
-	border-radius: 8px;
-	color: #0f5f59;
-	margin-bottom: 12px;
-	padding: 12px;
+    background: #e8f6f3;
+    border: 1px solid #bfe7df;
+    border-radius: 8px;
+    color: #0f5f59;
+    margin-bottom: 12px;
+    padding: 12px;
 }
 
 .cameraButton {
-	background: transparent;
-	border: 1px solid #cfd6e2;
-	border-radius: 8px;
-	margin-top: 12px;
-	padding: 8px 12px;
+    background: transparent;
+    border: 1px solid #cfd6e2;
+    border-radius: 8px;
+    margin-top: 12px;
+    padding: 8px 12px;
 }
 
 .signaturePad {
-	background: #ffffff;
-	border: 1px solid #cfd6e2;
-	border-radius: 8px;
-	margin-top: 12px;
-	overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #cfd6e2;
+    border-radius: 8px;
+    margin-top: 12px;
+    overflow: hidden;
 }
 
 .signatureCanvas {
-	height: 128px;
-	width: 100%;
+    height: 128px;
+    width: 100%;
 }
 
 @media (max-width: 720px) {
-	.shell {
-		padding: 18px;
-	}
+    .shell {
+        padding: 18px;
+    }
 
-	.fieldGrid {
-		grid-template-columns: 1fr;
-	}
+    .fieldGrid {
+        grid-template-columns: 1fr;
+    }
 
-	.nav {
-		align-items: stretch;
-		flex-direction: column;
-	}
+    .nav {
+        align-items: stretch;
+        flex-direction: column;
+    }
 }

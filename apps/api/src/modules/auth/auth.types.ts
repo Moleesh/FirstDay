@@ -7,9 +7,9 @@
  */
 
 export type RecruiterPrincipal = {
-	id: string;
-	orgId: string;
-	role: string;
-	supabaseUserId: string;
-	email: string;
+    id: string;
+    orgId: string;
+    role: string;
+    supabaseUserId: string;
+    email: string;
 };

@@ -7,5 +7,5 @@
  */
 
 export function useDocumentBuilder(): { fieldCount: number } {
-	return { fieldCount: 1 };
+    return { fieldCount: 1 };
 }

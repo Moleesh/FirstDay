@@ -16,9 +16,9 @@ import { RouteGuard } from '@/components/shared/RouteGuard';
  * @returns Dashboard layout.
  */
 export default function DashboardLayout({ children }: { children: ReactNode }): JSX.Element {
-	return (
-		<RouteGuard requiredRole="recruiter">
-			<AppShell>{children}</AppShell>
-		</RouteGuard>
-	);
+    return (
+        <RouteGuard requiredRole="recruiter">
+            <AppShell>{children}</AppShell>
+        </RouteGuard>
+    );
 }

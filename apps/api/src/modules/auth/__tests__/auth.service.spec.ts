@@ -9,7 +9,7 @@
 import { describe, expect, it } from 'vitest';
 
 describe('AuthService', () => {
-	it('keeps recruiter auth delegated to Supabase', () => {
-		expect('supabase').toBe('supabase');
-	});
+    it('keeps recruiter auth delegated to Supabase', () => {
+        expect('supabase').toBe('supabase');
+    });
 });

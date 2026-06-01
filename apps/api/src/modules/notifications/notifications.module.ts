@@ -10,7 +10,7 @@ import { Module } from '@nestjs/common';
 import { EmailService } from '@/modules/notifications/email.service';
 
 @Module({
-	providers: [EmailService],
-	exports: [EmailService],
+    providers: [EmailService],
+    exports: [EmailService],
 })
 export class NotificationsModule {}

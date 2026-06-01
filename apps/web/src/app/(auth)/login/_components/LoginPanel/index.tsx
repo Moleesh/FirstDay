@@ -21,32 +21,32 @@ import { en } from '@/i18n/en';
  * @returns Interactive login panel.
  */
 export function LoginPanel({
-	initialRole = 'recruiter',
+    initialRole = 'recruiter',
 }: {
-	initialRole?: LoginRole;
+    initialRole?: LoginRole;
 }): JSX.Element {
-	const [role, setRole] = useState<LoginRole>(initialRole);
-	const content = role === 'recruiter' ? en.loginRecruiterAside : en.loginJoineeAside;
+    const [role, setRole] = useState<LoginRole>(initialRole);
+    const content = role === 'recruiter' ? en.loginRecruiterAside : en.loginJoineeAside;
 
-	return (
-		<>
-			<aside className={`${styles.aside} ${styles[`aside--${role}`]}`}>
-				<span className={styles.eyebrow}>{content.eyebrow}</span>
-				<h1 className={styles.title}>{content.title}</h1>
-				<p className={styles.copy}>{content.copy}</p>
-				<ul className={styles.checklist}>
-					{content.points.map((point) => (
-						<li key={point}>
-							<CheckCircle2 size={18} />
-							{point}
-						</li>
-					))}
-				</ul>
-			</aside>
-			<div className={styles.panel}>
-				<LoginToggle selectedRole={role} onRoleChange={setRole} />
-				{role === 'recruiter' ? <RecruiterForm /> : <JoineeForm />}
-			</div>
-		</>
-	);
+    return (
+        <>
+            <aside className={`${styles.aside} ${styles[`aside--${role}`]}`}>
+                <span className={styles.eyebrow}>{content.eyebrow}</span>
+                <h1 className={styles.title}>{content.title}</h1>
+                <p className={styles.copy}>{content.copy}</p>
+                <ul className={styles.checklist}>
+                    {content.points.map((point) => (
+                        <li key={point}>
+                            <CheckCircle2 size={18} />
+                            {point}
+                        </li>
+                    ))}
+                </ul>
+            </aside>
+            <div className={styles.panel}>
+                <LoginToggle selectedRole={role} onRoleChange={setRole} />
+                {role === 'recruiter' ? <RecruiterForm /> : <JoineeForm />}
+            </div>
+        </>
+    );
 }

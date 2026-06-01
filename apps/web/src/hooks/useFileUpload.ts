@@ -7,9 +7,9 @@
  */
 
 export function useFileUpload(): { upload: (file: File) => Promise<string> } {
-	return {
-		async upload(file: File): Promise<string> {
-			return file.name;
-		},
-	};
+    return {
+        async upload(file: File): Promise<string> {
+            return file.name;
+        },
+    };
 }

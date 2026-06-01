@@ -5,110 +5,110 @@
  */
 
 .shell {
-	background:
-		linear-gradient(135deg, rgba(15, 118, 110, 0.12), transparent 34%),
-		linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
-	color: #172033;
-	display: grid;
-	min-height: 100vh;
-	padding: 28px;
-	place-items: center;
+    background:
+        linear-gradient(135deg, rgba(15, 118, 110, 0.12), transparent 34%),
+        linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
+    color: #172033;
+    display: grid;
+    min-height: 100vh;
+    padding: 28px;
+    place-items: center;
 }
 
 .layout {
-	background: #ffffff;
-	border: 1px solid #d9dee7;
-	border-radius: 18px;
-	box-shadow: 0 24px 80px rgba(23, 32, 51, 0.12);
-	display: grid;
-	grid-template-columns: minmax(260px, 0.82fr) minmax(320px, 1fr);
-	max-width: 980px;
-	overflow: hidden;
-	width: 100%;
+    background: #ffffff;
+    border: 1px solid #d9dee7;
+    border-radius: 18px;
+    box-shadow: 0 24px 80px rgba(23, 32, 51, 0.12);
+    display: grid;
+    grid-template-columns: minmax(260px, 0.82fr) minmax(320px, 1fr);
+    max-width: 980px;
+    overflow: hidden;
+    width: 100%;
 }
 
 .aside {
-	background:
-		radial-gradient(circle at top right, rgba(56, 189, 248, 0.2), transparent 15rem), #172033;
-	color: #ffffff;
-	display: grid;
-	gap: 22px;
-	padding: 34px;
-	transition: background 220ms ease;
+    background:
+        radial-gradient(circle at top right, rgba(56, 189, 248, 0.2), transparent 15rem), #172033;
+    color: #ffffff;
+    display: grid;
+    gap: 22px;
+    padding: 34px;
+    transition: background 220ms ease;
 }
 
 .aside--joinee {
-	background:
-		radial-gradient(circle at top right, rgba(251, 191, 36, 0.22), transparent 15rem),
-		linear-gradient(145deg, #134e4a, #172033);
+    background:
+        radial-gradient(circle at top right, rgba(251, 191, 36, 0.22), transparent 15rem),
+        linear-gradient(145deg, #134e4a, #172033);
 }
 
 .eyebrow {
-	color: #9dd8d1;
-	font-size: 0.78rem;
-	font-weight: 800;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
+    color: #9dd8d1;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .title {
-	font-size: clamp(2rem, 5vw, 3.2rem);
-	letter-spacing: -0.045em;
-	line-height: 1.02;
-	margin: 0;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    margin: 0;
 }
 
 .copy {
-	color: #cbd5e1;
-	line-height: 1.65;
-	margin: 0;
+    color: #cbd5e1;
+    line-height: 1.65;
+    margin: 0;
 }
 
 .checklist {
-	display: grid;
-	gap: 10px;
-	margin: 0;
-	padding: 0;
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
 }
 
 .checklist li {
-	align-items: center;
-	display: flex;
-	gap: 10px;
-	list-style: none;
+    align-items: center;
+    display: flex;
+    gap: 10px;
+    list-style: none;
 }
 
 .checklist svg {
-	color: #9dd8d1;
-	flex: 0 0 auto;
+    color: #9dd8d1;
+    flex: 0 0 auto;
 }
 
 .aside--joinee .checklist svg,
 .aside--joinee .eyebrow {
-	color: #fde68a;
+    color: #fde68a;
 }
 
 .panel {
-	display: grid;
-	gap: 22px;
-	padding: 34px;
+    display: grid;
+    gap: 22px;
+    padding: 34px;
 }
 
 .dev {
-	margin-top: auto;
+    margin-top: auto;
 }
 
 @media (max-width: 760px) {
-	.shell {
-		padding: 18px;
-	}
+    .shell {
+        padding: 18px;
+    }
 
-	.layout {
-		grid-template-columns: 1fr;
-	}
+    .layout {
+        grid-template-columns: 1fr;
+    }
 
-	.aside,
-	.panel {
-		padding: 24px;
-	}
+    .aside,
+    .panel {
+        padding: 24px;
+    }
 }

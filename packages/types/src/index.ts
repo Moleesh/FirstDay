@@ -8,19 +8,19 @@
 
 import type { z } from 'zod';
 import type {
-	auditLogSchema,
-	authTokenSchema,
-	createJoineeSchema,
-	documentTemplateSchema,
-	joineeLoginSchema,
-	joineeSchema,
-	organisationSchema,
-	recruiterSchema,
-	recruiterSessionSchema,
-	signatureSchema,
-	submissionDraftSchema,
-	submissionSchema,
-	uploadMetadataSchema,
+    auditLogSchema,
+    authTokenSchema,
+    createJoineeSchema,
+    documentTemplateSchema,
+    joineeLoginSchema,
+    joineeSchema,
+    organisationSchema,
+    recruiterSchema,
+    recruiterSessionSchema,
+    signatureSchema,
+    submissionDraftSchema,
+    submissionSchema,
+    uploadMetadataSchema,
 } from '@onboarding/schemas';
 
 export type AuditLogInput = z.infer<typeof auditLogSchema>;

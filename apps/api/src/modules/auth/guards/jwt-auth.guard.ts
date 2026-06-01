@@ -11,16 +11,16 @@ import { AuthService } from '@/modules/auth/auth.service';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
-	constructor(private readonly authService: AuthService) {}
+    constructor(private readonly authService: AuthService) {}
 
-	async canActivate(context: ExecutionContext): Promise<boolean> {
-		const request = context.switchToHttp().getRequest<{
-			headers: { authorization?: string };
-			user?: unknown;
-		}>();
-		const accessToken = request.headers.authorization?.replace(/^Bearer\s+/i, '');
-		if (!accessToken) return false;
-		request.user = await this.authService.getRecruiterFromAccessToken(accessToken);
-		return true;
-	}
+    async canActivate(context: ExecutionContext): Promise<boolean> {
+        const request = context.switchToHttp().getRequest<{
+            headers: { authorization?: string };
+            user?: unknown;
+        }>();
+        const accessToken = request.headers.authorization?.replace(/^Bearer\s+/i, '');
+        if (!accessToken) return false;
+        request.user = await this.authService.getRecruiterFromAccessToken(accessToken);
+        return true;
+    }
 }

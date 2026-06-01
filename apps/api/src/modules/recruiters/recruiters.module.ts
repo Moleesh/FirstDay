@@ -11,8 +11,8 @@ import { RecruitersController } from '@/modules/recruiters/recruiters.controller
 import { RecruitersService } from '@/modules/recruiters/recruiters.service';
 
 @Module({
-	controllers: [RecruitersController],
-	providers: [RecruitersService],
-	exports: [RecruitersService],
+    controllers: [RecruitersController],
+    providers: [RecruitersService],
+    exports: [RecruitersService],
 })
 export class RecruitersModule {}

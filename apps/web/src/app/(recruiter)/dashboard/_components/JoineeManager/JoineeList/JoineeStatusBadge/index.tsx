@@ -7,5 +7,5 @@
  */
 
 export function JoineeStatusBadge({ status }: { status: string }): JSX.Element {
-	return <span className="status-badge">{status}</span>;
+    return <span className="status-badge">{status}</span>;
 }

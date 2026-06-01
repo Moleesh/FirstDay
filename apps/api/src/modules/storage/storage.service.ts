@@ -14,20 +14,20 @@ const DEFAULT_BUCKET = 'onboarding';
 
 @Injectable()
 export class StorageService {
-	constructor(private readonly supabaseService: SupabaseService) {}
+    constructor(private readonly supabaseService: SupabaseService) {}
 
-	/**
-	 * Creates a one-hour signed URL for a storage object.
-	 * @param path - Storage object path.
-	 * @returns Signed URL string.
-	 */
-	async createSignedUrl(path: string): Promise<string> {
-		const { data, error } = await this.supabaseService.client.storage
-			.from(DEFAULT_BUCKET)
-			.createSignedUrl(path, SIGNED_URL_EXPIRY_SECONDS);
-		if (error || !data.signedUrl) {
-			throw new Error('Unable to create signed URL');
-		}
-		return data.signedUrl;
-	}
+    /**
+     * Creates a one-hour signed URL for a storage object.
+     * @param path - Storage object path.
+     * @returns Signed URL string.
+     */
+    async createSignedUrl(path: string): Promise<string> {
+        const { data, error } = await this.supabaseService.client.storage
+            .from(DEFAULT_BUCKET)
+            .createSignedUrl(path, SIGNED_URL_EXPIRY_SECONDS);
+        if (error || !data.signedUrl) {
+            throw new Error('Unable to create signed URL');
+        }
+        return data.signedUrl;
+    }
 }

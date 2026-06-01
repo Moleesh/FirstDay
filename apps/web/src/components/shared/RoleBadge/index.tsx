@@ -7,5 +7,5 @@
  */
 
 export function RoleBadge({ role }: { role: string }): JSX.Element {
-	return <span className="role-badge">{role}</span>;
+    return <span className="role-badge">{role}</span>;
 }

@@ -10,8 +10,8 @@ import { describe, expect, it } from 'vitest';
 import { PdfService } from '@/modules/documents/pdf.service';
 
 describe('PdfService', () => {
-	it('creates PDF bytes', async () => {
-		const bytes = await new PdfService().createUnsignedPdf('Onboarding');
-		expect(bytes.length).toBeGreaterThan(0);
-	});
+    it('creates PDF bytes', async () => {
+        const bytes = await new PdfService().createUnsignedPdf('Onboarding');
+        expect(bytes.length).toBeGreaterThan(0);
+    });
 });

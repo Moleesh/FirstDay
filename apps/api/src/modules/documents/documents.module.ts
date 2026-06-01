@@ -14,8 +14,8 @@ import { SubmissionService } from '@/modules/documents/submission.service';
 import { TemplatesService } from '@/modules/documents/templates.service';
 
 @Module({
-	controllers: [DocumentsController],
-	providers: [AiExtractService, PdfService, SubmissionService, TemplatesService],
-	exports: [AiExtractService, PdfService, SubmissionService, TemplatesService],
+    controllers: [DocumentsController],
+    providers: [AiExtractService, PdfService, SubmissionService, TemplatesService],
+    exports: [AiExtractService, PdfService, SubmissionService, TemplatesService],
 })
 export class DocumentsModule {}

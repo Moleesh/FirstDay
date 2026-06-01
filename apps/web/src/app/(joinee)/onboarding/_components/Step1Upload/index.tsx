@@ -11,12 +11,12 @@ import styles from '@/app/(joinee)/onboarding/_styles/OnboardingWizard.module.sc
 import { en } from '@/i18n/en';
 
 export function Step1Upload(): JSX.Element {
-	return (
-		<section>
-			<h3 className={styles.stepTitle}>{en.uploadDocuments}</h3>
-			<p className={styles.copy}>{en.uploadDocumentsCopy}</p>
-			<input className={styles.fileInput} type="file" />
-			<CameraCapture />
-		</section>
-	);
+    return (
+        <section>
+            <h3 className={styles.stepTitle}>{en.uploadDocuments}</h3>
+            <p className={styles.copy}>{en.uploadDocumentsCopy}</p>
+            <input className={styles.fileInput} type="file" />
+            <CameraCapture />
+        </section>
+    );
 }

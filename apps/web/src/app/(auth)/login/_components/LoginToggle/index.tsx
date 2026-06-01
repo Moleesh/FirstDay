@@ -14,8 +14,8 @@ import { en } from '@/i18n/en';
 export type LoginRole = 'recruiter' | 'joinee';
 
 export type LoginToggleProps = {
-	selectedRole: LoginRole;
-	onRoleChange: (role: LoginRole) => void;
+    selectedRole: LoginRole;
+    onRoleChange: (role: LoginRole) => void;
 };
 
 /**
@@ -24,24 +24,24 @@ export type LoginToggleProps = {
  * @returns Login role toggle element.
  */
 export function LoginToggle({ selectedRole, onRoleChange }: LoginToggleProps): JSX.Element {
-	return (
-		<div className={styles.toggle} aria-label="Login role">
-			<button
-				aria-pressed={selectedRole === 'recruiter'}
-				data-active={selectedRole === 'recruiter'}
-				onClick={() => onRoleChange('recruiter')}
-				type="button"
-			>
-				{en.loginRecruiter}
-			</button>
-			<button
-				aria-pressed={selectedRole === 'joinee'}
-				data-active={selectedRole === 'joinee'}
-				onClick={() => onRoleChange('joinee')}
-				type="button"
-			>
-				{en.loginJoinee}
-			</button>
-		</div>
-	);
+    return (
+        <div className={styles.toggle} aria-label="Login role">
+            <button
+                aria-pressed={selectedRole === 'recruiter'}
+                data-active={selectedRole === 'recruiter'}
+                onClick={() => onRoleChange('recruiter')}
+                type="button"
+            >
+                {en.loginRecruiter}
+            </button>
+            <button
+                aria-pressed={selectedRole === 'joinee'}
+                data-active={selectedRole === 'joinee'}
+                onClick={() => onRoleChange('joinee')}
+                type="button"
+            >
+                {en.loginJoinee}
+            </button>
+        </div>
+    );
 }

@@ -5,22 +5,22 @@
  */
 
 .scroll-progress {
-	background: color-mix(in srgb, var(--border) 72%, transparent);
-	border-radius: 999px;
-	bottom: 1rem;
-	pointer-events: none;
-	position: fixed;
-	right: 0.35rem;
-	top: 5rem;
-	width: 0.26rem;
-	z-index: 20;
+    background: color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: 999px;
+    bottom: 1rem;
+    pointer-events: none;
+    position: fixed;
+    right: 0.35rem;
+    top: 5rem;
+    width: 0.26rem;
+    z-index: 20;
 }
 
 .scroll-progress span {
-	background: var(--accent);
-	border-radius: inherit;
-	display: block;
-	height: 100%;
-	transform-origin: top;
-	transition: transform 120ms ease-out;
+    background: var(--accent);
+    border-radius: inherit;
+    display: block;
+    height: 100%;
+    transform-origin: top;
+    transition: transform 120ms ease-out;
 }

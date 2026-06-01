@@ -9,7 +9,7 @@
 import { useEffect } from 'react';
 
 export function useRealtime(channelName: string): void {
-	useEffect(() => {
-		void channelName;
-	}, [channelName]);
+    useEffect(() => {
+        void channelName;
+    }, [channelName]);
 }

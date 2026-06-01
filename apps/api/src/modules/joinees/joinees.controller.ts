@@ -16,27 +16,27 @@ import { JoineesService } from '@/modules/joinees/joinees.service';
 @UseGuards(JwtAuthGuard)
 @Controller('joinees')
 export class JoineesController {
-	constructor(private readonly joineesService: JoineesService) {}
+    constructor(private readonly joineesService: JoineesService) {}
 
-	/**
-	 * Lists joinees for the recruiter dashboard.
-	 * @returns Joinee status summaries.
-	 */
-	@Get()
-	list(@CurrentUser() user: RecruiterPrincipal): Promise<unknown> {
-		return this.joineesService.list(user);
-	}
+    /**
+     * Lists joinees for the recruiter dashboard.
+     * @returns Joinee status summaries.
+     */
+    @Get()
+    list(@CurrentUser() user: RecruiterPrincipal): Promise<unknown> {
+        return this.joineesService.list(user);
+    }
 
-	/**
-	 * Creates a joinee assignment.
-	 * @param dto - Joinee creation input.
-	 * @returns Created joinee summary.
-	 */
-	@Post()
-	create(
-		@Body() dto: CreateJoineeDto,
-		@CurrentUser() user: RecruiterPrincipal,
-	): Promise<unknown> {
-		return this.joineesService.create(dto, user);
-	}
+    /**
+     * Creates a joinee assignment.
+     * @param dto - Joinee creation input.
+     * @returns Created joinee summary.
+     */
+    @Post()
+    create(
+        @Body() dto: CreateJoineeDto,
+        @CurrentUser() user: RecruiterPrincipal,
+    ): Promise<unknown> {
+        return this.joineesService.create(dto, user);
+    }
 }

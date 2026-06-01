@@ -10,15 +10,15 @@ import { describe, expect, it } from 'vitest';
 import { joineeLoginSchema, uploadMetadataSchema } from '../index';
 
 describe('shared schemas', () => {
-	it('accepts valid joinee display IDs', () => {
-		expect(
-			joineeLoginSchema.parse({ displayId: 'JN-2026-00042', accessCode: '123456' }),
-		).toBeTruthy();
-	});
+    it('accepts valid joinee display IDs', () => {
+        expect(
+            joineeLoginSchema.parse({ displayId: 'JN-2026-00042', accessCode: '123456' }),
+        ).toBeTruthy();
+    });
 
-	it('rejects unsupported upload MIME types', () => {
-		expect(() =>
-			uploadMetadataSchema.parse({ label: 'doc', mimeType: 'text/html', size: 1 }),
-		).toThrow();
-	});
+    it('rejects unsupported upload MIME types', () => {
+        expect(() =>
+            uploadMetadataSchema.parse({ label: 'doc', mimeType: 'text/html', size: 1 }),
+        ).toThrow();
+    });
 });

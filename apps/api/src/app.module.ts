@@ -24,30 +24,30 @@ import { RequestIdInterceptor } from '@/common/interceptors/request-id.intercept
 import { TransformInterceptor } from '@/common/interceptors/transform.interceptor';
 
 @Module({
-	imports: [
-		ThrottlerModule.forRoot([{ ttl: 60_000, limit: 10 }]),
-		AuditModule,
-		AuthModule,
-		DocumentsModule,
-		JoineesModule,
-		NotificationsModule,
-		SupabaseModule,
-		RecruitersModule,
-		StorageModule,
-	],
-	providers: [
-		{ provide: APP_FILTER, useClass: GlobalExceptionFilter },
-		{ provide: APP_INTERCEPTOR, useClass: RequestIdInterceptor },
-		{ provide: APP_INTERCEPTOR, useClass: AuditInterceptor },
-		{ provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
-	],
+    imports: [
+        ThrottlerModule.forRoot([{ ttl: 60_000, limit: 10 }]),
+        AuditModule,
+        AuthModule,
+        DocumentsModule,
+        JoineesModule,
+        NotificationsModule,
+        SupabaseModule,
+        RecruitersModule,
+        StorageModule,
+    ],
+    providers: [
+        { provide: APP_FILTER, useClass: GlobalExceptionFilter },
+        { provide: APP_INTERCEPTOR, useClass: RequestIdInterceptor },
+        { provide: APP_INTERCEPTOR, useClass: AuditInterceptor },
+        { provide: APP_INTERCEPTOR, useClass: TransformInterceptor },
+    ],
 })
 export class AppModule implements NestModule {
-	/**
-	 * Registers CSRF checks for state-changing routes.
-	 * @param consumer - Nest middleware consumer.
-	 */
-	configure(consumer: MiddlewareConsumer): void {
-		consumer.apply(CsrfMiddleware).forRoutes('*');
-	}
+    /**
+     * Registers CSRF checks for state-changing routes.
+     * @param consumer - Nest middleware consumer.
+     */
+    configure(consumer: MiddlewareConsumer): void {
+        consumer.apply(CsrfMiddleware).forRoutes('*');
+    }
 }

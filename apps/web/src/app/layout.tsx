@@ -16,11 +16,11 @@ import '@/styles/globals.scss';
  * @returns Root layout element.
  */
 export default function RootLayout({ children }: { children: ReactNode }): JSX.Element {
-	return (
-		<html lang="en">
-			<body>
-				<ThemeProvider>{children}</ThemeProvider>
-			</body>
-		</html>
-	);
+    return (
+        <html lang="en">
+            <body>
+                <ThemeProvider>{children}</ThemeProvider>
+            </body>
+        </html>
+    );
 }

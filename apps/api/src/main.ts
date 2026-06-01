@@ -18,13 +18,13 @@ import { AppModule } from '@/app.module';
  * @returns A promise that resolves once the server is listening.
  */
 async function bootstrap(): Promise<void> {
-	const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
-	app.use(helmet());
-	app.enableCors({ origin: process.env.WEB_ORIGIN, credentials: true });
-	app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
-	const config = new DocumentBuilder().setTitle('FirstDay API').setVersion('1.0.0').build();
-	SwaggerModule.setup('docs', app, SwaggerModule.createDocument(app, config));
-	await app.listen(Number(process.env.PORT ?? 4000), '0.0.0.0');
+    const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter());
+    app.use(helmet());
+    app.enableCors({ origin: process.env.WEB_ORIGIN, credentials: true });
+    app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
+    const config = new DocumentBuilder().setTitle('FirstDay API').setVersion('1.0.0').build();
+    SwaggerModule.setup('docs', app, SwaggerModule.createDocument(app, config));
+    await app.listen(Number(process.env.PORT ?? 4000), '0.0.0.0');
 }
 
 void bootstrap();

@@ -5,22 +5,22 @@
  */
 
 .toggle {
-	background: white;
-	border: 1px solid #d9dee7;
-	border-radius: 8px;
-	display: grid;
-	gap: 4px;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	padding: 4px;
+    background: white;
+    border: 1px solid #d9dee7;
+    border-radius: 8px;
+    display: grid;
+    gap: 4px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 4px;
 }
 
 .toggle button {
-	border-radius: 6px;
-	font-size: 0.875rem;
-	min-height: 36px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    min-height: 36px;
 }
 
 .toggle button[data-active='true'] {
-	background: #172033;
-	color: white;
+    background: #172033;
+    color: white;
 }

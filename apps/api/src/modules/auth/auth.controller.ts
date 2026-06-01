@@ -13,25 +13,25 @@ import { RecruiterLoginDto } from '@/modules/auth/dto/recruiter-login.dto';
 
 @Controller('auth')
 export class AuthController {
-	constructor(private readonly authService: AuthService) {}
+    constructor(private readonly authService: AuthService) {}
 
-	/**
-	 * Exchanges a verified Supabase recruiter session for API principal data.
-	 * @param dto - Supabase recruiter session payload.
-	 * @returns Recruiter principal.
-	 */
-	@Post('recruiter/session')
-	exchangeRecruiterSession(@Body() dto: RecruiterLoginDto): Promise<unknown> {
-		return this.authService.exchangeRecruiterSession(dto);
-	}
+    /**
+     * Exchanges a verified Supabase recruiter session for API principal data.
+     * @param dto - Supabase recruiter session payload.
+     * @returns Recruiter principal.
+     */
+    @Post('recruiter/session')
+    exchangeRecruiterSession(@Body() dto: RecruiterLoginDto): Promise<unknown> {
+        return this.authService.exchangeRecruiterSession(dto);
+    }
 
-	/**
-	 * Authenticates a joinee by display ID and access code.
-	 * @param dto - Joinee login credentials.
-	 * @returns Verified joinee identity.
-	 */
-	@Post('joinee/login')
-	loginJoinee(@Body() dto: JoineeLoginDto): Promise<unknown> {
-		return this.authService.loginJoinee(dto);
-	}
+    /**
+     * Authenticates a joinee by display ID and access code.
+     * @param dto - Joinee login credentials.
+     * @returns Verified joinee identity.
+     */
+    @Post('joinee/login')
+    loginJoinee(@Body() dto: JoineeLoginDto): Promise<unknown> {
+        return this.authService.loginJoinee(dto);
+    }
 }

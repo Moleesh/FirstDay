@@ -12,10 +12,10 @@ export const recruiterRoleSchema = z.enum(['ADMIN', 'RECRUITER']);
 export const joineeStatusSchema = z.enum(['PENDING', 'IN_PROGRESS', 'COMPLETED']);
 export const fieldTypeSchema = z.enum(['TEXT', 'MULTISELECT', 'BULLET']);
 export const auditActionSchema = z.enum([
-	'CREATE_JOINEE',
-	'ASSIGN_TEMPLATE',
-	'CREATE_TEMPLATE',
-	'UPDATE_TEMPLATE',
-	'VIEW_SUBMISSION',
-	'COMPLETE_SUBMISSION',
+    'CREATE_JOINEE',
+    'ASSIGN_TEMPLATE',
+    'CREATE_TEMPLATE',
+    'UPDATE_TEMPLATE',
+    'VIEW_SUBMISSION',
+    'COMPLETE_SUBMISSION',
 ]);

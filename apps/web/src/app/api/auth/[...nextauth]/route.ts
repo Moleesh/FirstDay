@@ -14,7 +14,7 @@ import { NextResponse, type NextRequest } from 'next/server';
  * @returns A proxy response.
  */
 export async function GET(request: NextRequest): Promise<NextResponse> {
-	return NextResponse.json({ ok: true, path: request.nextUrl.pathname });
+    return NextResponse.json({ ok: true, path: request.nextUrl.pathname });
 }
 
 /**
@@ -23,5 +23,5 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
  * @returns A proxy response.
  */
 export async function POST(request: NextRequest): Promise<NextResponse> {
-	return NextResponse.json({ ok: true, path: request.nextUrl.pathname });
+    return NextResponse.json({ ok: true, path: request.nextUrl.pathname });
 }

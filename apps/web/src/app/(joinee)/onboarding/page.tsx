@@ -13,12 +13,12 @@ import { Step4Download } from '@/app/(joinee)/onboarding/_components/Step4Downlo
 import { WizardShell } from '@/app/(joinee)/onboarding/_components/WizardShell';
 
 export default function OnboardingPage(): JSX.Element {
-	return (
-		<WizardShell>
-			<Step1Upload />
-			<Step2Fields />
-			<Step3Sign />
-			<Step4Download />
-		</WizardShell>
-	);
+    return (
+        <WizardShell>
+            <Step1Upload />
+            <Step2Fields />
+            <Step3Sign />
+            <Step4Download />
+        </WizardShell>
+    );
 }
