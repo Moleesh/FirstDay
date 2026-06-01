@@ -14,18 +14,12 @@ import styles from '@/app/(auth)/login/_styles/LoginPage.module.scss';
  * Renders the login page.
  * @returns Login page element.
  */
-export default function LoginPage({
-    searchParams,
-}: {
-    searchParams?: { role?: string };
-}): JSX.Element {
-    const initialRole = searchParams?.role === 'joinee' ? 'joinee' : 'recruiter';
-
+export default function LoginPage(): JSX.Element {
     return (
         <main className={styles.shell}>
             <LoginRedirect />
             <section className={styles.layout}>
-                <LoginPanel initialRole={initialRole} />
+                <LoginPanel />
             </section>
         </main>
     );

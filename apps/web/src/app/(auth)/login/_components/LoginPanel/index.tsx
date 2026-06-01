@@ -8,7 +8,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { JoineeForm } from '@/app/(auth)/login/_components/JoineeForm';
 import { LoginToggle, type LoginRole } from '@/app/(auth)/login/_components/LoginToggle';
@@ -20,13 +20,17 @@ import { en } from '@/i18n/en';
  * Renders the selected role's login form.
  * @returns Interactive login panel.
  */
-export function LoginPanel({
-    initialRole = 'recruiter',
-}: {
-    initialRole?: LoginRole;
-}): JSX.Element {
-    const [role, setRole] = useState<LoginRole>(initialRole);
+export function LoginPanel(): JSX.Element {
+    const [role, setRole] = useState<LoginRole>('recruiter');
     const content = role === 'recruiter' ? en.loginRecruiterAside : en.loginJoineeAside;
+
+    useEffect(() => {
+        const requestedRole = new URLSearchParams(window.location.search).get('role');
+
+        if (requestedRole === 'joinee') {
+            setRole('joinee');
+        }
+    }, []);
 
     return (
         <>

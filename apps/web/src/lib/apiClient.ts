@@ -1,7 +1,7 @@
 /**
  * @format
  * @module ApiClient
- * @description Typed client helpers for web-to-API authentication calls.
+ * @description Trial authentication helpers for the static GitHub Pages app.
  * @author auto
  * @since 1.0.0
  */
@@ -9,7 +9,6 @@
 import { joineeLoginSchema } from '@onboarding/schemas';
 import type { JoineeLogin } from '@onboarding/types';
 
-const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000').replace(/\/+$/, '');
 const DEMO_TOKEN = 'demo-session-token';
 const DEV_JOINEE_ACCESS_CODE = 'firstday';
 const DEV_JOINEE_DISPLAY_ID = 'JN-2026-00042';
@@ -33,7 +32,7 @@ export async function loginRecruiter(
 }
 
 /**
- * Authenticates a joinee against the API.
+ * Authenticates the hard-coded development joinee account.
  * @param input - Joinee login credentials.
  * @returns Session token and redirect path.
  */
@@ -46,17 +45,6 @@ export async function loginJoinee(
         payload.accessCode === DEV_JOINEE_ACCESS_CODE
     ) {
         return { redirectTo: '/onboarding', token: DEMO_TOKEN };
-    }
-    const response = await fetch(`${API_URL}/auth/joinee/login`, {
-        body: JSON.stringify(payload),
-        headers: { 'content-type': 'application/json', 'x-csrf-token': 'web-login' },
-        method: 'POST',
-    });
-    if (response.ok) {
-        const json = (await response.json()) as { data?: { joineeId?: string } };
-        if (json.data?.joineeId) {
-            return { redirectTo: '/onboarding', token: json.data.joineeId };
-        }
     }
     throw new Error('Invalid joinee credentials');
 }

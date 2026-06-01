@@ -4,23 +4,23 @@
  * @description Application-wide theme, reset, cursor, and scrollbar styles.
  */
 
-@import './variables';
-@import './theme-tokens';
-@import '../components/shared/FirstDayLogo/_styles/FirstDayLogo';
-@import '../components/shared/AppShell/_styles/AppShell';
-@import '../components/shared/ScrollProgress/_styles/ScrollProgress';
-@import '../components/shared/WizardProgress/_styles/WizardProgress';
-@import '../app/(joinee)/onboarding/_styles/Onboarding';
-@import '../app/(recruiter)/dashboard/_styles/Dashboard';
-@import '../app/(recruiter)/dashboard/_components/DocumentBuilder/_styles/DocumentBuilder';
-@import '../app/(recruiter)/dashboard/_components/DashboardTabs/_styles/DashboardTabs';
-@import '../app/(recruiter)/dashboard/_components/DocumentBuilder/StepChecklist/_styles/StepChecklist';
-@import '../app/(recruiter)/dashboard/_components/DocumentBuilder/StepFormBuilder/_styles/StepFormBuilder';
-@import '../app/(recruiter)/dashboard/_components/DocumentBuilder/StepPDFConsolidate/PageReorder/_styles/PageReorder';
-@import '../app/(recruiter)/dashboard/_components/JoineeManager/DocumentViewer/_styles/DocumentViewer';
-@import '../app/(recruiter)/dashboard/_components/JoineeManager/JoineeList/_styles/JoineeList';
-@import '../app/(recruiter)/dashboard/_components/RecruiterManager/_styles/RecruiterManager';
-@import '../../../../packages/ui/src/_styles/Button';
+@use './variables';
+@use './theme-tokens';
+@use '../components/shared/FirstDayLogo/_styles/FirstDayLogo';
+@use '../components/shared/AppShell/_styles/AppShell';
+@use '../components/shared/ScrollProgress/_styles/ScrollProgress';
+@use '../components/shared/WizardProgress/_styles/WizardProgress';
+@use '../app/(joinee)/onboarding/_styles/Onboarding';
+@use '../app/(recruiter)/dashboard/_styles/Dashboard';
+@use '../app/(recruiter)/dashboard/_components/DocumentBuilder/_styles/DocumentBuilder';
+@use '../app/(recruiter)/dashboard/_components/DashboardTabs/_styles/DashboardTabs';
+@use '../app/(recruiter)/dashboard/_components/DocumentBuilder/StepChecklist/_styles/StepChecklist';
+@use '../app/(recruiter)/dashboard/_components/DocumentBuilder/StepFormBuilder/_styles/StepFormBuilder';
+@use '../app/(recruiter)/dashboard/_components/DocumentBuilder/StepPDFConsolidate/PageReorder/_styles/PageReorder';
+@use '../app/(recruiter)/dashboard/_components/JoineeManager/DocumentViewer/_styles/DocumentViewer';
+@use '../app/(recruiter)/dashboard/_components/JoineeManager/JoineeList/_styles/JoineeList';
+@use '../app/(recruiter)/dashboard/_components/RecruiterManager/_styles/RecruiterManager';
+@use '../../../../packages/ui/src/_styles/Button';
 
 * {
     box-sizing: border-box;

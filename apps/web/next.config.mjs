@@ -7,26 +7,14 @@
  */
 
 const nextConfig = {
+    allowedDevOrigins: ['127.0.0.1'],
     basePath: '/FirstDay',
-    reactStrictMode: true,
-    async redirects() {
-        return [
-            { basePath: false, destination: '/FirstDay', permanent: false, source: '/' },
-            { basePath: false, destination: '/FirstDay/login', permanent: false, source: '/login' },
-            {
-                basePath: false,
-                destination: '/FirstDay/dashboard',
-                permanent: false,
-                source: '/dashboard',
-            },
-            {
-                basePath: false,
-                destination: '/FirstDay/onboarding',
-                permanent: false,
-                source: '/onboarding',
-            },
-        ];
+    images: {
+        unoptimized: true,
     },
+    output: 'export',
+    reactStrictMode: true,
+    trailingSlash: true,
     transpilePackages: ['@onboarding/ui', '@onboarding/schemas', '@onboarding/types'],
     sassOptions: {
         includePaths: ['./src/styles'],
