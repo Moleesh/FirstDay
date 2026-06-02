@@ -22,7 +22,7 @@ import { useSessionStore } from '@/stores/sessionStore';
  * Renders recruiter authentication controls.
  * @returns Recruiter login form.
  */
-export function RecruiterForm(): JSX.Element {
+export const RecruiterForm = (): JSX.Element => {
     const router = useRouter();
     const login = useRecruiterLogin();
     const setSession = useSessionStore((state) => state.setSession);
@@ -34,7 +34,7 @@ export function RecruiterForm(): JSX.Element {
      * Handles recruiter sign-in form submission.
      * @param event - Form submit event.
      */
-    async function submit(event: FormEvent<HTMLFormElement>): Promise<void> {
+    const submit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
         event.preventDefault();
         if (!username.trim() || password.length < 6) {
             setMessage(en.loginRecruiterError);
@@ -48,7 +48,7 @@ export function RecruiterForm(): JSX.Element {
         } catch {
             setMessage(en.loginRecruiterError);
         }
-    }
+    };
 
     return (
         <form className={styles.form} onSubmit={submit}>
@@ -82,4 +82,4 @@ export function RecruiterForm(): JSX.Element {
             </Button>
         </form>
     );
-}
+};

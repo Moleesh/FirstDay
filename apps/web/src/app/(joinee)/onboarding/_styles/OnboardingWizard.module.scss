@@ -5,61 +5,94 @@
  */
 
 .shell {
-    background: linear-gradient(135deg, rgba(15, 118, 110, 0.1), transparent 34%), #f6f7f9;
-    color: #172033;
-    min-height: 100vh;
-    padding: 28px;
+    color: var(--ink);
+    display: grid;
+    margin: auto;
+    max-width: 1500px;
+    padding: 1.5rem;
 }
 
 .layout {
     display: grid;
-    gap: 22px;
-    margin: 0 auto;
-    max-width: 960px;
-}
-
-.header,
-.card,
-.nav {
-    background: #ffffff;
-    border: 1px solid #d9dee7;
-    border-radius: 14px;
+    gap: 1.25rem;
 }
 
 .header {
+    align-items: center;
+    background: linear-gradient(130deg, var(--accent-strong), var(--accent));
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    overflow: hidden;
+    padding: 1.5rem;
+}
+
+.headerCopy {
     display: grid;
-    gap: 14px;
-    padding: 24px;
+    gap: 0.35rem;
+    max-width: 48rem;
 }
 
 .eyebrow {
-    color: #0f766e;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
 .title {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    letter-spacing: -0.045em;
-    line-height: 1.02;
+    font-size: clamp(2rem, 5vw, 3.1rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
     margin: 0;
 }
 
 .copy {
-    color: #657084;
     line-height: 1.6;
-    margin: 0 0 16px;
-    max-width: 680px;
+    margin: 0;
+    opacity: 0.82;
+}
+
+.progressCard {
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1rem;
+    display: grid;
+    gap: 0.8rem;
+    min-width: 18rem;
+    padding: 1rem;
+}
+
+.progressMeta {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.stepLabel {
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.card,
+.nav {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow);
 }
 
 .card {
-    box-shadow: 0 20px 60px rgba(23, 32, 51, 0.1);
     display: grid;
     gap: 18px;
     min-height: 360px;
-    padding: 26px;
+    padding: 1.5rem;
 }
 
 .stepHeader,
@@ -81,9 +114,9 @@
 }
 
 .stepMeta {
-    background: #eef2f7;
+    background: var(--accent-soft);
     border-radius: 999px;
-    color: #475569;
+    color: var(--accent-strong);
     font-size: 0.76rem;
     font-weight: 800;
     padding: 6px 10px;
@@ -91,7 +124,7 @@
 
 .nav {
     gap: 12px;
-    padding: 14px;
+    padding: 1rem 1.25rem;
 }
 
 .navGroup,
@@ -158,15 +191,21 @@
 
 @media (max-width: 720px) {
     .shell {
-        padding: 18px;
+        padding: 1rem;
+    }
+
+    .header,
+    .nav {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .fieldGrid {
         grid-template-columns: 1fr;
     }
 
-    .nav {
-        align-items: stretch;
-        flex-direction: column;
+    .progressCard {
+        min-width: 0;
+        width: 100%;
     }
 }

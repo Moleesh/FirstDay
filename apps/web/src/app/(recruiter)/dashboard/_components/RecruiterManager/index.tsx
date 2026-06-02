@@ -28,12 +28,12 @@ const initialRecruiters: RecruiterSummary[] = [
  * Renders admin recruiter management controls.
  * @returns Recruiter manager workspace.
  */
-export function RecruiterManager(): JSX.Element {
+export const RecruiterManager = (): JSX.Element => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [recruiters, setRecruiters] = useState(initialRecruiters);
 
-    function submit(event: FormEvent<HTMLFormElement>): void {
+    const submit = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
         const recruiterEmail = email.trim();
         const recruiterName = name.trim();
@@ -44,7 +44,7 @@ export function RecruiterManager(): JSX.Element {
         ]);
         setEmail('');
         setName('');
-    }
+    };
 
     return (
         <section className="app-card stack-md">
@@ -93,4 +93,4 @@ export function RecruiterManager(): JSX.Element {
             </div>
         </section>
     );
-}
+};

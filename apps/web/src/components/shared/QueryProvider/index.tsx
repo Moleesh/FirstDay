@@ -17,8 +17,8 @@ import { type ReactNode, useState } from 'react';
  * @param props - Provider children.
  * @returns Query client provider.
  */
-export function QueryProvider({ children }: { children: ReactNode }): JSX.Element {
+export const QueryProvider = ({ children }: { children: ReactNode }): JSX.Element => {
     const [queryClient] = useState(() => new QueryClient());
 
     return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
-}
+};

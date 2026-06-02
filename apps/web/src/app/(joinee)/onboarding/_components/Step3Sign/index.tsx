@@ -11,7 +11,7 @@ import { SignaturePad } from './SignaturePad';
 import styles from '@/app/(joinee)/onboarding/_styles/OnboardingWizard.module.scss';
 import { en } from '@/i18n/en';
 
-export function Step3Sign(): JSX.Element {
+export const Step3Sign = (): JSX.Element => {
     return (
         <section>
             <h3 className={styles.stepTitle}>{en.signConsent}</h3>
@@ -21,4 +21,4 @@ export function Step3Sign(): JSX.Element {
             <SignaturePad />
         </section>
     );
-}
+};

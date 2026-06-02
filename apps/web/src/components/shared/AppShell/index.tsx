@@ -18,27 +18,53 @@ import { FirstDayLogo } from '@/components/shared/FirstDayLogo';
 import { ThemeMenu } from '@/components/shared/ThemeMenu';
 import { useSessionStore } from '@/stores/sessionStore';
 
-export function AppShell({ children }: { children: ReactNode }): JSX.Element {
+export type AppShellProps = {
+    breadcrumbLabel?: string;
+    breadcrumbLink?: string;
+    breadcrumbLinkLabel?: string;
+    children: ReactNode;
+    logoutHref?: string;
+    roleLabel?: string;
+    userFallbackLabel?: string;
+};
+
+const defaults = {
+    breadcrumbLabel: 'Recruiter workspace',
+    breadcrumbLink: '/dashboard',
+    logoutHref: '/login?role=recruiter',
+    roleLabel: 'ADMIN',
+    userFallbackLabel: 'Signed-in recruiter',
+} as const;
+
+export const AppShell = ({
+    breadcrumbLabel = defaults.breadcrumbLabel,
+    breadcrumbLink = defaults.breadcrumbLink,
+    breadcrumbLinkLabel = 'Dashboard',
+    children,
+    logoutHref = defaults.logoutHref,
+    roleLabel = defaults.roleLabel,
+    userFallbackLabel = defaults.userFallbackLabel,
+}: AppShellProps): JSX.Element => {
     const router = useRouter();
     const clearSession = useSessionStore((state) => state.clearSession);
-    const userLabel = useSessionStore((state) => state.userLabel) ?? 'Signed-in recruiter';
+    const userLabel = useSessionStore((state) => state.userLabel) ?? userFallbackLabel;
 
-    function logout(): void {
+    const logout = (): void => {
         clearSession();
-        router.replace('/login?role=recruiter');
-    }
+        router.replace(logoutHref);
+    };
 
     return (
         <div className="app-shell">
             <header className="app-header">
                 <div className="app-header__identity">
-                    <Link className="app-brand" href="/dashboard">
+                    <Link className="app-brand" href={breadcrumbLink}>
                         <FirstDayLogo size="compact" />
                     </Link>
                     <nav aria-label="Breadcrumb" className="app-breadcrumb">
-                        <Link href="/dashboard">Dashboard</Link>
+                        <Link href={breadcrumbLink}>{breadcrumbLinkLabel}</Link>
                         <span aria-hidden="true">/</span>
-                        <span>Recruiter workspace</span>
+                        <span>{breadcrumbLabel}</span>
                     </nav>
                 </div>
                 <div className="app-header__actions">
@@ -52,7 +78,7 @@ export function AppShell({ children }: { children: ReactNode }): JSX.Element {
                                 <span className="app-profile__label">Signed in as</span>
                                 <span className="app-profile__identity">
                                     <span className="app-user">{userLabel}</span>
-                                    <RoleBadge role="Admin" />
+                                    <RoleBadge role={roleLabel} />
                                 </span>
                             </span>
                         </div>
@@ -71,4 +97,4 @@ export function AppShell({ children }: { children: ReactNode }): JSX.Element {
             {children}
         </div>
     );
-}
+};

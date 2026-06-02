@@ -10,7 +10,6 @@
 @use '../components/shared/AppShell/_styles/AppShell';
 @use '../components/shared/ScrollProgress/_styles/ScrollProgress';
 @use '../components/shared/WizardProgress/_styles/WizardProgress';
-@use '../app/(joinee)/onboarding/_styles/Onboarding';
 @use '../app/(recruiter)/dashboard/_styles/Dashboard';
 @use '../app/(recruiter)/dashboard/_components/DocumentLibrary/_styles/DocumentLibrary';
 @use '../app/(recruiter)/dashboard/_components/DocumentBuilder/_styles/DocumentBuilder';
@@ -55,30 +54,27 @@ body {
 }
 
 .app-scroll-surface {
-    height: 100%;
+    height: 100vh;
     overflow-y: auto;
-    overscroll-behavior: none;
-    scrollbar-width: none;
-}
-
-.app-scroll-surface::-webkit-scrollbar {
-    display: none;
-}
-
-html {
+    overscroll-behavior: contain;
     scrollbar-color: var(--accent) var(--surface);
     scrollbar-width: thin;
 }
 
-html::-webkit-scrollbar {
+.app-scroll-surface::-webkit-scrollbar {
     width: 10px;
 }
 
-html::-webkit-scrollbar-track {
+html {
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+.app-scroll-surface::-webkit-scrollbar-track {
     background: var(--surface);
 }
 
-html::-webkit-scrollbar-thumb {
+.app-scroll-surface::-webkit-scrollbar-thumb {
     background: var(--accent);
     border: 2px solid var(--surface);
     border-radius: 999px;

@@ -21,12 +21,12 @@ export type JoineeSummary = {
     status: string;
 };
 
-export function JoineeManager(): JSX.Element {
+export const JoineeManager = (): JSX.Element => {
     const [joinees, setJoinees] = useState<Array<JoineeSummary>>([
         { displayId: 'JN-2026-00042', fullName: 'Demo joinee', status: 'PENDING' },
     ]);
 
-    function createJoinee(fullName: string): void {
+    const createJoinee = (fullName: string): void => {
         const sequence = joinees.length + 43;
         setJoinees((current) => [
             {
@@ -37,7 +37,7 @@ export function JoineeManager(): JSX.Element {
             },
             ...current,
         ]);
-    }
+    };
 
     return (
         <section className="app-card stack-md">
@@ -50,4 +50,4 @@ export function JoineeManager(): JSX.Element {
             <DocumentViewer />
         </section>
     );
-}
+};

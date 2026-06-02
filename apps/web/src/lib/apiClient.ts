@@ -26,19 +26,19 @@ export type LoginSession = {
  * @param password - Recruiter password.
  * @returns Session token and redirect path.
  */
-export async function loginRecruiter(username: string, password: string): Promise<LoginSession> {
+export const loginRecruiter = async (username: string, password: string): Promise<LoginSession> => {
     if (username !== DEV_RECRUITER_USERNAME || password !== DEV_RECRUITER_PASSWORD) {
         throw new Error('Invalid recruiter credentials');
     }
     return { redirectTo: '/dashboard', token: DEMO_TOKEN };
-}
+};
 
 /**
  * Authenticates the hard-coded development joinee account.
  * @param input - Joinee login credentials.
  * @returns Session token and redirect path.
  */
-export async function loginJoinee(input: JoineeLogin): Promise<LoginSession> {
+export const loginJoinee = async (input: JoineeLogin): Promise<LoginSession> => {
     const payload = joineeLoginSchema.parse(input);
     if (
         payload.displayId === DEV_JOINEE_DISPLAY_ID &&
@@ -47,4 +47,4 @@ export async function loginJoinee(input: JoineeLogin): Promise<LoginSession> {
         return { redirectTo: '/onboarding', token: DEMO_TOKEN };
     }
     throw new Error('Invalid joinee credentials');
-}
+};

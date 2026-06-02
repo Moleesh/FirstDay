@@ -21,15 +21,16 @@ import { en } from '@/i18n/en';
  * Renders the selected role's login form.
  * @returns Interactive login panel.
  */
-export function LoginPanel(): JSX.Element {
-    const [role, setRole] = useState<LoginRole>('recruiter');
+export const LoginPanel = ({ initialRole }: { initialRole: LoginRole }): JSX.Element => {
+    const [role, setRole] = useState<LoginRole>(initialRole);
     const content = role === 'recruiter' ? en.loginRecruiterAside : en.loginJoineeAside;
 
     useEffect(() => {
         const requestedRole = new URLSearchParams(window.location.search).get('role');
-
-        if (requestedRole === 'joinee') {
-            setRole('joinee');
+        if (requestedRole === 'joinee' || requestedRole === 'recruiter') {
+            setRole(requestedRole);
+        } else {
+            setRole('recruiter');
         }
     }, []);
 
@@ -54,4 +55,4 @@ export function LoginPanel(): JSX.Element {
             </div>
         </>
     );
-}
+};

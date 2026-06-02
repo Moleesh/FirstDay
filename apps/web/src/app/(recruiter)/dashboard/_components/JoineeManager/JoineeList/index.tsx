@@ -10,7 +10,7 @@ import type { JSX } from 'react';
 import { JoineeStatusBadge } from './JoineeStatusBadge';
 import type { JoineeSummary } from '@/app/(recruiter)/dashboard/_components/JoineeManager';
 
-export function JoineeList({ joinees }: { joinees: Array<JoineeSummary> }): JSX.Element {
+export const JoineeList = ({ joinees }: { joinees: Array<JoineeSummary> }): JSX.Element => {
     return (
         <div className="joinee-list">
             {joinees.map((joinee) => (
@@ -31,4 +31,4 @@ export function JoineeList({ joinees }: { joinees: Array<JoineeSummary> }): JSX.
             ))}
         </div>
     );
-}
+};

@@ -9,13 +9,13 @@
 import type { JSX } from 'react';
 import type { ReactNode } from 'react';
 
-export function FirstDayLogo({
+export const FirstDayLogo = ({
     meta,
     size = 'default',
 }: {
     meta?: ReactNode;
     size?: 'compact' | 'default';
-}): JSX.Element {
+}): JSX.Element => {
     return (
         <span className={`firstday-logo firstday-logo--${size}`}>
             <span className="firstday-logo__mark" aria-hidden="true">
@@ -34,4 +34,4 @@ export function FirstDayLogo({
             </span>
         </span>
     );
-}
+};

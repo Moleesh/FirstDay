@@ -10,7 +10,7 @@
 
 import type { JSX } from 'react';
 import { type ChangeEvent } from 'react';
-import { FileText, FileUp, FolderUp, Sparkles, X } from 'lucide-react';
+import { ChevronRight, FileText, FileUp, FolderUp, Sparkles, X } from 'lucide-react';
 import { Button } from '@onboarding/ui';
 import './_styles/StepDocumentUpload.scss';
 
@@ -100,7 +100,8 @@ export const StepDocumentUpload = ({
                 onClick={onContinueExtraction}
                 type="button"
             >
-                Continue with extraction
+                Next
+                <ChevronRight size={16} />
             </Button>
         </div>
     );

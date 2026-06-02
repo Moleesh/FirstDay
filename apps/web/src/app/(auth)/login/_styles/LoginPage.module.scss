@@ -6,21 +6,34 @@
 
 .shell {
     background:
-        radial-gradient(circle at 12% 18%, rgba(14, 165, 233, 0.22), transparent 24rem),
-        radial-gradient(circle at 88% 82%, rgba(15, 118, 110, 0.18), transparent 26rem),
-        linear-gradient(135deg, #dff6f4 0%, #f8fbff 48%, #e9f1ff 100%);
-    color: #172033;
+        radial-gradient(
+            circle at 16% 14%,
+            color-mix(in srgb, var(--accent) 18%, transparent),
+            transparent 22rem
+        ),
+        radial-gradient(
+            circle at 84% 86%,
+            color-mix(in srgb, var(--accent-strong) 14%, transparent),
+            transparent 26rem
+        ),
+        linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--accent-soft) 65%, white) 0%,
+            var(--surface) 58%,
+            #edf4ff 100%
+        );
+    color: var(--ink);
     display: grid;
     min-height: 100vh;
     overflow: hidden;
-    padding: 28px;
+    padding: 1.5rem;
     place-items: center;
     position: relative;
 }
 
 .shell::before,
 .shell::after {
-    border: 1px solid rgba(15, 118, 110, 0.12);
+    border: 1px solid color-mix(in srgb, var(--accent) 14%, transparent);
     border-radius: 999px;
     content: '';
     pointer-events: none;
@@ -43,12 +56,12 @@
 
 .layout {
     animation: modal-pop 320ms ease-out;
-    background: #ffffff;
-    border: 1px solid #d9dee7;
-    border-radius: 18px;
-    box-shadow: 0 24px 80px rgba(23, 32, 51, 0.12);
+    background: color-mix(in srgb, var(--card-solid) 88%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    box-shadow: var(--shadow);
     display: grid;
-    grid-template-columns: minmax(260px, 0.82fr) minmax(320px, 1fr);
+    grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1fr);
     max-width: 980px;
     overflow: hidden;
     position: relative;
@@ -58,10 +71,10 @@
 
 .close {
     align-items: center;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #d9dee7;
+    background: var(--card-solid);
+    border: 1px solid var(--border);
     border-radius: 999px;
-    color: #172033;
+    color: var(--ink);
     display: flex;
     height: 38px;
     justify-content: center;
@@ -76,43 +89,52 @@
 }
 
 .close:hover {
-    background: #e6f7f5;
+    background: color-mix(in srgb, var(--accent-soft) 55%, white);
     transform: rotate(5deg) scale(1.05);
 }
 
 .aside {
     background:
-        radial-gradient(circle at top right, rgba(56, 189, 248, 0.2), transparent 15rem), #172033;
+        radial-gradient(
+            circle at top right,
+            color-mix(in srgb, var(--accent-soft) 30%, transparent),
+            transparent 14rem
+        ),
+        linear-gradient(145deg, #0f766e, #1d4ed8);
     color: #ffffff;
     display: grid;
-    gap: 22px;
-    padding: 34px;
+    gap: 1.1rem;
+    padding: 2rem;
     transition: background 220ms ease;
 }
 
 .aside--joinee {
     background:
-        radial-gradient(circle at top right, rgba(251, 191, 36, 0.22), transparent 15rem),
-        linear-gradient(145deg, #134e4a, #172033);
+        radial-gradient(
+            circle at top right,
+            color-mix(in srgb, var(--accent-soft) 30%, transparent),
+            transparent 14rem
+        ),
+        linear-gradient(145deg, #0f766e, #1d4ed8);
 }
 
 .eyebrow {
-    color: #9dd8d1;
-    font-size: 0.78rem;
+    color: color-mix(in srgb, white 78%, var(--accent-soft));
+    font-size: 0.74rem;
     font-weight: 800;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
 .title {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    letter-spacing: -0.045em;
-    line-height: 1.02;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    letter-spacing: -0.05em;
+    line-height: 1;
     margin: 0;
 }
 
 .copy {
-    color: #cbd5e1;
+    color: color-mix(in srgb, white 82%, var(--accent-soft));
     line-height: 1.65;
     margin: 0;
 }
@@ -132,19 +154,22 @@
 }
 
 .checklist svg {
-    color: #9dd8d1;
+    color: color-mix(in srgb, white 78%, var(--accent-soft));
     flex: 0 0 auto;
 }
 
 .aside--joinee .checklist svg,
 .aside--joinee .eyebrow {
-    color: #fde68a;
+    color: color-mix(in srgb, white 82%, var(--accent-soft));
 }
 
 .panel {
     display: grid;
-    gap: 22px;
-    padding: 66px 34px 34px;
+    gap: 1.25rem;
+    padding: 4rem 2rem 2rem;
+    background:
+        linear-gradient(180deg, color-mix(in srgb, white 75%, transparent), transparent 28%),
+        var(--card-solid);
 }
 
 .dev {
@@ -153,20 +178,19 @@
 
 @media (max-width: 760px) {
     .shell {
-        padding: 18px;
+        padding: 1rem;
     }
 
     .layout {
         grid-template-columns: 1fr;
     }
 
-    .aside,
     .aside {
-        padding: 24px;
+        padding: 1.5rem;
     }
 
     .panel {
-        padding: 62px 24px 24px;
+        padding: 3.75rem 1.5rem 1.5rem;
     }
 }
 

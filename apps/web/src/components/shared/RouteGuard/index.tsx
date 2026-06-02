@@ -23,7 +23,7 @@ export type RouteGuardProps = {
  * @param props - Guard props and protected children.
  * @returns Protected content or a loading placeholder.
  */
-export function RouteGuard({ children, requiredRole }: RouteGuardProps): JSX.Element {
+export const RouteGuard = ({ children, requiredRole }: RouteGuardProps): JSX.Element => {
     const router = useRouter();
     const hasHydrated = useSessionStore((state) => state.hasHydrated);
     const role = useSessionStore((state) => state.role);
@@ -38,4 +38,4 @@ export function RouteGuard({ children, requiredRole }: RouteGuardProps): JSX.Ele
         return <main aria-busy="true" />;
     }
     return <>{children}</>;
-}
+};

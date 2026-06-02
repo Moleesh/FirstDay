@@ -24,7 +24,7 @@ const accents: Array<{ label: string; value: AccentTheme }> = [
     { label: 'Violet', value: 'violet' },
 ];
 
-export function ThemeMenu(): JSX.Element {
+export const ThemeMenu = (): JSX.Element => {
     const { accent, mode, setAccent, setMode } = useTheme();
 
     return (
@@ -58,4 +58,4 @@ export function ThemeMenu(): JSX.Element {
             </label>
         </div>
     );
-}
+};

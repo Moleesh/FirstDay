@@ -9,6 +9,16 @@
 const nextConfig = {
     allowedDevOrigins: ['127.0.0.1'],
     basePath: '/FirstDay',
+    async redirects() {
+        return [
+            {
+                basePath: false,
+                destination: '/FirstDay/',
+                permanent: false,
+                source: '/',
+            },
+        ];
+    },
     images: {
         unoptimized: true,
     },

@@ -21,7 +21,7 @@ const ROLE_DESTINATIONS = {
  * Sends authenticated users to the workspace for their stored role.
  * @returns No rendered UI.
  */
-export function LoginRedirect(): null {
+export const LoginRedirect = (): null => {
     const router = useRouter();
     const hasHydrated = useSessionStore((state) => state.hasHydrated);
     const role = useSessionStore((state) => state.role);
@@ -34,4 +34,4 @@ export function LoginRedirect(): null {
     }, [hasHydrated, role, router, token]);
 
     return null;
-}
+};

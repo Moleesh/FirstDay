@@ -14,7 +14,7 @@ import { en } from '@/i18n/en';
  * Renders recruiter dashboard.
  * @returns Dashboard page.
  */
-export default function DashboardPage(): JSX.Element {
+const DashboardPage = (): JSX.Element => {
     return (
         <main className="dashboard-page">
             <section className="dashboard-hero">
@@ -41,4 +41,6 @@ export default function DashboardPage(): JSX.Element {
             <DashboardTabs />
         </main>
     );
-}
+};
+
+export default DashboardPage;

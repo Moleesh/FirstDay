@@ -19,16 +19,16 @@ type RecruiterLogin = {
  * Creates a recruiter login mutation.
  * @returns Recruiter login mutation state.
  */
-export function useRecruiterLogin(): UseMutationResult<LoginSession, Error, RecruiterLogin> {
+export const useRecruiterLogin = (): UseMutationResult<LoginSession, Error, RecruiterLogin> => {
     return useMutation({
         mutationFn: ({ password, username }) => loginRecruiter(username, password),
     });
-}
+};
 
 /**
  * Creates a joinee login mutation.
  * @returns Joinee login mutation state.
  */
-export function useJoineeLogin(): UseMutationResult<LoginSession, Error, JoineeLogin> {
+export const useJoineeLogin = (): UseMutationResult<LoginSession, Error, JoineeLogin> => {
     return useMutation({ mutationFn: loginJoinee });
-}
+};

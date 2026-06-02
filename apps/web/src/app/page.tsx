@@ -22,7 +22,7 @@ import { en } from '@/i18n/en';
  * Renders the application entry screen.
  * @returns Home page element.
  */
-export default function Page(): JSX.Element {
+const Page = (): JSX.Element => {
     return (
         <main className={styles.shell}>
             <header className={styles.topbar}>
@@ -113,4 +113,6 @@ export default function Page(): JSX.Element {
             </section>
         </main>
     );
-}
+};
+
+export default Page;

@@ -8,12 +8,24 @@
 
 import type { JSX } from 'react';
 import type { ReactNode } from 'react';
+import { AppShell } from '@/components/shared/AppShell';
 import { RouteGuard } from '@/components/shared/RouteGuard';
 
-export default function OnboardingLayout({ children }: { children: ReactNode }): JSX.Element {
+const OnboardingLayout = ({ children }: { children: ReactNode }): JSX.Element => {
     return (
         <RouteGuard requiredRole="joinee">
-            <div className="onboarding-surface">{children}</div>
+            <AppShell
+                breadcrumbLabel="Joinee workspace"
+                breadcrumbLink="/onboarding"
+                breadcrumbLinkLabel="Onboarding"
+                logoutHref="/login?role=joinee"
+                roleLabel="JOINEE"
+                userFallbackLabel="Signed-in joinee"
+            >
+                {children}
+            </AppShell>
         </RouteGuard>
     );
-}
+};
+
+export default OnboardingLayout;

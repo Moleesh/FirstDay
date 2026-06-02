@@ -6,15 +6,15 @@
  * @since 1.0.0
  */
 
-import type { ReactElement } from 'react';
+import type { JSX } from 'react';
 
-export function WizardProgress({
+export const WizardProgress = ({
     currentStep,
     totalSteps,
 }: {
     currentStep: number;
     totalSteps: number;
-}): ReactElement {
+}): JSX.Element => {
     return (
         <div className="wizard-progress">
             <div
@@ -23,4 +23,4 @@ export function WizardProgress({
             />
         </div>
     );
-}
+};

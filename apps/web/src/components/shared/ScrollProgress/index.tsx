@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react';
  * Renders a vertical scroll progress rail for the app shell content.
  * @returns Scroll progress element.
  */
-export function ScrollProgress(): JSX.Element | null {
+export const ScrollProgress = (): JSX.Element | null => {
     const [progress, setProgress] = useState(0);
     const [scrollable, setScrollable] = useState(false);
 
@@ -24,22 +24,20 @@ export function ScrollProgress(): JSX.Element | null {
 
         if (!scroller) return;
 
-        const contentScroller = scroller;
-
-        function update(): void {
-            const limit = contentScroller.scrollHeight - contentScroller.clientHeight;
+        const update = (): void => {
+            const limit = scroller.scrollHeight - scroller.clientHeight;
             setScrollable(limit > 0);
-            setProgress(limit > 0 ? Math.min(contentScroller.scrollTop / limit, 1) : 0);
-        }
+            setProgress(limit > 0 ? Math.min(scroller.scrollTop / limit, 1) : 0);
+        };
 
         update();
         const observer = new ResizeObserver(update);
-        observer.observe(contentScroller);
-        contentScroller.addEventListener('scroll', update, { passive: true });
+        observer.observe(scroller);
+        scroller.addEventListener('scroll', update, { passive: true });
 
         return (): void => {
             observer.disconnect();
-            contentScroller.removeEventListener('scroll', update);
+            scroller.removeEventListener('scroll', update);
         };
     }, []);
 
@@ -50,4 +48,4 @@ export function ScrollProgress(): JSX.Element | null {
             <span style={{ transform: `scaleY(${Math.max(progress, 0.08)})` }} />
         </span>
     );
-}
+};

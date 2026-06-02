@@ -28,15 +28,17 @@ const tabs = [
  * Renders dashboard workspace tabs.
  * @returns Tabbed recruiter workspace.
  */
-export function DashboardTabs(): JSX.Element {
+export const DashboardTabs = (): JSX.Element => {
     const [activeTab, setActiveTab] = useState<Workspace>('documents');
     const [builderOpen, setBuilderOpen] = useState(false);
 
     useEffect((): (() => void) | undefined => {
         if (!builderOpen) return;
+
         const previousOverflow = document.body.style.overflow;
         document.body.style.overflow = 'hidden';
-        return () => {
+
+        return (): void => {
             document.body.style.overflow = previousOverflow;
         };
     }, [builderOpen]);
@@ -121,4 +123,4 @@ export function DashboardTabs(): JSX.Element {
             ) : null}
         </section>
     );
-}
+};

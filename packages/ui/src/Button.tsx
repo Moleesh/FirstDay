@@ -28,7 +28,7 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
  * @param props - Button rendering and variant props.
  * @returns A styled button element.
  */
-export function Button(props: ButtonProps): JSX.Element {
+export const Button = (props: ButtonProps): JSX.Element => {
     const { asChild, className, variant, ...buttonProps } = props;
     const Comp = asChild ? Slot : 'button';
     return (
@@ -37,4 +37,4 @@ export function Button(props: ButtonProps): JSX.Element {
             {...buttonProps}
         />
     );
-}
+};

@@ -5,22 +5,25 @@
  */
 
 .toggle {
-    background: white;
-    border: 1px solid #d9dee7;
-    border-radius: 8px;
+    background: color-mix(in srgb, var(--surface-raised) 88%, transparent);
+    border: 0;
+    border-radius: 1rem;
     display: grid;
     gap: 4px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding: 4px;
+    padding: 0.35rem;
 }
 
 .toggle button {
-    border-radius: 6px;
+    border: 0;
+    border-radius: 0.75rem;
     font-size: 0.875rem;
-    min-height: 36px;
+    min-height: 2.45rem;
+    background: transparent;
+    color: var(--ink);
 }
 
 .toggle button[data-active='true'] {
-    background: #172033;
+    background: linear-gradient(135deg, var(--accent-strong), var(--accent));
     color: white;
 }

@@ -12,23 +12,23 @@ import { useState } from 'react';
 
 const welcomeLink = 'https://moleesh.github.io/FirstDay/login?role=joinee';
 
-function downloadSample(name: string): void {
+const downloadSample = (name: string): void => {
     const content = `FirstDay trial document\n${name}\nJoinee: Demo joinee\nID: JN-2026-00042`;
     const link = document.createElement('a');
     link.href = URL.createObjectURL(new Blob([content], { type: 'application/pdf' }));
     link.download = name;
     link.click();
     URL.revokeObjectURL(link.href);
-}
+};
 
-export function DocumentViewer(): JSX.Element {
+export const DocumentViewer = (): JSX.Element => {
     const [copied, setCopied] = useState(false);
     const welcomeMessage = `Welcome to FirstDay. Complete your onboarding pack here: ${welcomeLink}`;
 
-    async function copyWelcomeMessage(): Promise<void> {
+    const copyWelcomeMessage = async (): Promise<void> => {
         await navigator.clipboard.writeText(welcomeMessage);
         setCopied(true);
-    }
+    };
 
     return (
         <section className="delivery-panel">
@@ -56,4 +56,4 @@ export function DocumentViewer(): JSX.Element {
             </div>
         </section>
     );
-}
+};

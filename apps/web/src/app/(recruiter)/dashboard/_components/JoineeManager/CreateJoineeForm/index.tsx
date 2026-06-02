@@ -14,14 +14,14 @@ import { Plus } from 'lucide-react';
 import { Button } from '@onboarding/ui';
 import { en } from '@/i18n/en';
 
-export function CreateJoineeForm({
+export const CreateJoineeForm = ({
     onCreate,
 }: {
     onCreate: (fullName: string) => void;
-}): JSX.Element {
+}): JSX.Element => {
     const [fullName, setFullName] = useState('');
 
-    function submit(event: FormEvent<HTMLFormElement>): void {
+    const submit = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
         const value = fullName.trim();
         if (!value) {
@@ -29,7 +29,7 @@ export function CreateJoineeForm({
         }
         onCreate(value);
         setFullName('');
-    }
+    };
 
     return (
         <form className="stack-sm" onSubmit={submit}>
@@ -45,4 +45,4 @@ export function CreateJoineeForm({
             </Button>
         </form>
     );
-}
+};

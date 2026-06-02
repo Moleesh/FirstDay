@@ -38,7 +38,7 @@ describe('DocumentBuilder', () => {
 
         expect(screen.getByRole('heading', { name: 'Required document' })).toBeInTheDocument();
         expect(screen.getByRole('button', { name: 'Back' })).toBeDisabled();
-        expect(screen.getByRole('button', { name: '3 AI extraction' })).toBeDisabled();
+        expect(screen.getByRole('button', { name: '3 Review extracted fields' })).toBeDisabled();
 
         await userEvent.click(screen.getByRole('button', { name: 'Next' }));
         expect(screen.getByRole('heading', { name: 'Upload documents' })).toBeInTheDocument();
@@ -48,10 +48,10 @@ describe('DocumentBuilder', () => {
             screen.getByLabelText('Upload source documents'),
             new File(['doc-1'], 'identity-proof.pdf', { type: 'application/pdf' }),
         );
-        await userEvent.click(screen.getByRole('button', { name: 'Continue with extraction' }));
-
         await userEvent.click(screen.getByRole('button', { name: 'Next' }));
-        expect(screen.getByRole('heading', { name: 'AI extraction' })).toBeInTheDocument();
+        expect(
+            screen.getByRole('heading', { name: 'Review extracted fields' }),
+        ).toBeInTheDocument();
 
         await userEvent.click(screen.getByRole('button', { name: 'Next' }));
         expect(screen.getByRole('heading', { name: 'PDF review' })).toBeInTheDocument();
@@ -72,9 +72,11 @@ describe('DocumentBuilder', () => {
         expect(screen.getByText('identity-proof.pdf')).toBeInTheDocument();
         expect(screen.getByText('employment-letter.docx')).toBeInTheDocument();
 
-        await userEvent.click(screen.getByRole('button', { name: 'Continue with extraction' }));
-        expect(screen.getByRole('heading', { name: 'AI extraction' })).toBeInTheDocument();
-        await userEvent.click(screen.getByRole('button', { name: 'Extract fields with AI' }));
+        await userEvent.click(screen.getByRole('button', { name: 'Next' }));
+        expect(
+            screen.getByRole('heading', { name: 'Review extracted fields' }),
+        ).toBeInTheDocument();
+        await userEvent.click(screen.getByRole('button', { name: 'Run AI extraction' }));
         expect(screen.getByText('Full name')).toBeInTheDocument();
         expect(screen.getByText('PAN number')).toBeInTheDocument();
     });
@@ -87,7 +89,7 @@ describe('DocumentBuilder', () => {
             screen.getByLabelText('Upload source documents'),
             new File(['source'], 'employment-record.pdf', { type: 'application/pdf' }),
         );
-        await userEvent.click(screen.getByRole('button', { name: 'Continue with extraction' }));
+        await userEvent.click(screen.getByRole('button', { name: 'Next' }));
         await userEvent.click(screen.getByRole('button', { name: 'Next' }));
         await userEvent.click(screen.getByRole('button', { name: 'Next' }));
 
@@ -125,8 +127,26 @@ describe('DocumentBuilder', () => {
             screen.getByLabelText('Upload source documents'),
             new File(['source'], 'employment-record.pdf', { type: 'application/pdf' }),
         );
-        await userEvent.click(screen.getByRole('button', { name: 'Continue with extraction' }));
+        await userEvent.click(screen.getByRole('button', { name: 'Next' }));
 
-        expect(screen.getByRole('heading', { name: 'AI extraction' })).toBeInTheDocument();
+        expect(
+            screen.getByRole('heading', { name: 'Review extracted fields' }),
+        ).toBeInTheDocument();
+    });
+
+    it('removes uploaded source documents from the upload step', async () => {
+        render(<DocumentBuilder />);
+
+        await userEvent.click(screen.getByRole('button', { name: 'Next' }));
+        await userEvent.upload(
+            screen.getByLabelText('Upload source documents'),
+            new File(['source'], 'employee-record.pdf', { type: 'application/pdf' }),
+        );
+
+        expect(screen.getByText('employee-record.pdf')).toBeInTheDocument();
+        await userEvent.click(screen.getByRole('button', { name: 'Remove employee-record.pdf' }));
+
+        expect(screen.queryByText('employee-record.pdf')).not.toBeInTheDocument();
+        expect(screen.getByRole('button', { name: 'Next' })).toBeDisabled();
     });
 });

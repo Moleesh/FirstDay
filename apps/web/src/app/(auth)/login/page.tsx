@@ -13,11 +13,21 @@ import styles from '@/app/(auth)/login/_styles/LoginPage.module.scss';
 import { X } from 'lucide-react';
 import Link from 'next/link';
 
+type LoginPageProps = {
+    searchParams?: {
+        role?: string | string[];
+    };
+};
+
 /**
  * Renders the login page.
  * @returns Login page element.
  */
-export default function LoginPage(): JSX.Element {
+const LoginPage = ({ searchParams }: LoginPageProps): JSX.Element => {
+    const roleParam = Array.isArray(searchParams?.role)
+        ? searchParams?.role[0]
+        : searchParams?.role;
+
     return (
         <main className={styles.shell}>
             <LoginRedirect />
@@ -25,8 +35,10 @@ export default function LoginPage(): JSX.Element {
                 <Link aria-label="Close sign in" className={styles.close} href="/">
                     <X aria-hidden="true" size={18} />
                 </Link>
-                <LoginPanel />
+                <LoginPanel initialRole={roleParam === 'joinee' ? 'joinee' : 'recruiter'} />
             </section>
         </main>
     );
-}
+};
+
+export default LoginPage;
