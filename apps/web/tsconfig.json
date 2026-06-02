@@ -10,7 +10,7 @@
         "paths": {
             "@/*": ["src/*"],
             "@onboarding/schemas": ["../../packages/schemas/src/index.ts"],
-            "@onboarding/types": ["../../packages/types/src/index.ts"],
+            "@onboarding/types": ["../../packages/types/dist/index.d.ts"],
             "@onboarding/ui": ["../../packages/ui/src/index.ts"]
         },
         "plugins": [
