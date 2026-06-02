@@ -12,6 +12,7 @@
 @use '../components/shared/WizardProgress/_styles/WizardProgress';
 @use '../app/(joinee)/onboarding/_styles/Onboarding';
 @use '../app/(recruiter)/dashboard/_styles/Dashboard';
+@use '../app/(recruiter)/dashboard/_components/DocumentLibrary/_styles/DocumentLibrary';
 @use '../app/(recruiter)/dashboard/_components/DocumentBuilder/_styles/DocumentBuilder';
 @use '../app/(recruiter)/dashboard/_components/DashboardTabs/_styles/DashboardTabs';
 @use '../app/(recruiter)/dashboard/_components/DocumentBuilder/StepChecklist/_styles/StepChecklist';

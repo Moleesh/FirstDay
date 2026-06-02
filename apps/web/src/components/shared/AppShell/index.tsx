@@ -14,8 +14,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { RoleBadge } from '@/components/shared/RoleBadge';
-import { ScrollProgress } from '@/components/shared/ScrollProgress';
 import { FirstDayLogo } from '@/components/shared/FirstDayLogo';
+import { ScrollProgress } from '@/components/shared/ScrollProgress';
 import { ThemeMenu } from '@/components/shared/ThemeMenu';
 import { useSessionStore } from '@/stores/sessionStore';
 
@@ -50,8 +50,11 @@ export function AppShell({ children }: { children: ReactNode }): JSX.Element {
                                 {userLabel.slice(0, 1).toUpperCase()}
                             </span>
                             <span className="app-profile__copy">
-                                <span className="app-user">{userLabel}</span>
-                                <RoleBadge role="ADMIN" />
+                                <span className="app-profile__label">Signed in as</span>
+                                <span className="app-profile__identity">
+                                    <span className="app-user">{userLabel}</span>
+                                    <RoleBadge role="Admin" />
+                                </span>
                             </span>
                         </div>
                         <button
@@ -66,7 +69,7 @@ export function AppShell({ children }: { children: ReactNode }): JSX.Element {
                     </div>
                 </div>
             </header>
-            {children}
+            <div className="app-shell__content">{children}</div>
             <ScrollProgress />
         </div>
     );

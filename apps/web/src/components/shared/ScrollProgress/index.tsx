@@ -1,7 +1,7 @@
 /**
  * @format
  * @module ScrollProgress
- * @description Persistent vertical scroll affordance for long application pages.
+ * @description Persistent scroll progress rail for scrollable shell content.
  * @author auto
  * @since 1.0.0
  */
@@ -12,7 +12,7 @@ import type { JSX } from 'react';
 import { useEffect, useState } from 'react';
 
 /**
- * Renders a visual page-scroll progress rail.
+ * Renders a vertical scroll progress rail for the app shell content.
  * @returns Scroll progress element.
  */
 export function ScrollProgress(): JSX.Element | null {
@@ -20,21 +20,26 @@ export function ScrollProgress(): JSX.Element | null {
     const [scrollable, setScrollable] = useState(false);
 
     useEffect(() => {
+        const scroller = document.querySelector<HTMLElement>('.app-shell__content');
+
+        if (!scroller) return;
+
+        const contentScroller = scroller;
+
         function update(): void {
-            const limit = document.documentElement.scrollHeight - window.innerHeight;
+            const limit = contentScroller.scrollHeight - contentScroller.clientHeight;
             setScrollable(limit > 0);
-            setProgress(limit > 0 ? Math.min(window.scrollY / limit, 1) : 0);
+            setProgress(limit > 0 ? Math.min(contentScroller.scrollTop / limit, 1) : 0);
         }
 
         update();
         const observer = new ResizeObserver(update);
-        observer.observe(document.documentElement);
-        window.addEventListener('resize', update);
-        window.addEventListener('scroll', update, { passive: true });
+        observer.observe(contentScroller);
+        contentScroller.addEventListener('scroll', update, { passive: true });
+
         return (): void => {
             observer.disconnect();
-            window.removeEventListener('resize', update);
-            window.removeEventListener('scroll', update);
+            contentScroller.removeEventListener('scroll', update);
         };
     }, []);
 

@@ -47,6 +47,7 @@ export function PageReorder(): JSX.Element {
                 {pages.map((page, index) => (
                     <article className="pdf-page" key={page.id}>
                         <button
+                            aria-label={`Page ${index + 1} ${page.label}`}
                             className="pdf-page__preview"
                             onClick={() => setActiveId(page.id)}
                             type="button"

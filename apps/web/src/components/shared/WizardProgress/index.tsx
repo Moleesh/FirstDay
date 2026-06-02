@@ -6,13 +6,15 @@
  * @since 1.0.0
  */
 
+import type { ReactElement } from 'react';
+
 export function WizardProgress({
     currentStep,
     totalSteps,
 }: {
     currentStep: number;
     totalSteps: number;
-}): JSX.Element {
+}): ReactElement {
     return (
         <div className="wizard-progress">
             <div

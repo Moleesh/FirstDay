@@ -6,6 +6,8 @@
  * @since 1.0.0
  */
 
-export function JoineeStatusBadge({ status }: { status: string }): JSX.Element {
+import type { ReactElement } from 'react';
+
+export function JoineeStatusBadge({ status }: { status: string }): ReactElement {
     return <span className="status-badge">{status}</span>;
 }

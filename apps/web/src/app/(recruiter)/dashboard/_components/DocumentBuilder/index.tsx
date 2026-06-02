@@ -45,6 +45,7 @@ export function DocumentBuilder(): JSX.Element {
                     <li key={label}>
                         <button
                             aria-current={index === currentStep ? 'step' : undefined}
+                            aria-label={`${index + 1} ${label}`}
                             className="builder-step"
                             onClick={() => setCurrentStep(index)}
                             type="button"

@@ -2,12 +2,16 @@
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
         "baseUrl": ".",
+        "ignoreDeprecations": "6.0",
         "jsx": "preserve",
         "lib": ["DOM", "DOM.Iterable", "ES2022"],
         "moduleResolution": "Bundler",
         "noEmit": true,
         "paths": {
-            "@/*": ["src/*"]
+            "@/*": ["src/*"],
+            "@onboarding/schemas": ["../../packages/schemas/src/index.ts"],
+            "@onboarding/types": ["../../packages/types/src/index.ts"],
+            "@onboarding/ui": ["../../packages/ui/src/index.ts"]
         },
         "plugins": [
             {

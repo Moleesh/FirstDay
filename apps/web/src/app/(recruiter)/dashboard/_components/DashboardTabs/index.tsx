@@ -9,16 +9,17 @@
 'use client';
 
 import type { JSX } from 'react';
-import { ClipboardList, UserCog, Users } from 'lucide-react';
-import { useState } from 'react';
+import { FileText, PenTool, UserCog, Users, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { DocumentBuilder } from '@/app/(recruiter)/dashboard/_components/DocumentBuilder';
+import { DocumentLibrary } from '@/app/(recruiter)/dashboard/_components/DocumentLibrary';
 import { JoineeManager } from '@/app/(recruiter)/dashboard/_components/JoineeManager';
 import { RecruiterManager } from '@/app/(recruiter)/dashboard/_components/RecruiterManager';
 
-type Workspace = 'builder' | 'joinees' | 'recruiters';
+type Workspace = 'documents' | 'joinees' | 'recruiters';
 
 const tabs = [
-    { icon: ClipboardList, id: 'builder', label: 'Document builder' },
+    { icon: FileText, id: 'documents', label: 'Created documents' },
     { icon: Users, id: 'joinees', label: 'Joinee workspace' },
     { icon: UserCog, id: 'recruiters', label: 'Recruiter admin' },
 ] as const;
@@ -28,34 +29,54 @@ const tabs = [
  * @returns Tabbed recruiter workspace.
  */
 export function DashboardTabs(): JSX.Element {
-    const [activeTab, setActiveTab] = useState<Workspace>('builder');
+    const [activeTab, setActiveTab] = useState<Workspace>('documents');
+    const [builderOpen, setBuilderOpen] = useState(false);
+
+    useEffect((): (() => void) | undefined => {
+        if (!builderOpen) return;
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [builderOpen]);
 
     return (
         <section className="dashboard-workspaces">
-            <div aria-label="Recruiter workspaces" className="workspace-tabs" role="tablist">
-                {tabs.map(({ icon: Icon, id, label }) => (
-                    <button
-                        aria-controls={`${id}-panel`}
-                        aria-selected={activeTab === id}
-                        className="workspace-tab"
-                        id={`${id}-tab`}
-                        key={id}
-                        onClick={() => setActiveTab(id)}
-                        role="tab"
-                        type="button"
-                    >
-                        <Icon size={17} />
-                        {label}
-                    </button>
-                ))}
+            <div className="workspace-toolbar">
+                <div aria-label="Recruiter workspaces" className="workspace-tabs" role="tablist">
+                    {tabs.map(({ icon: Icon, id, label }) => (
+                        <button
+                            aria-controls={`${id}-panel`}
+                            aria-selected={activeTab === id}
+                            className="workspace-tab"
+                            id={`${id}-tab`}
+                            key={id}
+                            onClick={() => setActiveTab(id)}
+                            role="tab"
+                            type="button"
+                        >
+                            <Icon size={17} />
+                            {label}
+                        </button>
+                    ))}
+                </div>
+                <button
+                    className="button button--secondary workspace-launcher"
+                    onClick={() => setBuilderOpen(true)}
+                    type="button"
+                >
+                    <PenTool size={16} />
+                    Open builder pop
+                </button>
             </div>
             <div
-                aria-labelledby="builder-tab"
-                hidden={activeTab !== 'builder'}
-                id="builder-panel"
+                aria-labelledby="documents-tab"
+                hidden={activeTab !== 'documents'}
+                id="documents-panel"
                 role="tabpanel"
             >
-                <DocumentBuilder />
+                <DocumentLibrary />
             </div>
             <div
                 aria-labelledby="joinees-tab"
@@ -73,6 +94,31 @@ export function DashboardTabs(): JSX.Element {
             >
                 <RecruiterManager />
             </div>
+            {builderOpen ? (
+                <div
+                    className="builder-modal__backdrop"
+                    onClick={() => setBuilderOpen(false)}
+                    role="presentation"
+                >
+                    <section
+                        aria-label="Document builder pop"
+                        aria-modal="true"
+                        className="builder-modal"
+                        onClick={(event) => event.stopPropagation()}
+                        role="dialog"
+                    >
+                        <button
+                            aria-label="Close builder pop"
+                            className="builder-modal__close"
+                            onClick={() => setBuilderOpen(false)}
+                            type="button"
+                        >
+                            <X size={16} />
+                        </button>
+                        <DocumentBuilder />
+                    </section>
+                </div>
+            ) : null}
         </section>
     );
 }

@@ -9,6 +9,13 @@
     gap: 1rem;
 }
 
+.workspace-toolbar {
+    align-items: center;
+    display: flex;
+    gap: 0.75rem;
+    justify-content: space-between;
+}
+
 .workspace-tabs {
     background: var(--card);
     border: 1px solid var(--border);
@@ -35,4 +42,63 @@
 .workspace-tab[aria-selected='true'] {
     background: var(--accent-soft);
     color: var(--accent-strong);
+}
+
+.workspace-launcher {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.builder-modal__backdrop {
+    align-items: center;
+    background: rgba(15, 23, 42, 0.54);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    padding: 1.25rem;
+    position: fixed;
+    z-index: 30;
+}
+
+.builder-modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: 0 28px 80px rgba(15, 23, 42, 0.26);
+    max-height: min(92vh, 980px);
+    max-width: 980px;
+    overflow: auto;
+    padding: 1rem;
+    position: relative;
+    width: min(100%, 980px);
+}
+
+.builder-modal .app-card {
+    margin: 0;
+}
+
+.builder-modal__close {
+    align-items: center;
+    background: var(--card-solid);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    display: inline-flex;
+    padding: 0.45rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    z-index: 1;
+}
+
+@media (max-width: 820px) {
+    .workspace-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .workspace-launcher {
+        justify-content: center;
+        width: 100%;
+    }
 }
