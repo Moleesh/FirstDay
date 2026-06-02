@@ -6,6 +6,8 @@
  * @since 1.0.0
  */
 
-export function RoleBadge({ role }: { role: string }): JSX.Element {
+import type { ReactElement } from 'react';
+
+export function RoleBadge({ role }: { role: string }): ReactElement {
     return <span className="role-badge">{role}</span>;
 }

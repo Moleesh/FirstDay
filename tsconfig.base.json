@@ -4,6 +4,7 @@
         "baseUrl": ".",
         "declaration": true,
         "esModuleInterop": true,
+        "ignoreDeprecations": "6.0",
         "forceConsistentCasingInFileNames": true,
         "isolatedModules": true,
         "module": "ESNext",

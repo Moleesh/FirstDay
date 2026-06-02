@@ -1,7 +1,7 @@
 /**
  * @format
  * @module StepFormBuilder
- * @description Extracts template fields from uploaded reference files and supports manual fields.
+ * @description AI field extraction and manual field editing for uploaded documents.
  * @author auto
  * @since 1.0.0
  */
@@ -9,59 +9,70 @@
 'use client';
 
 import type { JSX } from 'react';
-import { type ChangeEvent, type FormEvent, useState } from 'react';
-import { FileUp, Plus, Sparkles, UploadCloud } from 'lucide-react';
+import { type FormEvent, useState } from 'react';
+import { BrainCircuit, Plus, Sparkles } from 'lucide-react';
 import { Button } from '@onboarding/ui';
 
 const extractedDefaults = ['Full name', 'Date of birth', 'Address', 'PAN number'];
 
-export function StepFormBuilder(): JSX.Element {
-    const [customField, setCustomField] = useState('');
-    const [fields, setFields] = useState<string[]>([]);
-    const [fileName, setFileName] = useState('');
+interface StepFormBuilderProps {
+    documents: string[];
+    fields: string[];
+    onFieldsChange: (fields: string[]) => void;
+}
 
-    function uploadReference(event: ChangeEvent<HTMLInputElement>): void {
-        const file = event.target.files?.[0];
-        if (!file) return;
-        setFileName(file.name);
-        setFields(extractedDefaults);
+export function StepFormBuilder({
+    documents,
+    fields,
+    onFieldsChange,
+}: StepFormBuilderProps): JSX.Element {
+    const [customField, setCustomField] = useState('');
+    const hasDocuments = documents.length > 0;
+
+    function extractFields(): void {
+        if (!hasDocuments) return;
+        onFieldsChange(extractedDefaults);
     }
 
     function addField(event: FormEvent<HTMLFormElement>): void {
         event.preventDefault();
         const label = customField.trim();
         if (!label || fields.includes(label)) return;
-        setFields((current) => [...current, label]);
+        onFieldsChange([...fields, label]);
         setCustomField('');
     }
 
     return (
         <div className="field-builder">
-            <label className="field-builder__upload">
-                <span className="field-builder__upload-icon">
-                    <UploadCloud size={22} />
-                </span>
-                <span>
-                    <strong>Upload a reference template</strong>
-                    <small>Drag a PDF, Word, or Excel file here, or browse up to 10 MB.</small>
-                </span>
-                <span className="field-builder__browse">
-                    <FileUp size={15} />
-                    Browse file
-                </span>
-                <input
-                    accept=".pdf,.doc,.docx,.xls,.xlsx"
-                    aria-label="Upload reference template"
-                    onChange={uploadReference}
-                    type="file"
-                />
-            </label>
             <div className="field-builder__status">
-                <Sparkles size={16} />
-                {fileName
-                    ? `${fileName} processed. Review the extracted fields below.`
-                    : 'Upload a reference template to extract fillable fields.'}
+                <BrainCircuit size={16} />
+                {hasDocuments
+                    ? `${documents.length} uploaded document${documents.length === 1 ? '' : 's'} ready for AI extraction.`
+                    : 'Upload documents in the previous step to unlock AI extraction.'}
             </div>
+            <button
+                className="field-builder__extract"
+                disabled={!hasDocuments}
+                onClick={extractFields}
+                type="button"
+            >
+                <Sparkles size={16} />
+                Extract fields with AI
+            </button>
+            {hasDocuments ? (
+                <div className="field-builder__documents" aria-label="Uploaded documents summary">
+                    {documents.map((document) => (
+                        <span className="field-builder__document" key={document}>
+                            {document}
+                        </span>
+                    ))}
+                </div>
+            ) : null}
+            {!fields.length ? (
+                <div className="field-builder__status field-builder__status--quiet">
+                    Extracted fields will appear here after AI processing.
+                </div>
+            ) : null}
             {fields.length ? (
                 <div className="field-builder__fields">
                     {fields.map((field) => (

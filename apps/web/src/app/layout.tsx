@@ -9,6 +9,7 @@
 import type { JSX } from 'react';
 import type { ReactNode } from 'react';
 import { QueryProvider } from '@/components/shared/QueryProvider';
+import { ScrollProgress } from '@/components/shared/ScrollProgress';
 import { ThemeProvider } from '@/components/shared/ThemeProvider';
 import '@/styles/globals.scss';
 
@@ -21,9 +22,12 @@ export default function RootLayout({ children }: { children: ReactNode }): JSX.E
     return (
         <html lang="en">
             <body>
-                <QueryProvider>
-                    <ThemeProvider>{children}</ThemeProvider>
-                </QueryProvider>
+                <div className="app-scroll-surface">
+                    <QueryProvider>
+                        <ThemeProvider>{children}</ThemeProvider>
+                    </QueryProvider>
+                    <ScrollProgress />
+                </div>
             </body>
         </html>
     );

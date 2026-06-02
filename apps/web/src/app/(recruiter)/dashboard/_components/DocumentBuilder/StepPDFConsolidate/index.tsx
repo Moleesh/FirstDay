@@ -9,9 +9,26 @@
 import type { JSX } from 'react';
 import { PageReorder } from './PageReorder';
 
-export function StepPDFConsolidate(): JSX.Element {
+interface StepPDFConsolidateProps {
+    fields: string[];
+    title: string;
+    uploadedDocuments: string[];
+}
+
+export function StepPDFConsolidate({
+    fields,
+    title,
+    uploadedDocuments,
+}: StepPDFConsolidateProps): JSX.Element {
     return (
-        <div>
+        <div className="stack-md">
+            <div className="field-builder__status field-builder__status--quiet">
+                <span>
+                    Reviewing <strong>{title}</strong> with {uploadedDocuments.length} uploaded
+                    document{uploadedDocuments.length === 1 ? '' : 's'} and {fields.length}{' '}
+                    extracted field{fields.length === 1 ? '' : 's'}.
+                </span>
+            </div>
             <PageReorder />
         </div>
     );

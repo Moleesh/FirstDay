@@ -6,11 +6,22 @@
  * @since 1.0.0
  */
 
-import { FlatCompat } from '@eslint/eslintrc';
+import { fixupPluginRules } from '@eslint/compat';
+import nextPlugin from '@next/eslint-plugin-next';
 import sharedConfig from '@onboarding/config/eslint';
 
-const compat = new FlatCompat({
-    baseDirectory: import.meta.dirname,
-});
+const nextRules = {
+    ...nextPlugin.configs.recommended.rules,
+    ...nextPlugin.configs['core-web-vitals'].rules,
+    'react/display-name': 'off',
+};
 
-export default [...sharedConfig, ...compat.extends('next/core-web-vitals')];
+export default [
+    ...sharedConfig,
+    {
+        plugins: {
+            '@next/next': fixupPluginRules(nextPlugin),
+        },
+        rules: nextRules,
+    },
+];

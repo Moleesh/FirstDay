@@ -1,6 +1,10 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@onboarding/schemas": ["../schemas/dist/index.d.ts"]
+        },
         "outDir": "dist",
         "rootDir": "src"
     },

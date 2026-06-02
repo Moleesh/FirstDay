@@ -2,12 +2,17 @@
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
         "baseUrl": ".",
+        "ignoreDeprecations": "6.0",
         "jsx": "preserve",
         "lib": ["DOM", "DOM.Iterable", "ES2022"],
         "moduleResolution": "Bundler",
         "noEmit": true,
+        "types": ["node", "react", "react-dom"],
         "paths": {
-            "@/*": ["src/*"]
+            "@/*": ["src/*"],
+            "@onboarding/schemas": ["../../packages/schemas/src/index.ts"],
+            "@onboarding/types": ["../../packages/types/dist/index.d.ts"],
+            "@onboarding/ui": ["../../packages/ui/src/index.ts"]
         },
         "plugins": [
             {

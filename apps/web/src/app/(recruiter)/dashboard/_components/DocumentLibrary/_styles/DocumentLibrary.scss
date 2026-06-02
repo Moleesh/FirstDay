@@ -1,0 +1,94 @@
+/**
+ * @format
+ * @module DocumentLibraryStyles
+ * @description Created-document session and preview styles.
+ */
+
+.document-library {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.document-library__list {
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 0.9rem;
+}
+
+.document-library__list {
+    display: grid;
+    gap: 0.45rem;
+    padding: 0.65rem;
+}
+
+.document-library__row {
+    align-items: center;
+    background: var(--card-solid);
+    border: 1px solid var(--border);
+    border-radius: 0.8rem;
+    color: var(--ink);
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.document-library__icon {
+    align-items: center;
+    background: var(--card-solid);
+    border-radius: 0.65rem;
+    color: var(--accent);
+    display: inline-flex;
+    height: 2rem;
+    justify-content: center;
+    width: 2rem;
+}
+
+.document-library__rowCopy {
+    display: grid;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.document-library__rowCopy strong,
+.document-library__previewHeader h3,
+.document-library__meta strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.document-library__rowCopy strong {
+    font-size: 0.95rem;
+}
+
+.document-library__rowCopy span,
+.document-library__previewHeader p {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+.document-status {
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    padding: 0.25rem 0.55rem;
+    text-transform: uppercase;
+}
+
+.document-status--good {
+    background: color-mix(in srgb, var(--accent) 18%, white);
+    color: var(--accent-strong);
+}
+
+.document-status--warning {
+    background: color-mix(in srgb, #f59e0b 14%, white);
+    color: #92400e;
+}
+
+.document-status--neutral {
+    background: color-mix(in srgb, var(--muted) 12%, white);
+    color: var(--muted);
+}

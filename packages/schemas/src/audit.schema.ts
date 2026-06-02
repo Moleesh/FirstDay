@@ -14,5 +14,5 @@ export const auditLogSchema = z.object({
     action: auditActionSchema,
     entityType: z.string().min(2),
     entityId: z.string().min(1),
-    metadata: z.record(z.unknown()).optional(),
+    metadata: z.record(z.string(), z.unknown()).optional(),
 });
