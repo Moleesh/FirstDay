@@ -9,8 +9,7 @@
 'use client';
 
 import type { JSX } from 'react';
-import { Copy, Download, Eye, FileText, Link2 } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { FileText } from 'lucide-react';
 
 type DocumentStatus = 'Signed' | 'Draft' | 'Needs review';
 
@@ -62,104 +61,32 @@ function statusTone(status: DocumentStatus): string {
 }
 
 export function DocumentLibrary(): JSX.Element {
-    const [selectedLink, setSelectedLink] = useState(createdDocuments[0]?.link);
-    const [copiedLink, setCopiedLink] = useState('');
-
-    const selectedDocument = useMemo(
-        () =>
-            createdDocuments.find((document) => document.link === selectedLink) ??
-            createdDocuments[0],
-        [selectedLink],
-    );
-
-    async function copyLink(link: string): Promise<void> {
-        await navigator.clipboard.writeText(link);
-        setCopiedLink(link);
-    }
-
     return (
         <section className="document-library app-card stack-md">
             <div className="app-card__heading">
                 <span>Session view</span>
-                <h2>Created documents</h2>
+                <h2>Documents</h2>
             </div>
             <p className="app-muted">
-                Review already created onboarding packs, open the PDF preview, or copy a shareable
-                link for the team.
+                Read-only display of the created onboarding packs for quick reference.
             </p>
-            <div className="document-library__shell">
-                <div className="document-library__list" aria-label="Created documents">
-                    {createdDocuments.map((document) => (
-                        <button
-                            aria-pressed={selectedLink === document.link}
-                            className="document-library__row"
-                            key={document.link}
-                            onClick={() => setSelectedLink(document.link)}
-                            type="button"
-                        >
-                            <span className="document-library__icon">
-                                <FileText size={16} />
+            <div className="document-library__list" aria-label="Documents">
+                {createdDocuments.map((document) => (
+                    <article className="document-library__row" key={document.link}>
+                        <span className="document-library__icon">
+                            <FileText size={16} />
+                        </span>
+                        <span className="document-library__rowCopy">
+                            <strong>{document.label}</strong>
+                            <span>
+                                {document.createdOn} • {document.pages} pages • {document.completedBy}
                             </span>
-                            <span className="document-library__rowCopy">
-                                <strong>{document.label}</strong>
-                                <span>
-                                    {document.createdOn} • {document.pages} pages •{' '}
-                                    {document.completedBy}
-                                </span>
-                            </span>
-                            <span className={`document-status ${statusTone(document.status)}`}>
-                                {document.status}
-                            </span>
-                        </button>
-                    ))}
-                </div>
-                {selectedDocument ? (
-                    <article className="document-library__preview">
-                        <div className="document-library__previewHeader">
-                            <span>Selected document</span>
-                            <h3>{selectedDocument.label}</h3>
-                            <p>
-                                Completed by {selectedDocument.completedBy} on{' '}
-                                {selectedDocument.createdOn}
-                            </p>
-                        </div>
-                        <div className="document-library__meta">
-                            <div>
-                                <span>Pages</span>
-                                <strong>{selectedDocument.pages}</strong>
-                            </div>
-                            <div>
-                                <span>Status</span>
-                                <strong>{selectedDocument.status}</strong>
-                            </div>
-                            <div>
-                                <span>Share link</span>
-                                <strong>Ready</strong>
-                            </div>
-                        </div>
-                        <div className="document-library__actions">
-                            <button type="button">
-                                <Eye size={16} />
-                                Open preview
-                            </button>
-                            <button
-                                onClick={() => void copyLink(selectedDocument.link)}
-                                type="button"
-                            >
-                                {copiedLink === selectedDocument.link ? (
-                                    <Link2 size={16} />
-                                ) : (
-                                    <Copy size={16} />
-                                )}
-                                {copiedLink === selectedDocument.link ? 'Link copied' : 'Copy link'}
-                            </button>
-                            <button type="button">
-                                <Download size={16} />
-                                Download PDF
-                            </button>
-                        </div>
+                        </span>
+                        <span className={`document-status ${statusTone(document.status)}`}>
+                            {document.status}
+                        </span>
                     </article>
-                ) : null}
+                ))}
             </div>
         </section>
     );

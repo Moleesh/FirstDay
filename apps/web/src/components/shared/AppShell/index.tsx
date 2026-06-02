@@ -15,7 +15,6 @@ import { useRouter } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { RoleBadge } from '@/components/shared/RoleBadge';
 import { FirstDayLogo } from '@/components/shared/FirstDayLogo';
-import { ScrollProgress } from '@/components/shared/ScrollProgress';
 import { ThemeMenu } from '@/components/shared/ThemeMenu';
 import { useSessionStore } from '@/stores/sessionStore';
 
@@ -69,8 +68,7 @@ export function AppShell({ children }: { children: ReactNode }): JSX.Element {
                     </div>
                 </div>
             </header>
-            <div className="app-shell__content">{children}</div>
-            <ScrollProgress />
+            {children}
         </div>
     );
 }

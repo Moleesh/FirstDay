@@ -19,7 +19,7 @@ import { RecruiterManager } from '@/app/(recruiter)/dashboard/_components/Recrui
 type Workspace = 'documents' | 'joinees' | 'recruiters';
 
 const tabs = [
-    { icon: FileText, id: 'documents', label: 'Created documents' },
+    { icon: FileText, id: 'documents', label: 'Documents' },
     { icon: Users, id: 'joinees', label: 'Joinee workspace' },
     { icon: UserCog, id: 'recruiters', label: 'Recruiter admin' },
 ] as const;

@@ -1,33 +1,23 @@
 /**
  * @format
  * @module DocumentLibraryTests
- * @description Verifies the created-document session and link actions.
+ * @description Verifies the read-only created-document session.
  */
 
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { DocumentLibrary } from '../index';
 
 describe('DocumentLibrary', () => {
     beforeEach(() => {
-        vi.restoreAllMocks();
-        vi.unstubAllGlobals();
+        localStorage.clear();
     });
 
-    it('shows the created documents session and copies a share link', async () => {
-        const writeText = vi.fn().mockResolvedValue(undefined);
-        Object.assign(navigator, { clipboard: { writeText } });
-
+    it('shows a read-only documents display', () => {
         render(<DocumentLibrary />);
 
-        expect(screen.getByRole('heading', { name: 'Created documents' })).toBeInTheDocument();
-        fireEvent.click(screen.getByRole('button', { name: 'Copy link' }));
-
-        await waitFor(() => {
-            expect(writeText).toHaveBeenCalledWith(
-                expect.stringContaining('https://moleesh.github.io/FirstDay/dashboard/?document='),
-            );
-        });
-        expect(screen.getByRole('button', { name: 'Link copied' })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: 'Documents' })).toBeInTheDocument();
+        expect(screen.getByLabelText('Documents')).toBeInTheDocument();
+        expect(screen.queryByRole('button')).not.toBeInTheDocument();
     });
 });

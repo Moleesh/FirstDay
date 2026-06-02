@@ -12,7 +12,7 @@ describe('DashboardTabs', () => {
     it('shows created documents first and opens the builder as a modal pop', () => {
         render(<DashboardTabs />);
 
-        expect(screen.getByRole('heading', { name: 'Created documents' })).toBeInTheDocument();
+        expect(screen.getByRole('heading', { name: 'Documents' })).toBeInTheDocument();
         fireEvent.click(screen.getByRole('button', { name: 'Open builder pop' }));
         expect(screen.getByRole('dialog', { name: 'Document builder pop' })).toBeInTheDocument();
         fireEvent.click(screen.getByRole('button', { name: 'Close builder pop' }));

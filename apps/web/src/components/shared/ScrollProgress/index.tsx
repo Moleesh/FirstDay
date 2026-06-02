@@ -20,7 +20,7 @@ export function ScrollProgress(): JSX.Element | null {
     const [scrollable, setScrollable] = useState(false);
 
     useEffect(() => {
-        const scroller = document.querySelector<HTMLElement>('.app-shell__content');
+        const scroller = document.querySelector<HTMLElement>('.app-scroll-surface');
 
         if (!scroller) return;
 

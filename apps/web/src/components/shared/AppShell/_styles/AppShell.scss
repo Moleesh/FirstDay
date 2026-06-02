@@ -5,9 +5,7 @@
  */
 
 .app-shell {
-    display: grid;
-    grid-template-rows: auto minmax(0, 1fr);
-    height: 100dvh;
+    min-height: 100%;
     background:
         radial-gradient(
             circle at top left,
@@ -15,17 +13,6 @@
             transparent 28rem
         ),
         var(--surface);
-    overflow: hidden;
-}
-
-.app-shell__content {
-    min-height: 0;
-    overflow-y: auto;
-    scrollbar-width: none;
-}
-
-.app-shell__content::-webkit-scrollbar {
-    display: none;
 }
 
 .app-header {

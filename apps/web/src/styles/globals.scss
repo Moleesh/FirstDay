@@ -48,6 +48,23 @@ body {
     font-variant-ligatures: common-ligatures;
 }
 
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.app-scroll-surface {
+    height: 100%;
+    overflow-y: auto;
+    overscroll-behavior: none;
+    scrollbar-width: none;
+}
+
+.app-scroll-surface::-webkit-scrollbar {
+    display: none;
+}
+
 html {
     scrollbar-color: var(--accent) var(--surface);
     scrollbar-width: thin;
