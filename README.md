@@ -102,13 +102,13 @@ flowchart LR
   Web --> Trial["✨ Trial onboarding flows"]
 ```
 
-| Layer      | Stack                                                                  |
-| ---------- | ---------------------------------------------------------------------- |
-| Monorepo   | Turborepo, pnpm workspaces                                             |
-| Web        | Next.js 15, React 18, SCSS modules, Zustand, TanStack Query            |
-| Documents  | Signature canvas and browser-side onboarding document previews         |
-| Quality    | Vitest 4, Vite 8, Playwright, ESLint, Prettier, pnpm audit, TruffleHog |
-| Deployment | GitHub Pages static export through GitHub Actions                      |
+| Layer      | Stack                                                                          |
+| ---------- | ------------------------------------------------------------------------------ |
+| Monorepo   | Turborepo, pnpm workspaces                                                     |
+| Web        | Next.js 16, React 19, SCSS modules, Zustand, TanStack Query                    |
+| Documents  | Signature canvas and browser-side onboarding document previews                 |
+| Quality    | Vitest 4, Vite 8, Playwright 1.60, ESLint 10, Prettier, pnpm audit, TruffleHog |
+| Deployment | GitHub Pages static export through GitHub Actions                              |
 
 ```text
 apps/
@@ -152,7 +152,9 @@ these environment secrets before running CI or deployments:
 
 CI validates environment variables, linting, formatting, TypeScript, unit tests,
 dependency audit results, committed secrets, the production build, and
-Playwright flows before a change is considered ready.
+Playwright flows before a change is considered ready. The web e2e job installs
+Chromium in CI before running Playwright so browser binaries stay in sync with
+the pinned test runner.
 
 Unit coverage includes authentication helpers, session state, route guards,
 appearance preferences, onboarding drafts, recruiter invitations, joinee
