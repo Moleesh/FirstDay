@@ -8,6 +8,7 @@
 
 import type { JSX } from 'react';
 import { PageReorder } from './PageReorder';
+import './PageReorder/_styles/PageReorder.scss';
 
 interface StepPDFConsolidateProps {
     fields: string[];

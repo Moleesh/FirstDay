@@ -38,9 +38,17 @@ describe('DocumentBuilder', () => {
 
         expect(screen.getByRole('heading', { name: 'Required document' })).toBeInTheDocument();
         expect(screen.getByRole('button', { name: 'Back' })).toBeDisabled();
+        expect(screen.getByRole('button', { name: '3 AI extraction' })).toBeDisabled();
 
         await userEvent.click(screen.getByRole('button', { name: 'Next' }));
         expect(screen.getByRole('heading', { name: 'Upload documents' })).toBeInTheDocument();
+        expect(screen.getByRole('button', { name: '4 PDF review' })).toBeDisabled();
+
+        await userEvent.upload(
+            screen.getByLabelText('Upload source documents'),
+            new File(['doc-1'], 'identity-proof.pdf', { type: 'application/pdf' }),
+        );
+        await userEvent.click(screen.getByRole('button', { name: 'Continue with extraction' }));
 
         await userEvent.click(screen.getByRole('button', { name: 'Next' }));
         expect(screen.getByRole('heading', { name: 'AI extraction' })).toBeInTheDocument();
@@ -64,8 +72,8 @@ describe('DocumentBuilder', () => {
         expect(screen.getByText('identity-proof.pdf')).toBeInTheDocument();
         expect(screen.getByText('employment-letter.docx')).toBeInTheDocument();
 
-        await userEvent.click(screen.getByRole('button', { name: 'Next' }));
-        expect(screen.getByRole('button', { name: 'Extract fields with AI' })).toBeEnabled();
+        await userEvent.click(screen.getByRole('button', { name: 'Continue with extraction' }));
+        expect(screen.getByRole('heading', { name: 'AI extraction' })).toBeInTheDocument();
         await userEvent.click(screen.getByRole('button', { name: 'Extract fields with AI' }));
         expect(screen.getByText('Full name')).toBeInTheDocument();
         expect(screen.getByText('PAN number')).toBeInTheDocument();
@@ -74,9 +82,14 @@ describe('DocumentBuilder', () => {
     it('reorders PDF pages and accepts mapping annotations', async () => {
         render(<DocumentBuilder />);
 
-        for (let index = 0; index < 3; index += 1) {
-            await userEvent.click(screen.getByRole('button', { name: 'Next' }));
-        }
+        await userEvent.click(screen.getByRole('button', { name: 'Next' }));
+        await userEvent.upload(
+            screen.getByLabelText('Upload source documents'),
+            new File(['source'], 'employment-record.pdf', { type: 'application/pdf' }),
+        );
+        await userEvent.click(screen.getByRole('button', { name: 'Continue with extraction' }));
+        await userEvent.click(screen.getByRole('button', { name: 'Next' }));
+        await userEvent.click(screen.getByRole('button', { name: 'Next' }));
 
         await userEvent.click(screen.getByRole('button', { name: 'Move Personal details right' }));
         expect(screen.getByText('Page 1').closest('article')).toHaveTextContent('Identity proof');
@@ -102,5 +115,18 @@ describe('DocumentBuilder', () => {
         render(<DocumentBuilder />);
 
         expect(screen.getByLabelText('Document title')).toHaveValue('Design onboarding pack');
+    });
+
+    it('continues from upload into extraction', async () => {
+        render(<DocumentBuilder />);
+
+        await userEvent.click(screen.getByRole('button', { name: 'Next' }));
+        await userEvent.upload(
+            screen.getByLabelText('Upload source documents'),
+            new File(['source'], 'employment-record.pdf', { type: 'application/pdf' }),
+        );
+        await userEvent.click(screen.getByRole('button', { name: 'Continue with extraction' }));
+
+        expect(screen.getByRole('heading', { name: 'AI extraction' })).toBeInTheDocument();
     });
 });

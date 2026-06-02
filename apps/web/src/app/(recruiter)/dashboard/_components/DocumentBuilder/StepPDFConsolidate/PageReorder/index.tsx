@@ -21,13 +21,13 @@ const initialPages = [
     { id: 'consent', label: 'Consent and signature', fields: ['Signature'] },
 ];
 
-export function PageReorder(): JSX.Element {
+export const PageReorder = (): JSX.Element => {
     const [pages, setPages] = useState(initialPages);
     const [activeId, setActiveId] = useState('personal');
     const [annotation, setAnnotation] = useState('');
     const activePage = pages.find(({ id }) => id === activeId) ?? fallbackPage;
 
-    function movePage(index: number, direction: number): void {
+    const movePage = (index: number, direction: number): void => {
         const nextIndex = index + direction;
         if (nextIndex < 0 || nextIndex >= pages.length) return;
         setPages((current) => {
@@ -39,7 +39,7 @@ export function PageReorder(): JSX.Element {
             next[nextIndex] = currentPage;
             return next;
         });
-    }
+    };
 
     return (
         <div className="pdf-review">
@@ -99,4 +99,4 @@ export function PageReorder(): JSX.Element {
             </section>
         </div>
     );
-}
+};

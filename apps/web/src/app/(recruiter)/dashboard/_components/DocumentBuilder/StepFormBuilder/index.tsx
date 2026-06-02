@@ -1,7 +1,7 @@
 /**
  * @format
  * @module StepFormBuilder
- * @description AI field extraction and manual field editing for uploaded documents.
+ * @description AI field review and manual editing for uploaded documents.
  * @author auto
  * @since 1.0.0
  */
@@ -12,54 +12,54 @@ import type { JSX } from 'react';
 import { type FormEvent, useState } from 'react';
 import { BrainCircuit, Plus, Sparkles } from 'lucide-react';
 import { Button } from '@onboarding/ui';
+import './_styles/StepFormBuilder.scss';
 
 const extractedDefaults = ['Full name', 'Date of birth', 'Address', 'PAN number'];
 
-interface StepFormBuilderProps {
+export type StepFormBuilderProps = {
     documents: string[];
     fields: string[];
     onFieldsChange: (fields: string[]) => void;
-}
+};
 
-export function StepFormBuilder({
+export const StepFormBuilder = ({
     documents,
     fields,
     onFieldsChange,
-}: StepFormBuilderProps): JSX.Element {
+}: StepFormBuilderProps): JSX.Element => {
     const [customField, setCustomField] = useState('');
-    const hasDocuments = documents.length > 0;
 
-    function extractFields(): void {
-        if (!hasDocuments) return;
+    const extractFields = (): void => {
+        if (!documents.length) return;
         onFieldsChange(extractedDefaults);
-    }
+    };
 
-    function addField(event: FormEvent<HTMLFormElement>): void {
+    const addField = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
         const label = customField.trim();
         if (!label || fields.includes(label)) return;
         onFieldsChange([...fields, label]);
         setCustomField('');
-    }
+    };
 
     return (
         <div className="field-builder">
             <div className="field-builder__status">
                 <BrainCircuit size={16} />
-                {hasDocuments
-                    ? `${documents.length} uploaded document${documents.length === 1 ? '' : 's'} ready for AI extraction.`
+                {documents.length
+                    ? `${documents.length} uploaded document${documents.length === 1 ? '' : 's'} ready for review.`
                     : 'Upload documents in the previous step to unlock AI extraction.'}
             </div>
             <button
                 className="field-builder__extract"
-                disabled={!hasDocuments}
+                disabled={!documents.length}
                 onClick={extractFields}
                 type="button"
             >
                 <Sparkles size={16} />
-                Extract fields with AI
+                Run AI extraction
             </button>
-            {hasDocuments ? (
+            {documents.length ? (
                 <div className="field-builder__documents" aria-label="Uploaded documents summary">
                     {documents.map((document) => (
                         <span className="field-builder__document" key={document}>
@@ -70,7 +70,7 @@ export function StepFormBuilder({
             ) : null}
             {!fields.length ? (
                 <div className="field-builder__status field-builder__status--quiet">
-                    Extracted fields will appear here after AI processing.
+                    Extracted fields will appear here after you run AI extraction.
                 </div>
             ) : null}
             {fields.length ? (
@@ -101,4 +101,4 @@ export function StepFormBuilder({
             </form>
         </div>
     );
-}
+};

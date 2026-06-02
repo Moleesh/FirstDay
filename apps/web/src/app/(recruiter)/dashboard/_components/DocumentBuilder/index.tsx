@@ -17,11 +17,19 @@ import { StepDocumentUpload } from './StepDocumentUpload';
 import { StepFormBuilder } from './StepFormBuilder';
 import { StepPDFConsolidate } from './StepPDFConsolidate';
 import { en } from '@/i18n/en';
+import './_styles/DocumentBuilder.scss';
+import './StepChecklist/_styles/StepChecklist.scss';
+import './StepDocumentUpload/_styles/StepDocumentUpload.scss';
+import './StepFormBuilder/_styles/StepFormBuilder.scss';
+import './StepPDFConsolidate/PageReorder/_styles/PageReorder.scss';
 
 const steps = [
     { copy: 'Choose the documents every joinee must submit.', label: 'Required document' },
     { copy: 'Upload every source document for the pack.', label: 'Upload documents' },
-    { copy: 'Let AI extract fields from the uploaded documents.', label: 'AI extraction' },
+    {
+        copy: 'Review extracted fields and add anything missing.',
+        label: 'Review extracted fields',
+    },
     {
         copy: 'Reorder pages, confirm field mappings, and annotate unmatched areas.',
         label: 'PDF review',
@@ -72,6 +80,7 @@ export function DocumentBuilder(): JSX.Element {
     const [extractedFields, setExtractedFields] = useState(loadExtractedFields);
     const resolvedDocumentTitle = documentTitle.trim() || defaultDocumentTitle;
     const step = steps[currentStep] ?? steps[0];
+    const progress = ((currentStep + 1) / steps.length) * 100;
 
     useEffect(() => {
         if (typeof window === 'undefined') return;
@@ -110,18 +119,41 @@ export function DocumentBuilder(): JSX.Element {
                 {steps.map(({ label }, index) => (
                     <li key={label}>
                         <button
+                            disabled={index > currentStep}
                             aria-current={index === currentStep ? 'step' : undefined}
                             aria-label={`${index + 1} ${label}`}
                             className="builder-step"
                             onClick={() => setCurrentStep(index)}
                             type="button"
                         >
-                            <span>{index < currentStep ? <Check size={14} /> : index + 1}</span>
-                            {label}
+                            <span className="builder-step__index">
+                                {index < currentStep ? <Check size={14} /> : index + 1}
+                            </span>
+                            <span className="builder-step__copy">
+                                <span className="builder-step__label" title={label}>
+                                    {label}
+                                </span>
+                                <span className="builder-step__state">
+                                    {index < currentStep
+                                        ? 'Completed'
+                                        : index === currentStep
+                                          ? 'Current step'
+                                          : 'Locked'}
+                                </span>
+                            </span>
                         </button>
                     </li>
                 ))}
             </ol>
+            <div className="builder-progress" aria-hidden="true">
+                <div className="builder-progress__meta">
+                    <span>Wizard progress</span>
+                    <strong>{Math.round(progress)}%</strong>
+                </div>
+                <div className="builder-progress__track">
+                    <div className="builder-progress__fill" style={{ width: `${progress}%` }} />
+                </div>
+            </div>
             <div className="builder-stage">
                 <div className="builder-stage__heading">
                     <span>
@@ -137,6 +169,7 @@ export function DocumentBuilder(): JSX.Element {
                 {currentStep === 1 ? (
                     <StepDocumentUpload
                         documents={uploadedDocuments}
+                        onContinueExtraction={() => setCurrentStep(2)}
                         onDocumentsChange={setUploadedDocuments}
                     />
                 ) : null}
@@ -165,14 +198,16 @@ export function DocumentBuilder(): JSX.Element {
                     <ChevronLeft size={16} />
                     Back
                 </Button>
-                <Button
-                    disabled={currentStep === steps.length - 1}
-                    onClick={() => setCurrentStep((value) => value + 1)}
-                    type="button"
-                >
-                    Next
-                    <ChevronRight size={16} />
-                </Button>
+                {currentStep === 1 ? null : (
+                    <Button
+                        disabled={currentStep === steps.length - 1}
+                        onClick={() => setCurrentStep((value) => value + 1)}
+                        type="button"
+                    >
+                        Next
+                        <ChevronRight size={16} />
+                    </Button>
+                )}
             </div>
         </section>
     );

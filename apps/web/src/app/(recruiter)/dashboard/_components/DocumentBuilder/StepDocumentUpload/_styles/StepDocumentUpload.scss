@@ -1,0 +1,151 @@
+/**
+ * @format
+ * @module StepDocumentUploadStyles
+ * @description Source document upload step styles.
+ */
+
+.document-upload {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.document-upload__dropzone,
+.document-upload__item,
+.document-upload__status,
+.document-upload__hint,
+.document-upload__empty {
+    border-radius: 0.8rem;
+}
+
+.document-upload__dropzone {
+    align-items: center;
+    background: var(--card-solid);
+    border: 1px dashed var(--accent);
+    color: var(--ink);
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.95rem;
+    position: relative;
+}
+
+.document-upload__copy {
+    display: grid;
+    gap: 0.15rem;
+}
+
+.document-upload__copy small {
+    color: var(--muted);
+}
+
+.document-upload__icon,
+.document-upload__browse {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.document-upload__icon {
+    background: var(--accent-soft);
+    border-radius: 0.7rem;
+    color: var(--accent-strong);
+    flex: 0 0 auto;
+    height: 2.55rem;
+    width: 2.55rem;
+}
+
+.document-upload__browse {
+    background: var(--accent);
+    border-radius: 0.6rem;
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 800;
+    gap: 0.35rem;
+    margin-left: auto;
+    padding: 0.6rem 0.8rem;
+}
+
+.document-upload__dropzone input {
+    inset: 0;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.document-upload__status {
+    align-items: center;
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    display: flex;
+    gap: 0.45rem;
+    padding: 0.75rem;
+}
+
+.document-upload__list {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.document-upload__item,
+.document-upload__empty,
+.document-upload__hint {
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 0.8rem 0.9rem;
+}
+
+.document-upload__item {
+    align-items: center;
+    color: var(--ink);
+    display: flex;
+    gap: 0.45rem;
+}
+
+.document-upload__name {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.document-upload__remove {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    border-radius: 999px;
+    color: var(--muted);
+    display: inline-flex;
+    flex: 0 0 auto;
+    justify-content: center;
+    margin-left: auto;
+    padding: 0.35rem;
+    transition:
+        background 160ms ease,
+        color 160ms ease;
+}
+
+.document-upload__remove:hover {
+    background: color-mix(in srgb, var(--accent-soft) 55%, transparent);
+    color: var(--accent-strong);
+}
+
+.document-upload__empty {
+    border-style: dashed;
+}
+
+.document-upload__hint {
+    color: var(--muted);
+    font-size: 0.8rem;
+    line-height: 1.4;
+}
+
+@media (max-width: 620px) {
+    .document-upload__dropzone {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .document-upload__browse {
+        margin-left: 0;
+        width: 100%;
+    }
+}

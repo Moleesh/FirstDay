@@ -12,6 +12,7 @@ import type { JSX } from 'react';
 import { type FormEvent, useEffect, useState } from 'react';
 import { Plus } from 'lucide-react';
 import { Button } from '@onboarding/ui';
+import './_styles/StepChecklist.scss';
 
 interface RequiredDocument {
     id: string;
@@ -37,20 +38,20 @@ const defaultDocumentRecords = defaultDocuments.map((label) => ({
     label,
 }));
 
-function createDocument(label: string): RequiredDocument {
+const createDocument = (label: string): RequiredDocument => {
     return {
         id: `${label.toLowerCase().replaceAll(' ', '-')}-${Math.random().toString(36).slice(2)}`,
         label,
     };
-}
+};
 
-function loadDocuments(): RequiredDocument[] {
+const loadDocuments = (): RequiredDocument[] => {
     if (typeof window === 'undefined') return [...defaultDocumentRecords];
     const saved = localStorage.getItem(storageKey);
     return saved ? (JSON.parse(saved) as RequiredDocument[]) : [...defaultDocumentRecords];
-}
+};
 
-export function StepChecklist(): JSX.Element {
+export const StepChecklist = (): JSX.Element => {
     const [customLabel, setCustomLabel] = useState('');
     const [documents, setDocuments] = useState<RequiredDocument[]>(loadDocuments);
     const [selected, setSelected] = useState<string[]>(() => {
@@ -65,7 +66,7 @@ export function StepChecklist(): JSX.Element {
         localStorage.setItem(selectedStorageKey, JSON.stringify(selected));
     }, [documents, selected]);
 
-    function addDocument(event: FormEvent<HTMLFormElement>): void {
+    const addDocument = (event: FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
         const label = customLabel.trim();
         if (!label || documents.some((document) => document.label === label)) return;
@@ -73,19 +74,19 @@ export function StepChecklist(): JSX.Element {
         setDocuments((current) => [...current, document]);
         setSelected((current) => [...current, document.id]);
         setCustomLabel('');
-    }
+    };
 
-    function editDocument(id: string, label: string): void {
+    const editDocument = (id: string, label: string): void => {
         setDocuments((current) =>
             current.map((document) => (document.id === id ? { ...document, label } : document)),
         );
-    }
+    };
 
-    function toggleDocument(id: string): void {
+    const toggleDocument = (id: string): void => {
         setSelected((current) =>
             current.includes(id) ? current.filter((item) => item !== id) : [...current, id],
         );
-    }
+    };
 
     return (
         <div className="document-checklist">
@@ -122,4 +123,4 @@ export function StepChecklist(): JSX.Element {
             </form>
         </div>
     );
-}
+};
