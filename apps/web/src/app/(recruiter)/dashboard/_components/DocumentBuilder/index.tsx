@@ -129,7 +129,8 @@ export function DocumentBuilder(): JSX.Element {
                     </span>
                     <h3>{step.label}</h3>
                     <p>
-                        {step.copy} {resolvedDocumentTitle ? `Current pack: ${resolvedDocumentTitle}.` : null}
+                        {step.copy}{' '}
+                        {resolvedDocumentTitle ? `Current pack: ${resolvedDocumentTitle}.` : null}
                     </p>
                 </div>
                 {currentStep === 0 ? <StepChecklist /> : null}

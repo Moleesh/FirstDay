@@ -79,7 +79,8 @@ export function DocumentLibrary(): JSX.Element {
                         <span className="document-library__rowCopy">
                             <strong>{document.label}</strong>
                             <span>
-                                {document.createdOn} • {document.pages} pages • {document.completedBy}
+                                {document.createdOn} • {document.pages} pages •{' '}
+                                {document.completedBy}
                             </span>
                         </span>
                         <span className={`document-status ${statusTone(document.status)}`}>
