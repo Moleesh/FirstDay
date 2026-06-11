@@ -77,8 +77,10 @@ describe('DocumentBuilder', () => {
             screen.getByRole('heading', { name: 'Review extracted fields' }),
         ).toBeInTheDocument();
         await userEvent.click(screen.getByRole('button', { name: 'Run AI extraction' }));
-        expect(screen.getByText('Full name')).toBeInTheDocument();
-        expect(screen.getByText('PAN number')).toBeInTheDocument();
+        expect(screen.getByDisplayValue('Priya Nair')).toBeInTheDocument();
+        expect(screen.getByDisplayValue('15 Aug 1995')).toBeInTheDocument();
+        expect(screen.getByDisplayValue('Bengaluru, Karnataka')).toBeInTheDocument();
+        expect(screen.getByDisplayValue('ABCDE1234F')).toBeInTheDocument();
     });
 
     it('reorders PDF pages and accepts mapping annotations', async () => {

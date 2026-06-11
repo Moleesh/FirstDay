@@ -15,6 +15,12 @@ import { Button } from '@onboarding/ui';
 import './_styles/StepFormBuilder.scss';
 
 const extractedDefaults = ['Full name', 'Date of birth', 'Address', 'PAN number'];
+const extractedValues: Record<string, string> = {
+    Address: 'Bengaluru, Karnataka',
+    'Date of birth': '15 Aug 1995',
+    'Full name': 'Priya Nair',
+    'PAN number': 'ABCDE1234F',
+};
 
 export type StepFormBuilderProps = {
     documents: string[];
@@ -28,10 +34,18 @@ export const StepFormBuilder = ({
     onFieldsChange,
 }: StepFormBuilderProps): JSX.Element => {
     const [customField, setCustomField] = useState('');
+    const [fieldValues, setFieldValues] = useState<Record<string, string>>({});
 
     const extractFields = (): void => {
         if (!documents.length) return;
         onFieldsChange(extractedDefaults);
+        setFieldValues((current) => {
+            const next = { ...current };
+            extractedDefaults.forEach((field) => {
+                next[field] = extractedValues[field] ?? '';
+            });
+            return next;
+        });
     };
 
     const addField = (event: FormEvent<HTMLFormElement>): void => {
@@ -39,6 +53,10 @@ export const StepFormBuilder = ({
         const label = customField.trim();
         if (!label || fields.includes(label)) return;
         onFieldsChange([...fields, label]);
+        setFieldValues((current) => ({
+            ...current,
+            [label]: current[label] ?? '',
+        }));
         setCustomField('');
     };
 
@@ -81,6 +99,13 @@ export const StepFormBuilder = ({
                             <input
                                 className="app-input"
                                 placeholder={`Enter ${field.toLowerCase()}`}
+                                onChange={(event) =>
+                                    setFieldValues((current) => ({
+                                        ...current,
+                                        [field]: event.target.value,
+                                    }))
+                                }
+                                value={fieldValues[field] ?? ''}
                             />
                         </label>
                     ))}

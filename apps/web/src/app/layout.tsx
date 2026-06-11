@@ -13,6 +13,15 @@ import { ScrollProgress } from '@/components/shared/ScrollProgress';
 import { ThemeProvider } from '@/components/shared/ThemeProvider';
 import '@/styles/globals.scss';
 
+export const metadata = {
+    applicationName: 'FirstDay',
+    description: 'Onboarding workspace for recruiters and joinees.',
+    title: {
+        default: 'FirstDay',
+        template: '%s | FirstDay',
+    },
+} as const;
+
 /**
  * Renders the root HTML shell.
  * @param props - Layout children.

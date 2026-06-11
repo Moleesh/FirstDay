@@ -1,0 +1,18 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fd-bg" x1="6" y1="6" x2="42" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#67D1FF"/>
+      <stop offset="1" stop-color="#4F46E5"/>
+    </linearGradient>
+    <linearGradient id="fd-sheet" x1="17" y1="14" x2="31" y2="34" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#E6F0FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#fd-bg)"/>
+  <rect x="13" y="11" width="22" height="26" rx="6" fill="url(#fd-sheet)"/>
+  <path d="M18 18H29" stroke="#F97316" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M18 24H26" stroke="#B45309" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M18 29H24" stroke="#B45309" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M31 34L35 38" stroke="#0F172A" stroke-opacity="0.14" stroke-width="2.4" stroke-linecap="round"/>
+</svg>
