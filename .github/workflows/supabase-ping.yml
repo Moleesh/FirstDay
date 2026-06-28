@@ -1,0 +1,48 @@
+# @format
+
+name: Supabase Ping
+
+on:
+    schedule:
+        - cron: '0 2 * * *'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    ping:
+        environment: FirstDay
+        runs-on: ubuntu-latest
+        env:
+            SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+            SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+        steps:
+            - name: Ping Supabase every two days
+              shell: bash
+              run: |
+                  set -euo pipefail
+
+                  if [[ -z "${SUPABASE_URL}" || -z "${SUPABASE_PUBLISHABLE_KEY}" ]]; then
+                      echo "Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY."
+                      exit 1
+                  fi
+
+                  if [[ "${GITHUB_EVENT_NAME}" != "workflow_dispatch" ]]; then
+                      day_number=$(( $(date -u +%s) / 86400 ))
+
+                      if (( day_number % 2 != 0 )); then
+                          echo "Skipping off-cycle day."
+                          exit 0
+                      fi
+                  fi
+
+                  endpoint="${SUPABASE_URL%/}/auth/v1/health"
+
+                  curl --fail --show-error --silent --max-time 30 \
+                      --request GET \
+                      --header "apikey: ${SUPABASE_PUBLISHABLE_KEY}" \
+                      "${endpoint}" \
+                      --output /tmp/supabase-health.json
+
+                  cat /tmp/supabase-health.json
