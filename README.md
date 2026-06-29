@@ -182,11 +182,6 @@ Supabase Edge Functions before accepting real onboarding documents.
 4. Run formatting, linting, type checks, tests, and builds before pushing.
 5. Confirm that no secrets were committed.
 
-## 📄 License
-
-No license file is currently included. Treat this repository as proprietary
-until a license is added.
-
 <div align="center">
   <img
     src="https://lovable.dev/favicon.svg"
@@ -197,6 +192,11 @@ until a license is added.
   <h2>Lovable</h2>
   <p><strong>Developed using Lovable.</strong></p>
 </div>
+
+## 📄 License
+
+No license file is currently included. Treat this repository as proprietary
+until a license is added.
 
 ---
 
