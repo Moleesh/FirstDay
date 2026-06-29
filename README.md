@@ -181,9 +181,12 @@ Supabase Edge Functions before accepting real onboarding documents.
 3. Add tests for behavior changes.
 4. Run formatting, linting, type checks, tests, and builds before pushing.
 5. Confirm that no secrets were committed.
-6. Developed using
-   <img src="https://lovable.dev/favicon.svg" alt="Lovable" width="28" height="28" />
-   [Lovable](https://lovable.dev/). 😊
+
+## 🙌 Credits
+
+Developed using
+<img src="https://lovable.dev/favicon.svg" alt="Lovable" width="28" height="28" />
+[Lovable](https://lovable.dev/). 😊
 
 ## 📄 License
 
