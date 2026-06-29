@@ -10,6 +10,17 @@
 [![Node.js](https://img.shields.io/badge/Node.js-24-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![pnpm](https://img.shields.io/badge/pnpm-11.5.0-F69220?logo=pnpm&logoColor=white)](https://pnpm.io/)
 
+<div align="center">
+  <img
+    src="https://lovable.dev/favicon.svg"
+    alt="Lovable"
+    width="96"
+    height="96"
+  />
+  <h2>Lovable</h2>
+  <p><strong>Developed using Lovable.</strong></p>
+</div>
+
 **FirstDay** helps recruiters create onboarding packs, invite joinees, track
 progress, review documents, collect signatures, and generate completed PDFs.
 Joinees get a simple guided flow from upload to download. 😊
