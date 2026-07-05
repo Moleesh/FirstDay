@@ -1,40 +1,39 @@
 # @format
-name: Supabase Ping
+name: Ping Supabase
 on:
-    schedule:
-        - cron: '0 2 * * *'
-    workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: ping-supabase-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
-    contents: read
+  contents: read
+
 jobs:
-    ping:
-        environment: FirstDay
-        runs-on: ubuntu-latest
+  ping:
+    runs-on: ubuntu-latest
+    environment: FirstDay
+    timeout-minutes: 5
+    steps:
+      - name: Ping Supabase REST API
         env:
-            SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
-            SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
-        steps:
-            - name: Ping Supabase every two days
-              shell: bash
-              run: |
-                  set -euo pipefail
-                  if [[ -z "${SUPABASE_URL}" || -z "${SUPABASE_PUBLISHABLE_KEY}" ]]; then
-                      echo "Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY."
-                      exit 1
-                  fi
-                  if [[ "${GITHUB_EVENT_NAME}" != "workflow_dispatch" ]]; then
-                      day_number=$(( $(date -u +%s) / 86400 ))
-                      if (( day_number % 2 != 0 )); then
-                          echo "Skipping off-cycle day."
-                          exit 0
-                      fi
-                  fi
-                  curl --fail --show-error --silent --max-time 30 \
-                      --get "${SUPABASE_URL%/}/rest/v1/jobs" \
-                      --data-urlencode "select=id" \
-                      --data-urlencode "limit=1" \
-                      --header "apikey: ${SUPABASE_PUBLISHABLE_KEY}" \
-                      --header "Authorization: Bearer ${SUPABASE_PUBLISHABLE_KEY}" \
-                      --header "Accept: application/json" \
-                      --output /dev/null
-                  echo "Supabase ping succeeded."
+          SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${SUPABASE_URL}" ] || [ -z "${SUPABASE_ANON_KEY}" ]; then
+              echo "Supabase URL/key secrets are not configured."
+              exit 1
+          fi
+          curl --fail --show-error --silent --max-time 30 \
+              --retry 3 \
+              --retry-delay 5 \
+              --retry-all-errors \
+              --header "apikey: ${SUPABASE_ANON_KEY}" \
+              "${SUPABASE_URL%/}/auth/v1/health" \
+              --output /tmp/health.json
+          cat /tmp/health.json
+          echo "Supabase ping succeeded."
