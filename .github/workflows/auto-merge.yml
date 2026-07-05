@@ -1,5 +1,4 @@
 # @format
-
 name: Auto Merge PRs
 
 on:
@@ -48,9 +47,15 @@ jobs:
                         return;
                       }
 
-                      await github.rest.pulls.merge({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
-                        pull_number: pr.number,
-                        merge_method: 'squash',
-                      });
+                      // Respect branch protection & mergeability — attempt merge and log result
+                      try {
+                        await github.rest.pulls.merge({
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          pull_number: pr.number,
+                          merge_method: 'squash',
+                        });
+                        core.info(`Merged PR #${pr.number}`);
+                      } catch (err) {
+                        core.warning(`Failed to merge PR #${pr.number}: ${err}`);
+                      }

@@ -1,14 +1,10 @@
 # @format
-
 name: CI
 
 on:
     push:
     pull_request:
     workflow_dispatch:
-
-env:
-    FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 jobs:
     verify:
@@ -17,9 +13,11 @@ jobs:
         env:
             NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
             NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+        permissions:
+            contents: read
         steps:
-            - uses: actions/checkout@v6
-            - uses: pnpm/action-setup@v6
+            - uses: actions/checkout@v7
+            - uses: pnpm/action-setup@v6.0.9
               with:
                   version: 11.5.0
             - uses: actions/setup-node@v6
